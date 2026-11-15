@@ -22,7 +22,7 @@
   body { margin: 0; font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "PingFang SC", sans-serif; background: var(--bg); color: var(--ink); -webkit-text-size-adjust: 100%; }
   header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; max-width: 1400px; margin: 0 auto; padding: 16px 24px 4px; }
   .top-logo { width: 34px; height: 34px; flex: none; }
-  h1 .ver { display: inline-block; margin-left: 8px; padding: 2px 8px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--muted); font-size: 12px; font-weight: 500; letter-spacing: 0; vertical-align: 3px; }
+  h1 .ver { margin-left: 8px; color: var(--muted); font-size: 13px; font-weight: 500; letter-spacing: 0; }
   h1 { font-size: 20px; margin: 0; flex: 1; letter-spacing: 0.02em; }
   .stats { color: var(--muted); font-size: 13px; }
   /* Materials / Experiments: the segmented switch from the quote page */
@@ -609,7 +609,7 @@ function iconEl(name, cls = 'ico') {
   return s;
 }
 /* Filled in by build.py from the top entry of CHANGELOG.md. */
-const APP_VERSION = 'v1.3', APP_DATE = '2026-11-15';
+const APP_VERSION = 'v1.4', APP_DATE = '2026-11-15';
 const TRASH_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg>';
 const CHEV_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>';
 const PLUS_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9"/></svg>';
