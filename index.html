@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">   <!-- keep this private library out of Google and other search engines -->
+<title>Library</title>
+<meta name="apple-mobile-web-app-title" content="Library">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMzM1Ljc2IDMzNS43NiI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLmNscy0yIHsKICAgICAgICBmaWxsOiAjMGMwMGZmOwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGZpbGw6ICNmOWJlMTk7CiAgICAgIH0KCiAgICAgIC5jbHMtNCB7CiAgICAgICAgY2xpcC1wYXRoOiB1cmwoI2NsaXBwYXRoKTsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxjbGlwUGF0aCBpZD0iY2xpcHBhdGgiPgogICAgICA8Y2lyY2xlIGNsYXNzPSJjbHMtMSIgY3g9IjE2Ny44OCIgY3k9IjE2Ny44OCIgcj0iMTY3Ljg4Ii8+CiAgICA8L2NsaXBQYXRoPgogIDwvZGVmcz4KICA8ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEiPgogICAgPGc+CiAgICAgIDxjaXJjbGUgY2xhc3M9ImNscy0zIiBjeD0iMTY3Ljg4IiBjeT0iMTY3Ljg4IiByPSIxNjcuODgiLz4KICAgICAgPGcgY2xhc3M9ImNscy00Ij4KICAgICAgICA8Zz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE3OS4xOSwyNjAuODNjMi4wNi0yLjI2LDQuNTctNC4yNSw2LjEtNi44Myw3LjQtMTIuNTEsMTEuODUtMjYuMDYsMTIuNzYtNDAuNTkuMy00LjgsMy40Ny02LjA1LDYuOTItNi44NCwyLjk4LS42OSwzLjY0LDEuNTcsMy4zLDQuMTMtLjc0LDUuNTItMS40NywxMS4wNC0yLjM4LDE3LjkxLDMuODgtNi43OSw2LjkxLTEyLjYxLDEwLjQ1LTE4LjEsMS43OS0yLjc4LDQuMDgtNS43MSw2Ljg4LTcuMjYsNi4zOC0zLjU0LDkuNDUtMS44OSwxMC45Miw1LjE5LDEuNDUsNy4wMSwyLjgyLDE0LjA2LDMuODgsMjEuMTQsMS44OCwxMi42MiwzLjUzLDI1LjI3LDUuMTcsMzcuOTIuMjMsMS43Ny40OSwzLjY4LS4yMSw1LjQ2LTYuMDEtLjU4LTExLjMxLTguMTgtMTAuNTEtMTQuMTIsMi4wOC0xNS40OS0xLjY3LTMwLjI3LTUuNzgtNDQuOTgtLjA2LS4yMi0uNjEtMi40OC0xLjYxLTEuMi00LjA5LDcuMzktOC4wOCwxNC42OC0xMi4xMywyMS45My01LjEsOS4xMi04Ljc1LDE4LjU3LTcuNCwyOS4zNS4xMi45OC0xLjA3LDIuNzMtMi4wMiwzLjA2LTEuMDQuMzctMi45Mi0uMS0zLjcxLS45MS0xLjkxLTEuOTctMy40LTQuMzUtNC42OS02LjA3LTQuMiwyLjA1LTguMDcsNC44NC0xMi4zNSw1LjgzLTYuNTIsMS41LTExLjktMi43MS0xMy41Ny05LjgtLjk2LTQuMDctMS4zMi04LjI4LTIuMDEtMTIuODgtNC40OCw0LjY3LTguNTksOS40LTEzLjE4LDEzLjU5LTIuNjUsMi40Mi01Ljg1LDQuOTgtOS4yLDUuNzItOS4zMiwyLjA2LTE1Ljk5LTguNjUtMTUuMjEtMTYuNDQsMS45Mi0xOS4yMSwxNC42NS0zOC43OCwzNS4yNC00NC4wNSwxLjY3LS40MywzLjcyLS4xLDUuNC40NywyLjY3LjksNC43NCw0LjEzLDguMTIsMS43OCwxLjUzLTEuMzcsMS44NywyLjY0LDEuNzksMy45MS0uOTQsMTUuNjYtMi4xMSwzMS4zLTMuMTEsNDYuOTUtLjEsMS42Mi0uMjQsMy43OC44LDQuOTMuNDUuNTMuOTcuODksMS4zNC44Wk0xMzcuMTUsMjQzLjYzYy0uMzEsNy40MywxLjU2LDkuMDEsNi4yNSw2LjQ0LDMuODUtMi4xLDcuNDItNS4wOSwxMC4zOC04LjM1LDcuMjktOC4wMiwxMS42OC0xNy43OSwxNS43NC0yNy43MiwxLjAyLTIuNTEuMzQtNC41OC0yLjEyLTQuMjItNC4yNi42Mi04LjkxLDEuNC0xMi40NSwzLjYzLTExLjc1LDcuMzktMTcuMDYsMTguNzUtMTcuOCwzMC4yM1oiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE1Ny4xMiwxODEuMjFjLTEuODcsMi4zMy0zLjQsNC40OS01LjIsNi4zOS0yLjE0LDIuMjYtNC45OSw1LjM1LTcuODgsMi45My0yLjY2LTIuMjMtNC42LTYuMDUtNS40My05LjUxLS43NS0zLjEzLjQyLTYuNzMuMDQtMTAuNjUtMS43LDIuMzItMy4xNCw0LjkzLTUuMTcsNi45MS0zLjYsMy41MS03LjE0LDcuNDctMTEuNDksOS43My01LjQyLDIuODEtMTIuODYtMi42Ny0xMy40MS05Ljg2LTEuMzMtMTcuNTQsOS4wMS0zNi4xMSwyOC45My00MC45NywyLjYyLS42NCw1LjcuNiw3LjQzLjgyLDMuMDctLjYsNS4yLTEuMDIsNy4zMy0xLjQ0LDEuNjMtLjM4LDEuODEsNS44LDEuMDQsOC4xNS00LjA0LDEyLjQtNi4wNiwyNS4wNy02LjQyLDM4LjA1LS4wMi43Mi4xNSwxLjQ0LjM3LDMuMzIsMS43Ni0yLjMzLDMuMjItMy43MSw0LjAxLTUuNDEsNC41Ni05Ljc1LDguNjYtMTkuNjUsMTAuMDktMzAuNDYuNDEtMy4wOC43NC02LjM2LDIuMS05LjA1LDEuMDUtMi4wOCwzLjM5LTMuOTUsNS42LTQuODksMi41Ni0xLjA5LDQuMTIsMS44MywzLjIsNS4yMS0xLjg0LDYuODItMy41LDEzLjY5LTUuMjQsMjAuNTMuMzkuMTMuNzguMjUsMS4xNi4zOCwxLjg3LTMuNjcsMy42Mi03LjQxLDUuNjMtMTEsMS43NC0zLjEsMy41OC02LjE5LDUuNzUtOSwzLjI5LTQuMjUsNy45Mi02LjMzLDEzLjE3LTUuMjMsNS43MiwxLjIsOS41NSw0LjkzLDExLjA1LDEwLjgyLDIuMzIsOS4xLjQ0LDE4LjA0LTEuNCwyNi44My0xLjM5LDYuNjItNC4xLDEyLjk2LTYuMjEsMTkuNDMtMS40Nyw0LjQ5LTUuMjMsMy4wNS03LjE2LDEuNjItMS45MS0xLjQyLTQuMDctNS40OS0zLjMyLTcuMDMsNC45Ni0xMC4xNiw1LjU2LTIxLDYuMi0zMS44OS4xLTEuNy4yMi0zLjUyLS4yOC01LjEtLjUyLTEuNjQtLjYzLTMuNzMtMi43LTQuNTctMS4zMy0uMzQtMi44MiwxLjc4LTMuNjcsMy4wNS04LjEsMTIuMDQtMTMuODUsMjUuMjMtMTguNjUsMzguODctLjQ3LDEuMzMtMS42MiwzLjQ5LTIuMzUsMy40NS0xLjQ3LS4wOS0zLjQ1LTEuMDktNC4xNi0yLjMyLTEuMzMtMi4zMi0xLjkxLTUuMDctMi45OC04LjEzWk0xNDEuNTYsMTQ5LjdjLS4xNC0xLjA5LS45OS0yLjEtMi4wMy0yLjIxLTQuNTksMi4xOC05LjQ3LDMuOS0xMy43MSw2LjYzLTcuNDYsNC44LTEwLjc5LDEyLjIxLTEwLjk5LDIwLjk2LS4xMiw1LjM4LDIuMzMsNi44NSw2Ljg2LDQuMDQsMi41OC0xLjYsNS4zNS0zLjU1LDYuODgtNi4wNiw0LjYzLTcuNiw4LjctMTUuNTUsMTIuOTktMjMuMzZaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNTEuNDQsMTkxLjJjMy40OC0zLjY0LDcuMzYtMS4zOSwxMS4wOS0xLjMyLDMuMDIuMDYsNi4yMS0uMDYsOS4wMy0uOTgsMy4xOC0xLjA0LDQuMzktMy45OSwzLjQxLTcuMjQtMS40Mi00LjctMy4xOC05LjMxLTUuMTctMTUuMDItNC4zMiw1LjI3LTcuODEsOS43Mi0xMS41MSwxMy45Ny0zLjYzLDQuMTctNy4zNyw4LjI2LTExLjMzLDEyLjEtLjY4LjY2LTMuNDguNDQtMy45OS0uMjgtMS42OC0yLjQzLTMuMzktNS4xNS0zLjg4LTcuOTgtLjU1LTMuMTIuMjMtNi40Ny0uMjUtMTAuMDMtMS43NCwyLjg4LTMuMjIsNS45Ny01LjMsOC41OS0yLjI5LDIuODgtNC44MSw1Ljc4LTcuOCw3Ljg1LTQuNjQsMy4yLTkuMjUsMi4zOS0xMi43Ni0yLjEtNC43NC02LjA3LTYuNDctMTIuODgtNC4wNi0yMC41Niw0LjU4LTE0LjU5LDEzLjkxLTIzLjkzLDI5LjA0LTI3LjI5LDEuMDYtLjI0LDIuMjYtMi4wMSwyLjUzLTMuMjUuODQtMy43OCwxLjE5LTcuNjgsMS44OC0xMS41LjkyLTUuMTEsMy45NS03LjU4LDEwLjAxLTguMDgsMS4xOSw3Ljk4LS44MiwxNS42Mi0yLjA5LDIzLjM5LTEuNzcsMTAuODgtMy4wMywyMS44NS00LjQ0LDMyLjc4LS4xNCwxLjA2LjE5LDIuMTcuMjUsMy4yNi4xOCwzLjUsMS45NSwzLjU3LDQuMjUsMS44MiwxLjcxLTEuMywzLjUtMi42OSw0LjcxLTQuNDIsMy4zOC00Ljg0LDYuODctOS42OCw5LjQ4LTE0Ljk0LDEuMTQtMi4zLjY3LTUuNjcuMjItOC40NC0uOTgtNS45My4wOS05Ljk3LDUuMjItMTIuNTUsMi41Mi0xLjI2LDYuMTgtMS42Miw4Ljg3LS44MiwzLjIuOTUsMy44Niw0LjI4LDIuMzcsNy40MS0yLjI3LDQuNzctNC44OCw5LjM4LTYuOTYsMTQuMjMtLjcxLDEuNjctLjkzLDQuMTctLjE5LDUuNzIsMi40LDUuMDMsNS41NSw5LjY5LDguMDIsMTQuNjksMS4yNywyLjU4LDIuMiw1LjU0LDIuNDEsOC4zOS40Nyw2LjM0LTIuMzksMTAuMjQtOC44LDEwLjY2LTguMDIuNTMtMTUuNzctMS4zNS0yMi42LTUuOTgtMS4xMy0uOTUtMS41Ny0xLjQ0LTEuNjctMi4wOFpNMjM4LjQ5LDE0NS41MmMtMS45MS4yNi0yLjk5LjI4LTMuOTkuNTYtMTEuMiwzLjE3LTIyLjk0LDI0LjQ2LTIxLjQ5LDM1LjAzLjE5LDEuMzcsMS43NCwzLjM3LDIuOTIsMy41OCwxLjQ2LjI1LDMuNjgtLjYzLDQuNzItMS43OCw5LjQzLTEwLjQ3LDEzLjgzLTIzLjM3LDE3Ljg0LTM3LjM5WiIvPgogICAgICAgICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjIyLjg0LDI2Ni4wNWMxLjc3LDcuNCw3LjI4LDEwLjg2LDEzLjM0LDE0LjA0LDMuMzEsMS43NCw1LjgxLDQuNiw1LjksOC44NC4wNywzLjQ3LTIuNzQsNi4zMy01LjkxLDUuMDQtNi4yOS0yLjU2LTEyLjI4LS43My0xOC4yNy41My0xNS43LDMuMjktMzEuMTYsNy40NS00NS44NiwxNC4wMi01LjM5LDIuNDEtMTAuODcsNC42NC0xNi4wOCw3LjM4LTUuODMsMy4wNi0xMS41OCwzLjc3LTE3LjI5LjI3LTYuOTctNC4yNy05Ljc1LTExLjA0LTEwLjI4LTE4Ljg5LS4wNS0uNzEuNTktMS45MSwxLjE3LTIuMTEuNjQtLjIyLDIuMDcuMjUsMi4zMS43OSwyLjA4LDQuNjcsNS41LDMuMTcsOC42NywxLjg3LDguMDUtMy4yOSwxNi02Ljg1LDI0LjA1LTEwLjE0LDE1LjIzLTYuMjMsMzEuMjYtOS40Myw0Ny40My0xMS45NCw4LjA1LTEuMjUsOC4xLTEuMTUsMTAuODMtOS43M1oiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE4Mi40NSw5Ni42OWMtMy42OC4yMS03LjA4LjE5LTEwLjM5LjczLTEsLjE2LTIuMjMsMS43OC0yLjUxLDIuOTQtMS4zOSw1LjczLTIuMTgsMTEuNjItMy44NCwxNy4yNy0uOTMsMy4xNy0yLjA0LDcuOTgtNi43Myw2LjY3LTQuMjgtMS4xOS0yLjkyLTUuNjYtMi40NS04LjkxLjQzLTIuOTksMS41MS01Ljg4LDIuMy04LjgxLS40NC0uMzUtLjg4LS43MS0xLjMyLTEuMDYtMS41MSwxLjg3LTIuODMsMy45NC00LjU3LDUuNTYtNC43NCw0LjQxLTkuOTQsOC4wOS0xNi43OSw4LjEyLTkuNDIuMDQtMTQuNjYtNS45OS0xMy42Mi0xNS4zNy45OC04Ljg2LDUuNDMtMTYuMTQsMTAuNDYtMjMuMTIsNC4yNS01LjksOC40OC0xMi4xLDE1LjgyLTE0LjQxLDIuNDgtLjc4LDUuNjMtLjg2LDguMjYuNTEuODIuNDMsMi4wNCwxLjYsMS45OSwzLjEyLS4wOCwyLjczLTEuNTgsMy41LTIuODQsMy44NS0xNC4yNyw0LjAyLTIwLjQsMTUuMjctMjQuOTUsMjcuODQtMS4zNywzLjgtNC42MSwxMi4yOS0zLjExLDEyLjQ5LDMuODEsMS43NiwxMy43Mi0zLjU2LDE3LjkxLTguNjYsOS42Ny0xMS43OCwxNi43My0yNS4wNiwyMS44My0zOS40LDEuMDgtMy4wMiw1LjcxLTUuMjQsOC41MS0zLjg3LDIuMTksMS4wNywyLjcyLDIuNjYsMS44Nyw1LjM2LTIuNDYsNy44LTQuNDEsMTUuNzctNi44OSwyNC44NSw0LjU5LTEuNDYsOC4zLTIuMzksMTEuNzctMy44OCwxLjA4LS40NiwxLjgxLTIuMzMsMi4yMy0zLjY5LDIuOTktOS44Miw1Ljc5LTE5LjY5LDguODQtMjkuNDkuNDMtMS4zOCwxLjc1LTMuNzQsMi44Ni0zLjY1LDIuNDguMjYsMy4yNSwzLjE4LDMuMTQsNC42NC0uNDgsNi4wMi0xLjU4LDExLjk5LTIuNiwxNy45NS0uNTQsMy4xOC0xLjM5LDYuMzItMi4xNSw5LjY3LDMuMjYsMS4xMiw2LjIyLDEuOTgsOS4wMywzLjE3LDEuMTMuNDgsMi41Ny44MywyLjkxLDIuNTYuMDksMS4zNS0xLjI5LDIuMS0yLjkxLDIuNjctLjU1LjItMS4xNi40Mi0xLjc2LjYxcS04LjQ0LDIuNjYtOC45NiwxMS4yOGMtLjE0LDIuMzMtLjUzLDQuNjYtLjUxLDYuOTkuMDUsNC4wNy0xLjA3LDYuNTItNS44OCw2LjEtNC41NC0uMzktNi40My0xLjgyLTYuMzEtNi43NC4xMS00LjQ4Ljg1LTguOTQsMS4zNS0xMy44OVoiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTk4LjUsMjU3LjUzYzIuNDctNS40OSw0LjgtOS45OSw2LjU1LTE0LjY5LDQuOTgtMTMuNCw5LjY5LTI2Ljg5LDE0LjU2LTQwLjMzLDEuNzItNC43NSw4LjczLTcuNzcsMTMuMDItNS40MywyLjcyLDEuNDgsNC4yMiwzLjI0LDIuMzUsNy4xMi00LjAzLDguMzgtNy43LDE3LjAyLTEwLjU5LDI1Ljg2LTMuOTIsMTEuOTctOS44NSwyMi43Ni0xNy4xNSwzMi44Ny0zLjg3LDUuMzYtMTIuNjgsNS4zNS0xNS43MS0uMzgtMy42Ni02LjkzLTcuMDMtMTQuMTctOS4zMS0yMS42NC0zLjk3LTEzLjA1LTcuMDItMjYuMzctMTAuNTMtMzkuODgsNC45Ni0uNjUsOC40OCwxLjEyLDkuOTgsNS4zMiwyLjQ1LDYuODMsNC4yOSwxMy44OCw2LjQyLDIwLjgyLDIuNjQsOC42Miw1LjI5LDE3LjI0LDguMDEsMjUuODQuMzksMS4yNCwxLjIzLDIuMzQsMi40LDQuNTJaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik05MS44NSwxNTguMjJjLTQuNzcsMS44MS04LjksMy4xMS0xMi43NCw0Ljk5LTEuMDUuNTItMS43NCwyLjc0LTEuNzgsNC4yMS0uMTgsNy4xMi0uMDgsMTQuMjUtLjA4LDIxLjMyLTQuNDkuNjEtMTEuNjgtMi40OC0xMi4yMS01LjkxLS43LTQuNTMtLjE3LTkuMjUtLjE3LTEzLjgzLTIuNDktMS4wNi01LjAxLTIuMTItOC40OS0zLjYuNDMtMS4yNCwyLjczLTIuMTIsMy44OC0yLjUxLDUuMy0xLjc4LDguMTMtNS4xNCw4LjA3LTEwLjk3LS4wNS00LjM0LjMtOC43LjcxLTEzLjAzLjEyLTEuMjMuNzgtMy4wMiwxLjY4LTMuMzkuOTUtLjQsMi43NS0uNDksMy42MiwxLjAyLDEuNTgsMi43MiwyLjY0LDUuODIsMy4yMSw4Ljg5LjUyLDIuODIuMTEsNS44MS4xMSw5LjQ0LDUuMTMtMi4xMyw5LjcyLTMuODcsMTQuMTQtNS45OSwxLjExLS41MywyLjA4LTIuMTcsMi4zNi0zLjQ2Ljg1LTMuOTMtLjE1LTExLjgyLDEuOTYtMTEuOSw0LjU4LS40Nyw2Ljc5LDEuMTQsNy4wMyw1LjU1LjE1LDIuNzgtLjMyLDUuNTktLjQyLDguMzgtLjQsMTEuOC0uNzYsMjMuNTktMS4xNSwzNS4zOS0uMDUsMS41NC4xLDMuMTgtLjM3LDQuNi0uNTcsMS43NS0xLjYxLDQuNjQtMi42LDQuNy0yLjI1LjE1LTUuNDgtLjQ0LTYuNjgtMS45OS0xLjgtMi4zMi0zLjEzLTUuNzYtMy4wMi04LjY2LjIzLTYuMDEsMS41NC0xMS45OCwyLjM4LTE3Ljk4LjIxLTEuNDguMzEtMi45Ny41NS01LjNaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yMzAuMDEsODAuMDRjLTMuNjcsMy4wMS02Ljg1LDYuMDEtMTAuNDEsOC40Ni01LjQ2LDMuNzYtMTQuMTQtLjYtMTMuNTQtNy4yNC42Ny03LjM1LDIuODEtMTQuNTksNC42OC0yMS43OC4yOC0xLjA5LDIuMjMtMi43NSwzLjg2LTIuNSwxLjIxLjUzLDEuNjgsMi42MiwxLjU3LDMuODQtLjU2LDYuMDItMS40NiwxMi4wMi0yLjIzLDE4LjAyLS4wOS43NC0uMTIsMS40OS0uMjcsMy41MywyLjQ1LTIuMDcsNC40NS0zLjIzLDUuNzEtNC45Myw0LjI1LTUuNzQsOC4xMy0xMS43NCwxMi4zOS0xNy40NiwxLjAyLTEuMzcsMi43NS0zLjE1LDQuNS0zLjA1Ljg0LjUuOTcsMi45Ljk5LDQuMzYuMSw4LjA2LjA1LDE2LjEyLjA1LDI0LjM1LDIuNTgtLjkxLDUuNTItMi4xOCw4LjU4LTIuOTYsMi43OS0uNzEsNS43Mi0uODcsOC41OC0xLjI4Ljc3LS4xLDEuOTkuNDguMzYsMS42LTEuMDQuNjItMS42NSwxLjAxLTIuNTEsMS40NC0uNTUuMjctMS4xNi40My0xLjc3LjU3LTEyLjQzLDIuODktMTMuMDcsNC4zNy0xNS45NCwxNi42Mi0xLjc3LDcuNTYtNS4zMiwxNC44MS04Ljg4LDIxLjc5LTIuMzIsNC41Ni04LjUxLDUuODEtMTIuNjgsMy43My00LjE3LTIuMDgtNi4wMi02Ljg3LTQuMzEtMTIuMDMsMi45LTguNzMsOC43LTE1LjI4LDE1Ljk2LTIwLjcxLDYuMjctNC42OSw2LjYzLTUuNzcsNS4zMi0xNC4zOVpNMjMwLjE4LDk3LjY5Yy0uMTItLjU3LS43LTEuNjMtMS42NC0uODgtNC42MSw1LjIzLTEwLjg3LDkuMTYtMTIuODcsMTYuNDItLjQ1LDEuNjUtLjY4LDQuOC43NCw1LjUyLDEuNzEuMjksNC4zNS0xLjEsNS4wNS0yLjQzLDMuMi02LjA2LDUuODctMTIuNCw4LjcyLTE4LjY0WiIvPgogICAgICAgICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTEwLjk1LDczLjQxYy03LjgxLDMuNDUtMTUuNDIsMy4wMy0yMy4wOC4zN3YtLjE3YzExLjQxLTQuNTIsMjIuODYtOC45NSwzNC4yNC0xMy41Nyw1LjEzLTIuMDgsOS4xMy4zOSwxMy4zMSwyLjM4LDEuMTUuNzguOTYsMS4yMi41NiwxLjUyLTIuNDEsMS4xOS00LjcyLDIuOC03LjI3LDMuNDgtMy40Ni45MS01LjA4LDIuOTItNi44OSw1Ljk4LTYuNzMsMTEuMzctMTAuMjQsMjMuODItMTMuMzQsMzYuNDMtLjk0LDMuODEtMS42NSw3LjY5LTEuNzksMTEuNjEtLjE3LDQuODYtMi43Myw1LjYxLTYuNDMsNC45OS0yLjExLS4zNi00LjIyLS43OC03LjQ4LTEuMzgsNi4wNi0xNy4yMywxMi4wNS0zNC4yMywxOC4xNy01MS42M1oiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTgyLjc3LDU3Ljc0Yy41NywyLjk5LDEuODQsNi4wNCwxLjYxLDguOTctMS40MiwxOC40NC0zLjE4LDM2Ljg2LTQuODEsNTUuMjktLjQsNC40Ny0yLjE4LDUuMzctNi4wNCwzLjAyLTUuNjktMy40Ny03LjU1LTcuMDYtNi4yNy0xMy42NiwyLjc5LTE0LjM2LDUuNjgtMjguNyw4Ljg3LTQyLjk3LjgyLTMuNjksMi45LTcuMSw0LjQtMTAuNjMuNzUsMCwxLjQ5LDAsMi4yNC0uMDFaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNjQuMzEsODQuNTRjLS43Mi0xLjk5LDEuNDUtMi43OCwyLjItMi43OSw4LjM0LS4xMiwxNi43MS0uMjQsMjUuMDMuMjYsMy44Ni4yMyw2LjMxLDUuNDIsNC43OCw4Ljg3LS4zMS42OS0xLjQzLDEuNTQtMi4xLDEuNDgtOS41Mi0uOTMtMTkuMTYtMS4zOS0yNy44My02LjE4LS40LS4yMi0xLjUxLS43NC0yLjA5LTEuNjRaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNjQsOTMuNjdjNy43My40LDEzLjE1LDQuNjUsMTguNjYsOC42MSwxLjYyLDEuMTYsMy4yOCwyLjUyLDQuMzEsNC4xNy43OCwxLjI2LDEuMDYsMi4zNS44Myw0LjcxLS40NiwxLjkzLTMuOTIsMS4yMy01LjE1LjU1LTMuNjMtMi4wMy03LjE3LTQuNDItMTAuMjMtNy4yNC0zLjE4LTIuOTMtNy44NC00Ljg2LTguNDItMTAuOFoiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTI2MS41OCwxMDQuNjdjNi40NSwyLjQ2LDEyLjYzLDE0LjUxLDEwLjEsMjAuMzItMS4wMSwxLjY0LTMuMzUsMS4yLTQuNDMuNTgtNC40OC0yLjU3LTcuODktMTUuOTItNS42Ny0yMC45WiIvPgogICAgICAgIDwvZz4KICAgICAgPC9nPgogICAgPC9nPgogIDwvZz4KPC9zdmc+" type="image/svg+xml">
+<meta name="theme-color" content="#f4f2ef">
+<style>
+  /* Same look as quote.itchyhandsvan.com: warm grey page, white rounded cards, black accent, system font. */
+  :root {
+    --bg: #f4f2ef; --card: #ffffff; --ink: #111111; --muted: #6b6b6b; --line: #e2dfda;
+    --accent: #111111; --accent-ink: #ffffff; --soft: #ebe8e3; --warn: #b45309; --bad: #b3261e; --good: #14532d;
+    --radius: 14px; --r-sm: 10px;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "PingFang SC", sans-serif; background: var(--bg); color: var(--ink); -webkit-text-size-adjust: 100%; }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; max-width: 1400px; margin: 0 auto; padding: 16px 24px 4px; }
+  .top-logo { width: 34px; height: 34px; flex: none; }
+  h1 { font-size: 20px; margin: 0; flex: 1; letter-spacing: 0.02em; }
+  .stats { color: var(--muted); font-size: 13px; }
+  /* Materials / Experiments: the segmented switch from the quote page */
+  .tabs { max-width: 1400px; margin: 0 auto; padding: 12px 24px 0; }
+  .tabwrap { display: inline-grid; grid-auto-flow: column; background: var(--soft); border-radius: var(--r-sm); padding: 3px; }
+  .tabs button { border: 0; background: transparent; padding: 9px 18px; border-radius: 8px; font-weight: 600; color: var(--ink); }
+  .tabs button:hover { background: transparent; }
+  .tabs button.on { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgb(0 0 0 / 0.12); }
+  .layout { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 230px 1fr; gap: 0 24px; padding: 0 24px 80px; }
+  aside { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; padding: 14px 0; }
+  aside button { display: flex; width: 100%; justify-content: space-between; align-items: center; gap: 8px; border: 0; background: none; text-align: left; padding: 8px 10px; border-radius: var(--r-sm); color: var(--ink); font-weight: 500; font-size: 14px; white-space: normal; }
+  aside button:hover { background: rgb(0 0 0 / 0.04); }
+  aside button.on { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgb(0 0 0 / 0.12); font-weight: 600; }
+  aside button .n { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .content { min-width: 0; }
+  .toolbar { padding: 12px 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; position: sticky; top: 0; background: var(--bg); z-index: 3; }
+  input, select, textarea, output { font: inherit; font-weight: 400; color: inherit; background: #fff; border: 1px solid var(--line); border-radius: var(--r-sm); padding: 9px 12px; }
+  output { display: block; background: var(--bg); border-color: transparent; }
+  textarea { resize: vertical; line-height: 1.4; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--ink); outline-offset: -1px; }
+  #search { flex: 1 1 220px; min-width: 180px; }
+  .tspacer { flex: 1; }
+  button, .btn { font: inherit; font-size: 14px; font-weight: 600; border: 1px solid var(--ink); background: #fff; color: var(--ink); padding: 9px 14px; border-radius: var(--r-sm); cursor: pointer; white-space: nowrap; display: inline-block; text-align: center; }
+  button:hover, .btn:hover { background: var(--bg); }
+  button:disabled { opacity: 0.5; cursor: default; }
+  button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  button.primary:hover { background: #333; border-color: #333; }
+  button.danger { color: var(--bad); border-color: var(--line); }
+  button.danger:hover { background: #fdecea; }
+  button.on { background: var(--ink); color: #fff; }
+  .check { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 14px; }
+  .check input { padding: 0; }
+
+  .section { margin-bottom: 24px; }
+  .shrow { display: flex; align-items: center; gap: 10px; min-height: 36px; margin-bottom: 10px; cursor: pointer; }
+  .shead { display: flex; align-items: center; gap: 8px; flex: none; min-width: 0; border: 0; background: none; padding: 0; border-radius: 0; text-align: left; color: var(--ink); line-height: 1.2; }
+  .addfolder { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; padding: 0; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--muted); font-size: 16px; font-weight: 500; line-height: 1; }
+  .addfolder:hover { border-color: var(--ink); color: var(--ink); background: #fff; }
+  .shead:hover { background: none; }
+  .shead .chev { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; color: var(--muted); transition: transform .15s; }
+  .shead .chev svg, .addfolder svg { width: 14px; height: 14px; }
+  .section.closed .shead .chev { transform: rotate(-90deg); }
+  .shead .t { font-weight: 700; font-size: 17px; }
+  .shrow .n { color: var(--muted); font-size: 13px; font-weight: 500; }
+  .section.closed .grid { display: none; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+  .grid.exps { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .card { position: relative; background: var(--card); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; cursor: pointer; box-shadow: 0 1px 2px rgb(0 0 0 / 0.05); transition: box-shadow .12s, transform .12s; }
+  .card:hover { box-shadow: 0 6px 18px rgb(0 0 0 / 0.08); transform: translateY(-1px); }
+  /* trash: the round icon button from the quote page */
+  .card .del { position: absolute; top: 8px; right: 8px; width: 34px; height: 34px; padding: 0; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: #fff; color: var(--muted); border: 1px solid var(--line); box-shadow: 0 1px 3px rgb(0 0 0 / 0.12); opacity: 0; transition: opacity .12s; }
+  .card:hover .del, .card .del:focus-visible { opacity: 1; }
+  .card .del:hover { color: var(--bad); background: #fdecea; border-color: #f5c2bd; }
+  @media (hover: none) { .card .del { opacity: 1; } }
+  .thumb { aspect-ratio: 4/3; background: var(--bg) repeating-linear-gradient(45deg, transparent 0 6px, rgb(0 0 0 / 0.04) 6px 12px); display: grid; place-items: center; color: var(--muted); font-size: 34px; font-weight: 700; overflow: hidden; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .name { font-weight: 600; font-size: 15px; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: auto; padding-top: 4px; }
+  .know { font-size: 13px; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tested { font-size: 13px; font-weight: 600; }
+  .tested.none { color: var(--muted); font-weight: 500; }
+  /* pills: the "chip" style */
+  .pill { display: inline-block; font-size: 12px; font-weight: 500; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: #fff; }
+  .pill.cat { color: var(--ink); }
+  .pill.success { color: var(--good); background: #e7f5ec; border-color: transparent; }
+  .pill.partial { color: var(--warn); background: #fdf3e2; border-color: transparent; }
+  .pill.fail, .pill.inhib { color: #7f1d1d; background: #fdecea; border-color: #f5c2bd; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .lesson { font-size: 14px; border-left: 3px solid var(--line); padding-left: 8px; white-space: pre-wrap; }
+  .empty { text-align: center; color: var(--muted); padding: 60px 20px; border: 2px dashed var(--line); border-radius: var(--radius); }
+
+  .hint { color: var(--muted); font-size: 13px; margin: 0; }
+  .error { color: var(--bad); font-size: 14px; margin: 0; }
+  .syncbtn { border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 12px; font-weight: 500; padding: 4px 10px 4px 22px; border-radius: 999px; position: relative; }
+  .syncbtn::before { content: ''; position: absolute; left: 9px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border-radius: 50%; background: #c7c3bd; }
+  .syncbtn[data-state="saved"]::before { background: #2e9d5b; }
+  .syncbtn[data-state="saving"]::before, .syncbtn[data-state="loading"]::before { background: #d4a017; }
+  .syncbtn[data-state="offline"]::before, .syncbtn[data-state="signin"]::before { background: #d97706; }
+  .syncbtn[data-state="error"]::before { background: var(--bad); }
+  .syncbtn:hover { border-color: var(--ink); color: var(--ink); background: #fff; }
+  .cloudfields { display: grid; gap: 12px; }
+  .backups { border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 8px; }
+  .backups h3 { margin: 0; font-size: 15px; }
+  .backups .bbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .price { font-size: 13px; color: var(--muted); white-space: nowrap; }
+  .muted { color: var(--muted); }
+  .ico { display: inline-flex; width: 20px; height: 20px; flex: none; }
+  .ico svg { width: 100%; height: 100%; }
+  .ico.sm { width: 16px; height: 16px; }
+  .ico.xs { width: 12px; height: 12px; }
+  .grid.folders { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin-bottom: 14px; }
+  .fcard { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px 16px; min-height: 100px; cursor: pointer; font: inherit; color: var(--ink); transition: border-color .12s, box-shadow .12s; }
+  .fcard:hover { border-color: #c9c4bc; box-shadow: 0 2px 10px rgb(0 0 0 / 0.05); background: #fff; }
+  .fcard:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .fcard .ftop { display: flex; width: 100%; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .fcard .fcount { font-size: 12px; font-weight: 500; color: var(--muted); }
+  .fcard .fname { font-weight: 700; font-size: 15px; }
+  .fcard .fsub { font-size: 13px; color: var(--muted); }
+  .fcard .fedit { position: absolute; top: 10px; right: 34px; width: 28px; height: 28px; padding: 0; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--muted); display: inline-flex; align-items: center; justify-content: center; opacity: 0; }
+  .fcard:hover .fedit, .fcard .fedit:focus-visible { opacity: 1; }
+  .fcard .fedit:hover { color: var(--ink); border-color: var(--ink); }
+  body.dragging .fcard, body.dragging aside .srow > button:first-child, body.dragging aside .sfolder, body.dragging .crumb-back { outline: 1px dashed #c9c4bc; outline-offset: -1px; }
+  .drop-over { outline: 2px solid var(--ink) !important; outline-offset: -2px !important; background: #fbfaf8 !important; }
+  .dragghost { position: fixed; top: -100px; left: -100px; background: var(--ink); color: #fff; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 4px 0 16px; }
+  .crumb-title { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+  .crumb-title .t { font-weight: 700; font-size: 18px; }
+  .crumb-title .n { color: var(--muted); font-size: 13px; }
+  .srow { position: relative; display: flex; align-items: center; gap: 2px; border-radius: var(--r-sm); }
+  .grip { position: absolute; left: 1px; top: 50%; margin-top: -12px; z-index: 1; display: inline-flex; width: 14px; height: 24px; align-items: center; justify-content: center; cursor: grab; color: var(--muted); opacity: 0; }
+  aside button { padding-left: 18px; }
+  .grip svg { width: 8px; height: 13px; fill: currentColor; }
+  .srow:hover .grip { opacity: 1; }
+  .grip:active { cursor: grabbing; }
+  .srow.dragsrc { opacity: .4; }
+  .srow.ins-before { box-shadow: inset 0 2px 0 var(--ink); }
+  .srow.ins-after { box-shadow: inset 0 -2px 0 var(--ink); }
+  .srow > button:first-child { flex: 1; min-width: 0; }
+  aside .sdiv { height: 1px; background: var(--line); margin: 8px 10px; }
+  aside .sedit { width: 28px; height: 28px; padding: 0; flex: none; justify-content: center; color: var(--muted); opacity: 0; }
+  .srow:hover .sedit, aside .sedit:focus-visible { opacity: 1; }
+  aside .sedit:hover { color: var(--ink); }
+  aside button > span:first-child { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
+  aside .sfolder { padding-left: 30px; font-size: 13px; }
+  aside .sadd { margin-top: 10px; justify-content: center; border: 1px dashed var(--line); color: var(--muted); font-size: 13px; }
+  aside .sadd:hover { color: var(--ink); border-color: var(--ink); background: transparent; }
+  .fpill { display: inline-flex; align-items: center; gap: 4px; }
+  .flabel { font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .iconpick { display: flex; flex-wrap: wrap; gap: 6px; }
+  .iconpick button { width: 40px; height: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); color: var(--ink); }
+  .iconpick button.on { border: 2px solid var(--ink); background: var(--bg); }
+  .menu-wrap { position: relative; }
+  .menu { position: absolute; top: calc(100% + 6px); right: 0; z-index: 20; min-width: 230px; padding: 6px; background: #fff; border-radius: 12px; box-shadow: 0 6px 24px rgb(0 0 0 / 0.18), 0 0 0 1px rgb(0 0 0 / 0.05); display: flex; flex-direction: column; }
+  .menu button { display: flex; align-items: center; width: 100%; height: 40px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; font-weight: 500; text-align: left; }
+  .menu button:hover { background: var(--bg); }
+  .menu.filters { left: 0; right: auto; min-width: 250px; padding: 14px; gap: 12px; }
+  .menu.filters label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; }
+  .menu.filters select { width: 100%; }
+  .menu.filters #filterReset { align-self: flex-start; border: 1px solid var(--line); height: auto; padding: 6px 12px; font-size: 13px; width: auto; }
+  section.fold > h3 { cursor: pointer; user-select: none; }
+  section.fold .ft { display: inline-flex; align-items: center; gap: 8px; }
+  section.fold .chev { order: 1; color: var(--muted); font-size: 18px; width: 18px; line-height: 1; transition: transform .15s; }
+  section.fold .fn { color: var(--muted); font-weight: 500; font-size: 13px; }
+  section.fold.closed > h3 { margin-bottom: 0; }
+  section.fold.closed .chev { transform: rotate(-90deg); }
+  section.fold.closed > :not(h3) { display: none; }
+
+  dialog { border: 0; border-radius: var(--radius); background: #fff; color: var(--ink); padding: 0; }
+  dialog::backdrop { background: rgb(0 0 0 / 0.35); }
+  dialog.profile { width: min(940px, 96vw); max-height: 92vh; }
+  dialog.exp { width: min(620px, 96vw); max-height: 92vh; }
+  .phead { display: flex; gap: 16px; align-items: flex-start; padding: 16px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: #fff; z-index: 1; }
+  .pphoto { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .pphoto img { width: 120px; height: 90px; border-radius: 8px; object-fit: cover; background: var(--bg) repeating-linear-gradient(45deg, transparent 0 6px, rgb(0 0 0 / 0.04) 6px 12px); }
+  .pphoto .btns { display: flex; gap: 2px; }
+  .pphoto .btns > * { padding: 3px 7px; font-size: 12px; font-weight: 500; border: 0; background: none; color: var(--muted); }
+  .pphoto .btns > *:hover { background: rgb(0 0 0 / 0.05); color: var(--ink); }
+  .ptitle { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; padding-top: 2px; }
+  .ptitle textarea { font-size: 20px; font-weight: 700; line-height: 1.3; width: 100%; resize: none; overflow: hidden; border-color: transparent; padding: 4px 8px; margin-left: -8px; }
+  .ptitle textarea:hover { border-color: var(--line); }
+  .ptitle .meta { padding-left: 1px; }
+  .x { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 1px solid var(--line); border-radius: 999px; background: #fff; font-size: 20px; line-height: 1; color: var(--ink); }
+  .x:hover { border-color: var(--ink); background: #fff; }
+  section.ps { padding: 16px; border-bottom: 1px solid var(--line); }
+  section.ps h3 { margin: 0 0 10px; font-size: 16px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  section.ps h3 button { font-size: 13px; padding: 6px 10px; }
+  .fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .fields label, form.edit label { display: flex; flex-direction: column; gap: 6px; font-weight: 500; font-size: 14px; color: var(--muted); }
+  .fields label :is(input, select, textarea, output), form.edit label :is(input, select, textarea, output) { color: var(--ink); }
+  form.edit label.check { color: var(--ink); }
+  .fields .wide { grid-column: 1 / -1; }
+  .fields .w2 { grid-column: span 2; }
+  .inline { display: flex; gap: 6px; }
+  .inline input { flex: 1; min-width: 0; }
+  .inline select { width: auto; flex: none; }
+  .unitline { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
+  .unitline select { padding: 5px 8px; width: auto; }
+  .ratings { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; }
+  .ratings label { display: flex; flex-direction: column; gap: 6px; font-weight: 500; font-size: 14px; color: var(--muted); }
+  .ratings select { color: var(--ink); }
+  .explist { display: flex; flex-direction: column; gap: 8px; }
+  .exprow { display: flex; gap: 12px; padding: 10px; border: 1px solid var(--line); border-radius: var(--r-sm); cursor: pointer; align-items: flex-start; }
+  .exprow:hover { border-color: var(--ink); }
+  .exprow img { width: 74px; height: 60px; object-fit: cover; border-radius: 8px; }
+  .exprow .grow { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .actions { display: flex; gap: 8px; justify-content: flex-end; padding: 12px 16px; position: sticky; bottom: 0; background: #fff; border-top: 1px solid var(--line); }
+  .actions .spacer { margin-right: auto; }
+  form.edit { padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  form.edit h2 { grid-column: 1 / -1; margin: 0; font-size: 18px; }
+  form.edit .wide { grid-column: 1 / -1; }
+  form.edit label.check { flex-direction: row; align-items: center; gap: 10px; }
+  form.edit label.check input { width: 22px; height: 22px; accent-color: var(--accent); }
+  form.edit .actions { grid-column: 1 / -1; margin: 4px -16px -16px; }
+  /* full-size photo */
+  #preview[src] { cursor: zoom-in; }
+  dialog.lightbox { background: transparent; max-width: 96vw; max-height: 96vh; padding: 0; overflow: visible; cursor: zoom-out; }
+  dialog.lightbox::backdrop { background: rgb(0 0 0 / 0.8); }
+  dialog.lightbox img { display: block; max-width: 96vw; max-height: 92vh; border-radius: var(--r-sm); }
+  /* recipes */
+  body.recipes .layout { grid-template-columns: 1fr; }
+  body.recipes aside { display: none; }
+  .grid.recs { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .recbar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .recbar button { padding: 4px 12px; font-size: 13px; }
+  .ingpart { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-top: 4px; }
+  .inglist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; font-size: 14px; }
+  .inglist li { display: flex; justify-content: space-between; gap: 10px; }
+  .inglist .amt { color: var(--muted); text-align: right; }
+  .inglist .ml { font-size: 12px; }
+  .pill.link { color: var(--ink); cursor: pointer; }
+  .pill.link:hover { border-color: var(--ink); }
+  .ings { display: flex; flex-direction: column; gap: 8px; margin: 8px 0; }
+  .ingrow { display: grid; grid-template-columns: 110px 1fr 150px 34px; gap: 6px; align-items: center; padding: 8px; border: 1px solid var(--line); border-radius: var(--r-sm); }
+  .ingrow select { grid-column: 1 / 4; }
+  .ingrow .x { width: 34px; height: 34px; padding: 0; grid-row: 1; grid-column: 4; }
+  .ingrow .ml { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
+  .ingrow .ml:empty { display: none; }
+  .ingrow > * { min-width: 0; }
+  .ingrow select { width: 100%; }
+  @media (max-width: 560px) { .ingrow { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 34px; } .ingrow .part { grid-column: 1 / 3; } .ingrow select { grid-column: 1 / -1; } .ingrow .x { grid-column: 3; } }
+  .photos { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .photos figure { margin: 0; position: relative; }
+  .photos img { width: 96px; height: 72px; object-fit: cover; border-radius: 8px; display: block; }
+  .photos figure button { position: absolute; top: 3px; right: 3px; padding: 0 7px; font-size: 12px; border-radius: 999px; }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 11px 16px; border-radius: var(--r-sm); opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 10; display: flex; gap: 14px; align-items: center; box-shadow: 0 6px 24px rgb(0 0 0 / 0.18); }
+  .toast.show { opacity: 1; }
+  .toast.act.show { pointer-events: auto; }
+  .toast button { background: #fff; color: var(--ink); border: 0; padding: 5px 12px; font-size: 13px; border-radius: 8px; }
+  .toast button:hover { background: var(--bg); }
+  a { color: inherit; }
+  [hidden] { display: none !important; }
+  .tabs button .n { font-weight: 500; color: var(--muted); margin-left: 5px; font-variant-numeric: tabular-nums; }
+  /* touch screens have no hover, so the edit buttons that appear on hover are always shown */
+  @media (hover: none) {
+    .fcard .fedit { opacity: 1; }
+    .card:hover, .fcard:hover { transform: none; box-shadow: 0 1px 2px rgb(0 0 0 / 0.05); }
+  }
+  /* tablet and phone: one column, no sidebar */
+  @media (max-width: 760px) {
+    header, .tabs { padding-left: 16px; padding-right: 16px; }
+    .layout { grid-template-columns: 1fr; padding: 0 16px 80px; }
+    aside { display: none; }   /* phones and small tablets: categories show as sections in the list instead */
+    .fields { grid-template-columns: 1fr 1fr; } .ratings { grid-template-columns: 1fr 1fr; }
+  }
+  /* phone */
+  @media (max-width: 560px) {
+    body { font-size: 15px; }
+    header { padding-top: 12px; gap: 6px 8px; flex-wrap: nowrap; }
+    .top-logo { width: 30px; height: 30px; }
+    h1 { font-size: 17px; letter-spacing: 0; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .stats { flex: none; }   /* the Saved / Sync button stays on the title row, top right */
+    .syncbtn { padding: 4px 9px 4px 19px; } .syncbtn::before { left: 7px; }
+    .tabs { padding-top: 10px; }
+    .tabwrap { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; }
+    .tabs button { padding: 9px 4px; font-size: 14px; }
+    .tabs button .n { margin-left: 3px; font-size: 12px; }
+    /* toolbar: one row of Filter, search and More */
+    .toolbar { padding: 10px 0; gap: 6px; }
+    #search { flex: 1 1 0; min-width: 0; }   /* Filter, search and More share one row */
+    .tspacer { display: none; }
+    /* + Add floats bottom right, where a thumb reaches it */
+    #addBtn, #recAdd { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 9; border-radius: 999px; padding: 14px 20px; font-size: 15px; box-shadow: 0 6px 18px rgb(0 0 0 / 0.25); }
+    .toolbar > button, .toolbar .menu-wrap > button { padding: 8px 12px; }
+    .long { display: none; }
+    .menu { max-width: calc(100vw - 32px); }
+    /* iOS zooms into any field under 16px when you tap it */
+    input, select, textarea { font-size: 16px; }
+    /* two product cards per row */
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .grid.exps, .grid.recs { grid-template-columns: 1fr; }
+    .grid.folders { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .body { padding: 10px 11px 12px; gap: 5px; }
+    .name { font-size: 14px; line-height: 1.3; overflow-wrap: anywhere; }
+    .meta { font-size: 12px; }
+    .row { flex-wrap: wrap; gap: 2px 8px; }
+    .price { font-size: 12px; }
+    .card .del { width: 30px; height: 30px; top: 6px; right: 6px; }
+    .fcard { min-height: 0; padding: 12px 12px 14px; }
+    .fcard .ftop { margin-bottom: 6px; }
+    .fcard .fname { font-size: 14px; overflow-wrap: anywhere; }
+    .fcard .fsub { font-size: 12px; }
+    .fcard .fedit { right: 30px; top: 8px; }
+    .shead .t { font-size: 16px; }
+    .crumb-title .t { font-size: 16px; }
+    /* dialogs fill the screen */
+    dialog.profile, dialog.exp { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; }
+    .phead { gap: 10px; padding: 12px; position: static; }   /* scrolls away so the fields get the whole screen; Cancel/Save stay at the bottom */
+    .pphoto img { width: 84px; height: 66px; }
+    .ptitle textarea { font-size: 18px; }
+    .x { width: 36px; height: 36px; flex: none; }
+    section.ps { padding: 14px 12px; }
+    .fields { grid-template-columns: 1fr; }
+    .fields .w2 { grid-column: auto; }
+    .ratings { grid-template-columns: 1fr 1fr; }
+    form.edit { grid-template-columns: minmax(0, 1fr); padding: 14px 12px; }
+    form.edit .actions { margin: 4px -12px -14px; }
+    .actions { padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }
+    .actions button { padding: 9px 12px; }
+    .toast { left: 12px; right: 12px; transform: none; bottom: calc(80px + env(safe-area-inset-bottom)); justify-content: space-between; }   /* above the + Add button */
+  }
+  @media print {
+    aside, .toolbar, .tabs, .toast, .menu-wrap, .card .del { display: none !important; }
+    .layout { display: block; }
+    body { background: #fff; }
+    .section.closed .grid { display: grid; }
+    .card { break-inside: avoid; box-shadow: none !important; transform: none !important; border: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMzM1Ljc2IDMzNS43NiI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLmNscy0yIHsKICAgICAgICBmaWxsOiAjMGMwMGZmOwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGZpbGw6ICNmOWJlMTk7CiAgICAgIH0KCiAgICAgIC5jbHMtNCB7CiAgICAgICAgY2xpcC1wYXRoOiB1cmwoI2NsaXBwYXRoKTsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxjbGlwUGF0aCBpZD0iY2xpcHBhdGgiPgogICAgICA8Y2lyY2xlIGNsYXNzPSJjbHMtMSIgY3g9IjE2Ny44OCIgY3k9IjE2Ny44OCIgcj0iMTY3Ljg4Ii8+CiAgICA8L2NsaXBQYXRoPgogIDwvZGVmcz4KICA8ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEiPgogICAgPGc+CiAgICAgIDxjaXJjbGUgY2xhc3M9ImNscy0zIiBjeD0iMTY3Ljg4IiBjeT0iMTY3Ljg4IiByPSIxNjcuODgiLz4KICAgICAgPGcgY2xhc3M9ImNscy00Ij4KICAgICAgICA8Zz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE3OS4xOSwyNjAuODNjMi4wNi0yLjI2LDQuNTctNC4yNSw2LjEtNi44Myw3LjQtMTIuNTEsMTEuODUtMjYuMDYsMTIuNzYtNDAuNTkuMy00LjgsMy40Ny02LjA1LDYuOTItNi44NCwyLjk4LS42OSwzLjY0LDEuNTcsMy4zLDQuMTMtLjc0LDUuNTItMS40NywxMS4wNC0yLjM4LDE3LjkxLDMuODgtNi43OSw2LjkxLTEyLjYxLDEwLjQ1LTE4LjEsMS43OS0yLjc4LDQuMDgtNS43MSw2Ljg4LTcuMjYsNi4zOC0zLjU0LDkuNDUtMS44OSwxMC45Miw1LjE5LDEuNDUsNy4wMSwyLjgyLDE0LjA2LDMuODgsMjEuMTQsMS44OCwxMi42MiwzLjUzLDI1LjI3LDUuMTcsMzcuOTIuMjMsMS43Ny40OSwzLjY4LS4yMSw1LjQ2LTYuMDEtLjU4LTExLjMxLTguMTgtMTAuNTEtMTQuMTIsMi4wOC0xNS40OS0xLjY3LTMwLjI3LTUuNzgtNDQuOTgtLjA2LS4yMi0uNjEtMi40OC0xLjYxLTEuMi00LjA5LDcuMzktOC4wOCwxNC42OC0xMi4xMywyMS45My01LjEsOS4xMi04Ljc1LDE4LjU3LTcuNCwyOS4zNS4xMi45OC0xLjA3LDIuNzMtMi4wMiwzLjA2LTEuMDQuMzctMi45Mi0uMS0zLjcxLS45MS0xLjkxLTEuOTctMy40LTQuMzUtNC42OS02LjA3LTQuMiwyLjA1LTguMDcsNC44NC0xMi4zNSw1LjgzLTYuNTIsMS41LTExLjktMi43MS0xMy41Ny05LjgtLjk2LTQuMDctMS4zMi04LjI4LTIuMDEtMTIuODgtNC40OCw0LjY3LTguNTksOS40LTEzLjE4LDEzLjU5LTIuNjUsMi40Mi01Ljg1LDQuOTgtOS4yLDUuNzItOS4zMiwyLjA2LTE1Ljk5LTguNjUtMTUuMjEtMTYuNDQsMS45Mi0xOS4yMSwxNC42NS0zOC43OCwzNS4yNC00NC4wNSwxLjY3LS40MywzLjcyLS4xLDUuNC40NywyLjY3LjksNC43NCw0LjEzLDguMTIsMS43OCwxLjUzLTEuMzcsMS44NywyLjY0LDEuNzksMy45MS0uOTQsMTUuNjYtMi4xMSwzMS4zLTMuMTEsNDYuOTUtLjEsMS42Mi0uMjQsMy43OC44LDQuOTMuNDUuNTMuOTcuODksMS4zNC44Wk0xMzcuMTUsMjQzLjYzYy0uMzEsNy40MywxLjU2LDkuMDEsNi4yNSw2LjQ0LDMuODUtMi4xLDcuNDItNS4wOSwxMC4zOC04LjM1LDcuMjktOC4wMiwxMS42OC0xNy43OSwxNS43NC0yNy43MiwxLjAyLTIuNTEuMzQtNC41OC0yLjEyLTQuMjItNC4yNi42Mi04LjkxLDEuNC0xMi40NSwzLjYzLTExLjc1LDcuMzktMTcuMDYsMTguNzUtMTcuOCwzMC4yM1oiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE1Ny4xMiwxODEuMjFjLTEuODcsMi4zMy0zLjQsNC40OS01LjIsNi4zOS0yLjE0LDIuMjYtNC45OSw1LjM1LTcuODgsMi45My0yLjY2LTIuMjMtNC42LTYuMDUtNS40My05LjUxLS43NS0zLjEzLjQyLTYuNzMuMDQtMTAuNjUtMS43LDIuMzItMy4xNCw0LjkzLTUuMTcsNi45MS0zLjYsMy41MS03LjE0LDcuNDctMTEuNDksOS43My01LjQyLDIuODEtMTIuODYtMi42Ny0xMy40MS05Ljg2LTEuMzMtMTcuNTQsOS4wMS0zNi4xMSwyOC45My00MC45NywyLjYyLS42NCw1LjcuNiw3LjQzLjgyLDMuMDctLjYsNS4yLTEuMDIsNy4zMy0xLjQ0LDEuNjMtLjM4LDEuODEsNS44LDEuMDQsOC4xNS00LjA0LDEyLjQtNi4wNiwyNS4wNy02LjQyLDM4LjA1LS4wMi43Mi4xNSwxLjQ0LjM3LDMuMzIsMS43Ni0yLjMzLDMuMjItMy43MSw0LjAxLTUuNDEsNC41Ni05Ljc1LDguNjYtMTkuNjUsMTAuMDktMzAuNDYuNDEtMy4wOC43NC02LjM2LDIuMS05LjA1LDEuMDUtMi4wOCwzLjM5LTMuOTUsNS42LTQuODksMi41Ni0xLjA5LDQuMTIsMS44MywzLjIsNS4yMS0xLjg0LDYuODItMy41LDEzLjY5LTUuMjQsMjAuNTMuMzkuMTMuNzguMjUsMS4xNi4zOCwxLjg3LTMuNjcsMy42Mi03LjQxLDUuNjMtMTEsMS43NC0zLjEsMy41OC02LjE5LDUuNzUtOSwzLjI5LTQuMjUsNy45Mi02LjMzLDEzLjE3LTUuMjMsNS43MiwxLjIsOS41NSw0LjkzLDExLjA1LDEwLjgyLDIuMzIsOS4xLjQ0LDE4LjA0LTEuNCwyNi44My0xLjM5LDYuNjItNC4xLDEyLjk2LTYuMjEsMTkuNDMtMS40Nyw0LjQ5LTUuMjMsMy4wNS03LjE2LDEuNjItMS45MS0xLjQyLTQuMDctNS40OS0zLjMyLTcuMDMsNC45Ni0xMC4xNiw1LjU2LTIxLDYuMi0zMS44OS4xLTEuNy4yMi0zLjUyLS4yOC01LjEtLjUyLTEuNjQtLjYzLTMuNzMtMi43LTQuNTctMS4zMy0uMzQtMi44MiwxLjc4LTMuNjcsMy4wNS04LjEsMTIuMDQtMTMuODUsMjUuMjMtMTguNjUsMzguODctLjQ3LDEuMzMtMS42MiwzLjQ5LTIuMzUsMy40NS0xLjQ3LS4wOS0zLjQ1LTEuMDktNC4xNi0yLjMyLTEuMzMtMi4zMi0xLjkxLTUuMDctMi45OC04LjEzWk0xNDEuNTYsMTQ5LjdjLS4xNC0xLjA5LS45OS0yLjEtMi4wMy0yLjIxLTQuNTksMi4xOC05LjQ3LDMuOS0xMy43MSw2LjYzLTcuNDYsNC44LTEwLjc5LDEyLjIxLTEwLjk5LDIwLjk2LS4xMiw1LjM4LDIuMzMsNi44NSw2Ljg2LDQuMDQsMi41OC0xLjYsNS4zNS0zLjU1LDYuODgtNi4wNiw0LjYzLTcuNiw4LjctMTUuNTUsMTIuOTktMjMuMzZaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNTEuNDQsMTkxLjJjMy40OC0zLjY0LDcuMzYtMS4zOSwxMS4wOS0xLjMyLDMuMDIuMDYsNi4yMS0uMDYsOS4wMy0uOTgsMy4xOC0xLjA0LDQuMzktMy45OSwzLjQxLTcuMjQtMS40Mi00LjctMy4xOC05LjMxLTUuMTctMTUuMDItNC4zMiw1LjI3LTcuODEsOS43Mi0xMS41MSwxMy45Ny0zLjYzLDQuMTctNy4zNyw4LjI2LTExLjMzLDEyLjEtLjY4LjY2LTMuNDguNDQtMy45OS0uMjgtMS42OC0yLjQzLTMuMzktNS4xNS0zLjg4LTcuOTgtLjU1LTMuMTIuMjMtNi40Ny0uMjUtMTAuMDMtMS43NCwyLjg4LTMuMjIsNS45Ny01LjMsOC41OS0yLjI5LDIuODgtNC44MSw1Ljc4LTcuOCw3Ljg1LTQuNjQsMy4yLTkuMjUsMi4zOS0xMi43Ni0yLjEtNC43NC02LjA3LTYuNDctMTIuODgtNC4wNi0yMC41Niw0LjU4LTE0LjU5LDEzLjkxLTIzLjkzLDI5LjA0LTI3LjI5LDEuMDYtLjI0LDIuMjYtMi4wMSwyLjUzLTMuMjUuODQtMy43OCwxLjE5LTcuNjgsMS44OC0xMS41LjkyLTUuMTEsMy45NS03LjU4LDEwLjAxLTguMDgsMS4xOSw3Ljk4LS44MiwxNS42Mi0yLjA5LDIzLjM5LTEuNzcsMTAuODgtMy4wMywyMS44NS00LjQ0LDMyLjc4LS4xNCwxLjA2LjE5LDIuMTcuMjUsMy4yNi4xOCwzLjUsMS45NSwzLjU3LDQuMjUsMS44MiwxLjcxLTEuMywzLjUtMi42OSw0LjcxLTQuNDIsMy4zOC00Ljg0LDYuODctOS42OCw5LjQ4LTE0Ljk0LDEuMTQtMi4zLjY3LTUuNjcuMjItOC40NC0uOTgtNS45My4wOS05Ljk3LDUuMjItMTIuNTUsMi41Mi0xLjI2LDYuMTgtMS42Miw4Ljg3LS44MiwzLjIuOTUsMy44Niw0LjI4LDIuMzcsNy40MS0yLjI3LDQuNzctNC44OCw5LjM4LTYuOTYsMTQuMjMtLjcxLDEuNjctLjkzLDQuMTctLjE5LDUuNzIsMi40LDUuMDMsNS41NSw5LjY5LDguMDIsMTQuNjksMS4yNywyLjU4LDIuMiw1LjU0LDIuNDEsOC4zOS40Nyw2LjM0LTIuMzksMTAuMjQtOC44LDEwLjY2LTguMDIuNTMtMTUuNzctMS4zNS0yMi42LTUuOTgtMS4xMy0uOTUtMS41Ny0xLjQ0LTEuNjctMi4wOFpNMjM4LjQ5LDE0NS41MmMtMS45MS4yNi0yLjk5LjI4LTMuOTkuNTYtMTEuMiwzLjE3LTIyLjk0LDI0LjQ2LTIxLjQ5LDM1LjAzLjE5LDEuMzcsMS43NCwzLjM3LDIuOTIsMy41OCwxLjQ2LjI1LDMuNjgtLjYzLDQuNzItMS43OCw5LjQzLTEwLjQ3LDEzLjgzLTIzLjM3LDE3Ljg0LTM3LjM5WiIvPgogICAgICAgICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjIyLjg0LDI2Ni4wNWMxLjc3LDcuNCw3LjI4LDEwLjg2LDEzLjM0LDE0LjA0LDMuMzEsMS43NCw1LjgxLDQuNiw1LjksOC44NC4wNywzLjQ3LTIuNzQsNi4zMy01LjkxLDUuMDQtNi4yOS0yLjU2LTEyLjI4LS43My0xOC4yNy41My0xNS43LDMuMjktMzEuMTYsNy40NS00NS44NiwxNC4wMi01LjM5LDIuNDEtMTAuODcsNC42NC0xNi4wOCw3LjM4LTUuODMsMy4wNi0xMS41OCwzLjc3LTE3LjI5LjI3LTYuOTctNC4yNy05Ljc1LTExLjA0LTEwLjI4LTE4Ljg5LS4wNS0uNzEuNTktMS45MSwxLjE3LTIuMTEuNjQtLjIyLDIuMDcuMjUsMi4zMS43OSwyLjA4LDQuNjcsNS41LDMuMTcsOC42NywxLjg3LDguMDUtMy4yOSwxNi02Ljg1LDI0LjA1LTEwLjE0LDE1LjIzLTYuMjMsMzEuMjYtOS40Myw0Ny40My0xMS45NCw4LjA1LTEuMjUsOC4xLTEuMTUsMTAuODMtOS43M1oiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE4Mi40NSw5Ni42OWMtMy42OC4yMS03LjA4LjE5LTEwLjM5LjczLTEsLjE2LTIuMjMsMS43OC0yLjUxLDIuOTQtMS4zOSw1LjczLTIuMTgsMTEuNjItMy44NCwxNy4yNy0uOTMsMy4xNy0yLjA0LDcuOTgtNi43Myw2LjY3LTQuMjgtMS4xOS0yLjkyLTUuNjYtMi40NS04LjkxLjQzLTIuOTksMS41MS01Ljg4LDIuMy04LjgxLS40NC0uMzUtLjg4LS43MS0xLjMyLTEuMDYtMS41MSwxLjg3LTIuODMsMy45NC00LjU3LDUuNTYtNC43NCw0LjQxLTkuOTQsOC4wOS0xNi43OSw4LjEyLTkuNDIuMDQtMTQuNjYtNS45OS0xMy42Mi0xNS4zNy45OC04Ljg2LDUuNDMtMTYuMTQsMTAuNDYtMjMuMTIsNC4yNS01LjksOC40OC0xMi4xLDE1LjgyLTE0LjQxLDIuNDgtLjc4LDUuNjMtLjg2LDguMjYuNTEuODIuNDMsMi4wNCwxLjYsMS45OSwzLjEyLS4wOCwyLjczLTEuNTgsMy41LTIuODQsMy44NS0xNC4yNyw0LjAyLTIwLjQsMTUuMjctMjQuOTUsMjcuODQtMS4zNywzLjgtNC42MSwxMi4yOS0zLjExLDEyLjQ5LDMuODEsMS43NiwxMy43Mi0zLjU2LDE3LjkxLTguNjYsOS42Ny0xMS43OCwxNi43My0yNS4wNiwyMS44My0zOS40LDEuMDgtMy4wMiw1LjcxLTUuMjQsOC41MS0zLjg3LDIuMTksMS4wNywyLjcyLDIuNjYsMS44Nyw1LjM2LTIuNDYsNy44LTQuNDEsMTUuNzctNi44OSwyNC44NSw0LjU5LTEuNDYsOC4zLTIuMzksMTEuNzctMy44OCwxLjA4LS40NiwxLjgxLTIuMzMsMi4yMy0zLjY5LDIuOTktOS44Miw1Ljc5LTE5LjY5LDguODQtMjkuNDkuNDMtMS4zOCwxLjc1LTMuNzQsMi44Ni0zLjY1LDIuNDguMjYsMy4yNSwzLjE4LDMuMTQsNC42NC0uNDgsNi4wMi0xLjU4LDExLjk5LTIuNiwxNy45NS0uNTQsMy4xOC0xLjM5LDYuMzItMi4xNSw5LjY3LDMuMjYsMS4xMiw2LjIyLDEuOTgsOS4wMywzLjE3LDEuMTMuNDgsMi41Ny44MywyLjkxLDIuNTYuMDksMS4zNS0xLjI5LDIuMS0yLjkxLDIuNjctLjU1LjItMS4xNi40Mi0xLjc2LjYxcS04LjQ0LDIuNjYtOC45NiwxMS4yOGMtLjE0LDIuMzMtLjUzLDQuNjYtLjUxLDYuOTkuMDUsNC4wNy0xLjA3LDYuNTItNS44OCw2LjEtNC41NC0uMzktNi40My0xLjgyLTYuMzEtNi43NC4xMS00LjQ4Ljg1LTguOTQsMS4zNS0xMy44OVoiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTk4LjUsMjU3LjUzYzIuNDctNS40OSw0LjgtOS45OSw2LjU1LTE0LjY5LDQuOTgtMTMuNCw5LjY5LTI2Ljg5LDE0LjU2LTQwLjMzLDEuNzItNC43NSw4LjczLTcuNzcsMTMuMDItNS40MywyLjcyLDEuNDgsNC4yMiwzLjI0LDIuMzUsNy4xMi00LjAzLDguMzgtNy43LDE3LjAyLTEwLjU5LDI1Ljg2LTMuOTIsMTEuOTctOS44NSwyMi43Ni0xNy4xNSwzMi44Ny0zLjg3LDUuMzYtMTIuNjgsNS4zNS0xNS43MS0uMzgtMy42Ni02LjkzLTcuMDMtMTQuMTctOS4zMS0yMS42NC0zLjk3LTEzLjA1LTcuMDItMjYuMzctMTAuNTMtMzkuODgsNC45Ni0uNjUsOC40OCwxLjEyLDkuOTgsNS4zMiwyLjQ1LDYuODMsNC4yOSwxMy44OCw2LjQyLDIwLjgyLDIuNjQsOC42Miw1LjI5LDE3LjI0LDguMDEsMjUuODQuMzksMS4yNCwxLjIzLDIuMzQsMi40LDQuNTJaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik05MS44NSwxNTguMjJjLTQuNzcsMS44MS04LjksMy4xMS0xMi43NCw0Ljk5LTEuMDUuNTItMS43NCwyLjc0LTEuNzgsNC4yMS0uMTgsNy4xMi0uMDgsMTQuMjUtLjA4LDIxLjMyLTQuNDkuNjEtMTEuNjgtMi40OC0xMi4yMS01LjkxLS43LTQuNTMtLjE3LTkuMjUtLjE3LTEzLjgzLTIuNDktMS4wNi01LjAxLTIuMTItOC40OS0zLjYuNDMtMS4yNCwyLjczLTIuMTIsMy44OC0yLjUxLDUuMy0xLjc4LDguMTMtNS4xNCw4LjA3LTEwLjk3LS4wNS00LjM0LjMtOC43LjcxLTEzLjAzLjEyLTEuMjMuNzgtMy4wMiwxLjY4LTMuMzkuOTUtLjQsMi43NS0uNDksMy42MiwxLjAyLDEuNTgsMi43MiwyLjY0LDUuODIsMy4yMSw4Ljg5LjUyLDIuODIuMTEsNS44MS4xMSw5LjQ0LDUuMTMtMi4xMyw5LjcyLTMuODcsMTQuMTQtNS45OSwxLjExLS41MywyLjA4LTIuMTcsMi4zNi0zLjQ2Ljg1LTMuOTMtLjE1LTExLjgyLDEuOTYtMTEuOSw0LjU4LS40Nyw2Ljc5LDEuMTQsNy4wMyw1LjU1LjE1LDIuNzgtLjMyLDUuNTktLjQyLDguMzgtLjQsMTEuOC0uNzYsMjMuNTktMS4xNSwzNS4zOS0uMDUsMS41NC4xLDMuMTgtLjM3LDQuNi0uNTcsMS43NS0xLjYxLDQuNjQtMi42LDQuNy0yLjI1LjE1LTUuNDgtLjQ0LTYuNjgtMS45OS0xLjgtMi4zMi0zLjEzLTUuNzYtMy4wMi04LjY2LjIzLTYuMDEsMS41NC0xMS45OCwyLjM4LTE3Ljk4LjIxLTEuNDguMzEtMi45Ny41NS01LjNaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yMzAuMDEsODAuMDRjLTMuNjcsMy4wMS02Ljg1LDYuMDEtMTAuNDEsOC40Ni01LjQ2LDMuNzYtMTQuMTQtLjYtMTMuNTQtNy4yNC42Ny03LjM1LDIuODEtMTQuNTksNC42OC0yMS43OC4yOC0xLjA5LDIuMjMtMi43NSwzLjg2LTIuNSwxLjIxLjUzLDEuNjgsMi42MiwxLjU3LDMuODQtLjU2LDYuMDItMS40NiwxMi4wMi0yLjIzLDE4LjAyLS4wOS43NC0uMTIsMS40OS0uMjcsMy41MywyLjQ1LTIuMDcsNC40NS0zLjIzLDUuNzEtNC45Myw0LjI1LTUuNzQsOC4xMy0xMS43NCwxMi4zOS0xNy40NiwxLjAyLTEuMzcsMi43NS0zLjE1LDQuNS0zLjA1Ljg0LjUuOTcsMi45Ljk5LDQuMzYuMSw4LjA2LjA1LDE2LjEyLjA1LDI0LjM1LDIuNTgtLjkxLDUuNTItMi4xOCw4LjU4LTIuOTYsMi43OS0uNzEsNS43Mi0uODcsOC41OC0xLjI4Ljc3LS4xLDEuOTkuNDguMzYsMS42LTEuMDQuNjItMS42NSwxLjAxLTIuNTEsMS40NC0uNTUuMjctMS4xNi40My0xLjc3LjU3LTEyLjQzLDIuODktMTMuMDcsNC4zNy0xNS45NCwxNi42Mi0xLjc3LDcuNTYtNS4zMiwxNC44MS04Ljg4LDIxLjc5LTIuMzIsNC41Ni04LjUxLDUuODEtMTIuNjgsMy43My00LjE3LTIuMDgtNi4wMi02Ljg3LTQuMzEtMTIuMDMsMi45LTguNzMsOC43LTE1LjI4LDE1Ljk2LTIwLjcxLDYuMjctNC42OSw2LjYzLTUuNzcsNS4zMi0xNC4zOVpNMjMwLjE4LDk3LjY5Yy0uMTItLjU3LS43LTEuNjMtMS42NC0uODgtNC42MSw1LjIzLTEwLjg3LDkuMTYtMTIuODcsMTYuNDItLjQ1LDEuNjUtLjY4LDQuOC43NCw1LjUyLDEuNzEuMjksNC4zNS0xLjEsNS4wNS0yLjQzLDMuMi02LjA2LDUuODctMTIuNCw4LjcyLTE4LjY0WiIvPgogICAgICAgICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTEwLjk1LDczLjQxYy03LjgxLDMuNDUtMTUuNDIsMy4wMy0yMy4wOC4zN3YtLjE3YzExLjQxLTQuNTIsMjIuODYtOC45NSwzNC4yNC0xMy41Nyw1LjEzLTIuMDgsOS4xMy4zOSwxMy4zMSwyLjM4LDEuMTUuNzguOTYsMS4yMi41NiwxLjUyLTIuNDEsMS4xOS00LjcyLDIuOC03LjI3LDMuNDgtMy40Ni45MS01LjA4LDIuOTItNi44OSw1Ljk4LTYuNzMsMTEuMzctMTAuMjQsMjMuODItMTMuMzQsMzYuNDMtLjk0LDMuODEtMS42NSw3LjY5LTEuNzksMTEuNjEtLjE3LDQuODYtMi43Myw1LjYxLTYuNDMsNC45OS0yLjExLS4zNi00LjIyLS43OC03LjQ4LTEuMzgsNi4wNi0xNy4yMywxMi4wNS0zNC4yMywxOC4xNy01MS42M1oiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTgyLjc3LDU3Ljc0Yy41NywyLjk5LDEuODQsNi4wNCwxLjYxLDguOTctMS40MiwxOC40NC0zLjE4LDM2Ljg2LTQuODEsNTUuMjktLjQsNC40Ny0yLjE4LDUuMzctNi4wNCwzLjAyLTUuNjktMy40Ny03LjU1LTcuMDYtNi4yNy0xMy42NiwyLjc5LTE0LjM2LDUuNjgtMjguNyw4Ljg3LTQyLjk3LjgyLTMuNjksMi45LTcuMSw0LjQtMTAuNjMuNzUsMCwxLjQ5LDAsMi4yNC0uMDFaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNjQuMzEsODQuNTRjLS43Mi0xLjk5LDEuNDUtMi43OCwyLjItMi43OSw4LjM0LS4xMiwxNi43MS0uMjQsMjUuMDMuMjYsMy44Ni4yMyw2LjMxLDUuNDIsNC43OCw4Ljg3LS4zMS42OS0xLjQzLDEuNTQtMi4xLDEuNDgtOS41Mi0uOTMtMTkuMTYtMS4zOS0yNy44My02LjE4LS40LS4yMi0xLjUxLS43NC0yLjA5LTEuNjRaIi8+CiAgICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNjQsOTMuNjdjNy43My40LDEzLjE1LDQuNjUsMTguNjYsOC42MSwxLjYyLDEuMTYsMy4yOCwyLjUyLDQuMzEsNC4xNy43OCwxLjI2LDEuMDYsMi4zNS44Myw0LjcxLS40NiwxLjkzLTMuOTIsMS4yMy01LjE1LjU1LTMuNjMtMi4wMy03LjE3LTQuNDItMTAuMjMtNy4yNC0zLjE4LTIuOTMtNy44NC00Ljg2LTguNDItMTAuOFoiLz4KICAgICAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTI2MS41OCwxMDQuNjdjNi40NSwyLjQ2LDEyLjYzLDE0LjUxLDEwLjEsMjAuMzItMS4wMSwxLjY0LTMuMzUsMS4yLTQuNDMuNTgtNC40OC0yLjU3LTcuODktMTUuOTItNS42Ny0yMC45WiIvPgogICAgICAgIDwvZz4KICAgICAgPC9nPgogICAgPC9nPgogIDwvZz4KPC9zdmc+" alt="" class="top-logo">
+  <h1>Library</h1>
+  <div class="stats"><button type="button" class="syncbtn" id="syncBtn" data-state="off"></button></div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <div class="tabwrap">
+    <button id="tabExp">Experiments</button>
+    <button id="tabRec">Recipes</button>
+    <button id="tabMat" class="on">Materials</button>
+  </div>
+</nav>
+
+<div class="layout">
+  <aside id="side"></aside>
+  <div class="content">
+    <div class="toolbar">
+      <div class="menu-wrap matOnly" id="filterWrap">
+        <button type="button" id="filterBtn" aria-haspopup="dialog" aria-expanded="false">Filter ▾</button>
+        <div class="menu filters" id="filterMenu" hidden>
+          <label>Bought from<select id="fSource"></select></label>
+          <label>Sort by<select id="sort">
+            <option value="name">Name</option>
+            <option value="exps">Most experiments</option>
+          </select></label>
+          <button type="button" id="filterReset">Reset</button>
+        </div>
+      </div>
+      <input id="search" type="search" placeholder="Search names, colours, brands, notes…">
+      <input type="file" id="snapIn" accept="image/*" capture="environment" hidden>
+      <select id="fOutcome" class="expOnly" hidden>
+        <option value="">All outcomes</option><option value="success">✅ Worked</option><option value="partial">⚠️ Partly worked</option><option value="fail">❌ Failed</option><option value="inhib">Cure inhibition</option>
+      </select>
+      <span class="tspacer"></span>
+      <button class="primary matOnly" id="addBtn" title="Add a material. On a phone this opens the camera first">+ Add<span class="long"> material</span></button>
+      <button class="primary recOnly" id="recAdd" hidden>+ Add<span class="long"> recipe</span></button>
+      <input type="file" id="fileIn" accept=".csv,.json,text/csv,application/json" hidden>
+    </div>
+    <main id="main"></main>
+    <div class="empty" id="empty" hidden></div>
+  </div>
+</div>
+
+<!-- Material profile -->
+<dialog id="dlg" class="profile">
+  <form id="form" method="dialog">
+    <div class="phead">
+      <div class="pphoto">
+        <img id="preview" alt="">
+        <div class="btns">
+          <label class="btn"><span id="photoLbl">Add photo</span><input type="file" id="photoIn" accept="image/*" hidden></label>
+          <button type="button" id="photoClear">Remove</button>
+        </div>
+      </div>
+      <div class="ptitle">
+        <textarea name="name" rows="1" placeholder="Name (or fill in later)" spellcheck="false"></textarea>
+        <div class="meta" id="headLine"></div>
+      </div>
+      <button type="button" class="x" id="closeBtn" aria-label="Close">×</button>
+    </div>
+
+    <section class="ps">
+      <h3>About</h3>
+      <div class="fields">
+        <label>Brand<input name="brand"></label>
+        <label>Category<input name="category" list="catList" placeholder="e.g. Silicone & mold making"></label>
+        <label>Folder<select name="folderId"></select></label>
+        <label>Chemistry / type<input name="chemistry" placeholder="e.g. platinum-cure, tin-cure, epoxy AB"></label>
+        <label class="w2">Tags (comma separated)<input name="tags"></label>
+      </div>
+    </section>
+
+    <section class="ps">
+      <h3>What I know</h3>
+      <div class="ratings" id="ratingFields"></div>
+      <div class="fields"><label class="wide">How it behaves in practice<textarea name="practical" rows="4" placeholder="How it pours, captures detail, demoulds, cures, holds up…"></textarea></label></div>
+    </section>
+
+    <section class="ps">
+      <h3><span>Experiments <span id="expCount"></span></span><button type="button" class="primary" id="addExp">+ Log experiment</button></h3>
+      <div class="explist" id="expList"></div>
+    </section>
+
+    <section class="ps" id="usedInSec" hidden>
+      <h3><span>Used in recipes <span id="usedInCount"></span></span></h3>
+      <div class="explist" id="usedInList"></div>
+    </section>
+
+    <section class="ps fold" id="foldSpecs">
+      <h3><span class="ft"><span class="chev">▾</span>Technical specs <span class="fn" id="specCount"></span></span><button type="button" id="addSpec">+ Custom spec</button></h3>
+      <div class="fields" id="specFields"></div>
+    </section>
+
+    <section class="ps fold" id="foldBought">
+      <h3><span class="ft"><span class="chev">▾</span>Where I bought it <span class="fn" id="boughtCount"></span></span></h3>
+      <div class="fields">
+        <label>Bought from<input name="source" list="srcList" placeholder="Taobao, Shopee, Lazada…"></label>
+        <label>Shop<input name="supplier" list="supList"></label>
+        <label>Price paid<span class="inline"><input name="v_price" type="number" step="any" min="0"><select name="currency"><option value="CNY">CNY ¥</option><option value="SGD">SGD S$</option></select></span></label>
+        <label>For<input name="v_unit" placeholder="4kg set, 100g bag, bottle…"></label>
+        <label>Date bought<input name="v_date" type="date"></label>
+        <label class="wide">Link<input name="link" type="url" placeholder="https://item.taobao.com/…"></label>
+      </div>
+    </section>
+
+    <section class="ps fold" id="foldNotes">
+      <h3><span class="ft"><span class="chev">▾</span>Other notes <span class="fn" id="notesCount"></span></span></h3>
+      <div class="fields"><label class="wide"><textarea name="notes" rows="3"></textarea></label></div>
+    </section>
+
+    <div class="actions">
+      <button type="button" class="danger spacer" id="delBtn">Delete material</button>
+      <button type="button" id="cancelBtn">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+  <datalist id="catList"></datalist>
+  <datalist id="supList"></datalist>
+  <datalist id="srcList"></datalist>
+</dialog>
+
+<!-- Experiment -->
+<dialog id="expDlg" class="exp">
+  <form id="expForm" class="edit" method="dialog">
+    <h2 id="expHead">Log experiment</h2>
+    <label class="wide">Title *<input name="title" required placeholder="e.g. Toast slice mould, test 1"></label>
+    <label>Date<input name="date" type="date"></label>
+    <label>Outcome
+      <select name="outcome"><option value="">—</option><option value="success">✅ Worked</option><option value="partial">⚠️ Partly worked</option><option value="fail">❌ Failed</option></select>
+    </label>
+    <label class="wide">What I moulded / made<input name="subject" placeholder="food, object or piece"></label>
+    <label class="wide">Setup &amp; conditions<textarea name="setup" rows="2" placeholder="ratio, temperature, humidity, mixing, degassing, release agent…"></textarea></label>
+    <label class="wide">Result<textarea name="result" rows="2" placeholder="detail captured, bubbles, finish, demoulding…"></textarea></label>
+    <label class="check wide"><input type="checkbox" name="inhibition"> Cure inhibition / didn't cure properly</label>
+    <label class="wide">What I learned<textarea name="lessons" rows="3"></textarea></label>
+    <div class="wide">
+      <div class="meta" style="margin-bottom:6px">Photos</div>
+      <div class="photos" id="expPhotos"></div>
+    </div>
+    <div class="actions">
+      <button type="button" class="danger spacer" id="expDel">Delete</button>
+      <button type="button" id="expCancel">Cancel</button>
+      <button type="submit" class="primary">Save experiment</button>
+    </div>
+  </form>
+</dialog>
+<!-- Photo, full size (tap the photo in a profile to read the label) -->
+<dialog id="photoDlg" class="lightbox"><img id="photoBig" alt=""></dialog>
+
+<!-- Recipe -->
+<dialog id="recDlg" class="exp rec">
+  <form id="recForm" class="edit" method="dialog" autocomplete="off">
+    <h2 id="recHead">New recipe</h2>
+    <label class="wide">Name *<input name="title" required placeholder="e.g. Pineapple tart"></label>
+    <label>Makes<input name="makes" placeholder="e.g. 5 tarts, 60 cookies"></label>
+    <label>Date<input name="date" type="date"></label>
+    <div class="wide">
+      <div class="flabel">Ingredients</div>
+      <div class="meta ihint">Group lines with a part (Jam, Biscuit…). Link a line to a library material so the recipe shows up on that material. “6 pumps” is shown in ml too.</div>
+      <div class="ings" id="recIngs"></div>
+      <button type="button" id="recAddIng">+ Add ingredient</button>
+    </div>
+    <label class="wide">Method<textarea name="method" rows="3" placeholder="steps, mixing order, mould used, cure time…"></textarea></label>
+    <label class="wide">Notes &amp; what I learned<textarea name="notes" rows="3"></textarea></label>
+    <div class="wide">
+      <div class="meta" style="margin-bottom:6px">Photos</div>
+      <div class="photos" id="recPhotos"></div>
+    </div>
+    <div class="actions">
+      <button type="button" class="danger spacer" id="recDel">Delete</button>
+      <button type="button" id="recCancel">Cancel</button>
+      <button type="submit" class="primary">Save recipe</button>
+    </div>
+  </form>
+  <datalist id="partList"></datalist>
+</dialog>
+
+<!-- Folder / category: name, description, icon -->
+<dialog id="nameDlg" class="exp">
+  <form id="nameForm" class="edit" method="dialog" autocomplete="off">
+    <h2 id="nmHead">New folder</h2>
+    <label class="wide">Name<input id="nmName" required maxlength="60"></label>
+    <label class="wide">Short description<input id="nmSub" maxlength="80" placeholder="e.g. Mould-making"></label>
+    <div class="wide"><div class="flabel">Icon</div><div class="iconpick" id="nmIcons"></div></div>
+    <label class="wide" id="nmTplRow">Spec fields like<select id="nmTpl"></select></label>
+    <p class="wide error" id="nmErr" hidden></p>
+    <div class="actions">
+      <button type="button" id="nmUp" title="Move this category up the list">↑ Move up</button>
+      <button type="button" id="nmDown" title="Move this category down the list">↓ Move down</button>
+      <button type="button" class="danger spacer" id="nmDel">Delete</button>
+      <button type="button" id="nmCancel">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Database (Supabase) -->
+<dialog id="cloudDlg" class="exp">
+  <form id="cloudForm" class="edit" method="dialog" autocomplete="off">
+    <h2>Database &amp; backups</h2>
+    <p class="wide hint" id="cloudIntro"></p>
+    <div class="wide cloudfields" id="cloudConnect">
+      <label>Project URL<input id="sbUrl" type="url" placeholder="https://abcdefgh.supabase.co" spellcheck="false"></label>
+      <label>Publishable key (anon public)<input id="sbKey" spellcheck="false" placeholder="sb_publishable_… or eyJ…"></label>
+    </div>
+    <div class="wide cloudfields" id="cloudLogin" hidden>
+      <label>Email<input id="sbEmail" type="email" autocomplete="username"></label>
+      <label>Password<input id="sbPass" type="password" autocomplete="current-password"></label>
+    </div>
+    <p class="wide error" id="cloudErr" hidden></p>
+    <div class="wide backups">
+      <h3>Backups</h3>
+      <p class="hint">One file with everything: materials, photos, experiments, recipes and categories. Worth downloading before big changes, or once a month.</p>
+      <div class="bbtns">
+        <button type="button" id="backupBtn">Download a backup</button>
+        <button type="button" id="importBtn">Restore from a backup…</button>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="danger spacer" id="cloudDisconnect">Disconnect</button>
+      <button type="button" id="cloudSignOut">Sign out</button>
+      <button type="button" id="cloudUpload">Upload this browser’s library</button>
+      <button type="button" id="cloudClose">Close</button>
+      <button type="submit" class="primary" id="cloudGo">Connect</button>
+    </div>
+  </form>
+</dialog>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/dist/umd/supabase.js"
+        integrity="sha384-uteMfOloLDGt042uDz+xHGF3ym63/WQ6rFq7murQRG8Ih7QrXGEGNtWd8688sb4O" crossorigin="anonymous"></script>
+<script type="application/json" id="seed">[]</script>
+<!-- Notes from "Itchyhandsvan Recipes.pdf": added to the library once (see applyImports) -->
+<script type="application/json" id="notesImport">[]</script>
+<script>
+const $ = id => document.getElementById(id);
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+const PER = 'Personal (not itchyhandsvan)';
+/* Line icons for folders and categories (24×24, drawn with the text colour). */
+const ICONS = {
+  folder: '<path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H9l2 2h7.5A2.5 2.5 0 0 1 21 9.5v7a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 16.5z"/>',
+  drops: '<path d="M8 20a4 4 0 0 0 4-4c0-2.6-4-7-4-7s-4 4.4-4 7a4 4 0 0 0 4 4z"/><path d="M16.5 11a3 3 0 0 0 3-3c0-2-3-5-3-5s-3 3-3 5a3 3 0 0 0 3 3z"/>',
+  flask: '<path d="M9 3h6M10 3v6.5L4.6 18.4A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.4-2.6L14 9.5V3"/><path d="M7.5 15h9"/>',
+  hand: '<path d="M8 12V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M11 10.5V4a1.5 1.5 0 0 1 3 0v6.5"/><path d="M14 10.5V5.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7 6.5 6.5 0 0 1-5.4-2.9L3.3 16a1.5 1.5 0 0 1 2.5-1.7L8 17"/>',
+  palette: '<path d="M12 3a9 9 0 1 0 0 18c1 0 1.6-.7 1.6-1.5 0-.9-.8-1.3-.8-2.1 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5C21 6.4 17 3 12 3z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/>',
+  brush: '<path d="M14.5 4.5 19.5 9.5 11 18l-5-5z"/><path d="M6 13l-1.6 1.6a3 3 0 0 0-.9 2.1V20h3.3a3 3 0 0 0 2.1-.9L11 18"/><path d="M17 2l5 5"/>',
+  layers: '<path d="M12 3 21 8l-9 5-9-5z"/><path d="m3 13 9 5 9-5"/><path d="m3 17.5 9 4.5 9-4.5"/>',
+  cake: '<path d="M4 21h16M5 21v-6.5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2V21"/><path d="M5 16.5c1.2 0 1.8-1 2.3-1s1.1 1 2.3 1 1.8-1 2.4-1 1.1 1 2.3 1 1.8-1 2.4-1 1.1 1 2.3 1"/><path d="M12 12.5V9M12 6.5V6"/>',
+  key: '<circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 6l2.5 2.5M18.5 3.5 21 6"/>',
+  tool: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>',
+  sparkle: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15.5v4M17 17.5h4"/>',
+  box: '<path d="m3 7.5 9-4.5 9 4.5-9 4.5z"/><path d="M3 7.5v9l9 4.5 9-4.5v-9M12 12v9"/>',
+  leaf: '<path d="M5 20c0-9 5.5-15 16-15 0 9.5-5.5 15-14 15"/><path d="M5 20 13 12"/>',
+  star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+  scissors: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4"/>',
+  pencil: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>'
+};
+const PICKABLE = Object.keys(ICONS).filter(k => k !== 'pencil');
+function iconEl(name, cls = 'ico') {
+  const s = el('span', cls);
+  s.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.folder}</svg>`;
+  return s;
+}
+const TRASH_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg>';
+const CHEV_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>';
+const PLUS_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9"/></svg>';
+
+/* What each kind of material gets asked about. Unknown categories fall back to DEFAULT_TPL. */
+const TPL = {
+  'Resin & epoxy': { specs: [['Mix ratio', 'e.g. 3:1 by weight'], ['Working time', ''], ['Demould time', ''], ['Full cure', ''], ['Viscosity', ''], ['Max pour depth', ''], ['Recommended conditions', 'temp, humidity']], ratings: ['Clarity', 'Bubble release', 'Yellowing resistance', 'Pour ease'] },
+  'Silicone & mold making': { specs: [['Mix ratio', 'e.g. 1:1 by weight'], ['Pot life', 'e.g. 20 min @ 25°C'], ['Cure / demould time', 'e.g. 4 h'], ['Shore hardness', 'e.g. 25A'], ['Viscosity', 'e.g. 3500 cps / pours like honey'], ['Recommended conditions', 'temp, humidity, degassing']], ratings: ['Pour ease', 'Detail capture', 'Demould ease', 'Reuse durability'] },
+  'Pigments & colorants': { specs: [['Type', 'translucent / opaque / mica / paste'], ['Works with', 'epoxy, UV, silicone, cream glue…'], ['Dosage', 'e.g. 1 drop per 10 g']], ratings: ['Colour strength', 'Mixes in easily'] },
+  'Cream glue & faux toppings': { specs: [['Working time', ''], ['Dry / cure time', ''], ['Finish when dry', 'matte, glossy…'], ['Shrinkage', '']], ratings: ['Piping ease', 'Realism', 'Adhesion'] },
+  'Clay': { specs: [['Dry / cure time', ''], ['Finish when dry', ''], ['Shrinkage', '']], ratings: ['Workability', 'Detail', 'Strength'] },
+  'Miniature scenery': { specs: [['Grain / texture', ''], ['Adhesive used', '']], ratings: ['Realism', 'Colour'] },
+  'Paint & finishes': { specs: [['Base', 'water / solvent / lacquer'], ['Dry time', ''], ['Coats needed', '']], ratings: ['Coverage', 'Finish quality'] },
+  'Hardware & findings': { specs: [['Material', ''], ['Size', ''], ['Plating / finish', '']], ratings: ['Quality', 'Tarnish resistance'] },
+  'Tools & measuring': { specs: [['Used for', '']], ratings: ['Usefulness'] },
+  'Display & props': { specs: [['Size', ''], ['Used for', '']], ratings: ['Usefulness'] },
+};
+const DEFAULT_TPL = { specs: [['Key spec', '']], ratings: ['Overall'] };
+function tplFor(cat) {
+  const c = meta && meta.categories.find(x => x.name === cat);
+  return TPL[(c && c.tpl) || cat] || DEFAULT_TPL;
+}
+const CAT_ORDER = Object.keys(TPL);
+
+let items = [];
+/* Recipes save and sync like materials, one row each:
+   { id, kind: 'recipe', title, makes, date, ingredients: [{ id, part, name, amount, materialId }], method, notes, photos } */
+let recipes = [];
+let view = 'materials';
+let filter = { cat: '', folder: '' };   // sidebar / folder selection
+/* Categories and folders, kept together in one "meta" record that saves and syncs like a material:
+   { id, kind: 'meta', categories: [{ name, tpl, icon, subtitle }], folders: [{ id, name, subtitle, icon, category }] }.
+   Changes always replace meta (never edit it in place), so undo can hold on to the old one. */
+let meta = null;
+function ensureMeta() {
+  if (!meta || !Array.isArray(meta.categories)) meta = { id: (meta && meta.id) || uid(), kind: 'meta', categories: [], folders: [] };
+  if (!Array.isArray(meta.folders)) meta = { ...meta, folders: [] };
+  const have = new Set(meta.categories.map(c => c.name));
+  const present = new Set(items.map(m => m.category).filter(Boolean));
+  const add = [...CAT_ORDER.filter(c => present.has(c)), ...[...present].filter(c => !CAT_ORDER.includes(c)).sort((a, b) => a.localeCompare(b))].filter(c => !have.has(c));
+  if (add.length) meta = { ...meta, categories: [...meta.categories, ...add.map(name => ({ name, tpl: TPL[name] ? name : '', icon: '', subtitle: '' }))] };
+}
+const catInfo = name => (meta && meta.categories.find(c => c.name === name)) || { name, tpl: '', icon: '', subtitle: '' };
+const folderById = id => meta && meta.folders.find(f => f.id === id);
+const folderOf = m => { const f = m.folderId && folderById(m.folderId); return f && f.category === (m.category || 'Uncategorised') ? f : null; };
+let shown = [];
+let editingId = null;   // material open in the profile (null = new)
+let draft = null;       // working copy of that material
+let photoData = '';
+let expEditing = null;
+let expPhotos = [];
+
+/* ---------- storage: IndexedDB (room for photos), localStorage fallback ---------- */
+const LS_KEY = 'itchyhandsvan.materials.v3';
+const COLLAPSE_KEY = 'itchyhandsvan.collapsed';
+const DB = {
+  db: null,
+  open() {
+    return new Promise((res, rej) => {
+      const r = indexedDB.open('itchyhandsvan', 1);
+      r.onupgradeneeded = () => r.result.createObjectStore('kv');
+      r.onsuccess = () => res(this.db = r.result);
+      r.onerror = () => rej(r.error);
+    });
+  },
+  get(k) {
+    return new Promise((res, rej) => {
+      const q = this.db.transaction('kv').objectStore('kv').get(k);
+      q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error);
+    });
+  },
+  set(k, v) {
+    return new Promise((res, rej) => {
+      const t = this.db.transaction('kv', 'readwrite');
+      t.objectStore('kv').put(v, k);
+      t.oncomplete = res; t.onerror = () => rej(t.error);
+    });
+  }
+};
+
+/* A material holds what you know about it (identity, specs, notes, experiments) plus one purchase record in variants[0]:
+   price paid, what it was for and when. Older records may still carry stock numbers; they're kept but no longer shown. */
+const LEGACY = ['qty', 'unit', 'price', 'packSize', 'low', 'date'];
+function normalize(raw) {
+  const m = Object.assign({ id: uid(), name: '', brand: '', category: '', chemistry: '', supplier: '', link: '',
+    tags: [], notes: '', photo: '', packUnit: 'g', source: '', currency: '', folderId: '', specs: {}, ratings: {}, practical: '', experiments: [] }, raw);
+  // Taobao orders were tagged "taobao"; that now lives in "Bought from"
+  if (!m.source && (m.tags || []).some(t => t.toLowerCase() === 'taobao')) m.source = 'Taobao';
+  if (m.source) m.tags = (m.tags || []).filter(t => t.toLowerCase() !== m.source.toLowerCase());
+  if (!m.currency) m.currency = currencyFor(m.source);
+  if (!Array.isArray(m.variants) || !m.variants.length) m.variants = [Object.fromEntries(LEGACY.map(k => [k, raw[k] ?? '']))];
+  m.variants = m.variants.map(v => Object.assign({ id: uid(), label: '', photo: '', unit: '', price: '', date: '', notes: '' }, v));
+  LEGACY.forEach(k => delete m[k]);
+  m.experiments = (m.experiments || []).map(e => {
+    const x = Object.assign({ id: uid(), title: '', date: '', subject: '', variantId: '', setup: '', result: '',
+      outcome: '', inhibition: false, lessons: '', photos: [] }, e);
+    if (x.used !== undefined) {   // "amount used" is no longer a field of its own
+      if (String(x.used).trim()) x.setup = [`Amount used: ${x.used}${m.packUnit && m.packUnit !== 'pcs' ? ' ' + m.packUnit : ''}`, x.setup].filter(Boolean).join('\n');
+      delete x.used;
+    }
+    return x;
+  });
+  return m;
+}
+/* One material per thing bought. Older records that held several colours / sizes in one material
+   (the old "options") are split into separate materials; the first keeps the original id. */
+function flatten(list) {
+  return list.flatMap(m => {
+    const vs = m.variants;
+    const known = new Set(vs.map(v => v.id));
+    return vs.map((v, i) => {
+      if (vs.length === 1 && !v.label && !v.notes && !v.photo) return m;
+      const n = structuredClone(m);
+      if (i) n.id = uid();
+      if (v.label) n.name = `${m.name} — ${v.label}`;
+      n.photo = v.photo || m.photo;
+      n.notes = [m.notes, v.notes].filter(Boolean).join('\n');
+      n.variants = [Object.assign(structuredClone(v), { label: '', notes: '', photo: '' })];
+      n.experiments = structuredClone(m.experiments.filter(e => known.has(e.variantId) ? e.variantId === v.id : i === 0));
+      return n;
+    });
+  });
+}
+/* The same material twice (same name and brand) becomes one: notes, specs, photos and experiments are combined,
+   and recipes that used either point at the one that's kept. Colours and sizes have their own names, so they stay apart. */
+function dedupe() {
+  const key = m => [m.name, m.brand].map(s => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()).join('|');
+  const keep = new Map(), gone = new Map();
+  const joinText = (a, b) => !b || (a || '').includes(b) ? a : [a, b].filter(Boolean).join('\n');
+  items.forEach(m => {
+    if (!m.name || AUTO_NAME.test(m.name)) return;
+    const k = key(m), first = keep.get(k);
+    if (!first) { keep.set(k, m); return; }
+    const n = structuredClone(first);
+    ['brand', 'category', 'folderId', 'chemistry', 'source', 'supplier', 'link', 'photo'].forEach(f => { if (!n[f] && m[f]) n[f] = m[f]; });
+    if (!num(n.variants[0].price) && num(m.variants[0].price) != null) { n.variants = structuredClone(m.variants); n.currency = m.currency; }
+    n.tags = [...new Set([...(n.tags || []), ...(m.tags || [])])];
+    n.practical = joinText(n.practical, m.practical);
+    n.notes = joinText(n.notes, m.notes);
+    Object.entries(m.specs || {}).forEach(([s, v]) => { if (!n.specs[s]) n.specs[s] = v; });
+    Object.entries(m.ratings || {}).forEach(([s, v]) => { if (!n.ratings[s]) n.ratings[s] = v; });
+    const ids = new Set(n.experiments.map(e => e.id));
+    n.experiments.push(...structuredClone(m.experiments.filter(e => !ids.has(e.id))));
+    keep.set(k, n); gone.set(m.id, n.id);
+  });
+  if (!gone.size) return 0;
+  const kept = new Map([...keep.values()].map(m => [m.id, m]));
+  items = items.filter(m => !gone.has(m.id)).map(m => kept.get(m.id) || m);
+  recipes = recipes.map(r => r.ingredients.some(x => gone.has(x.materialId))
+    ? { ...r, ingredients: r.ingredients.map(x => gone.has(x.materialId) ? { ...x, materialId: gone.get(x.materialId) } : x) } : r);
+  return gone.size;
+}
+function dedupeAndTell() {
+  const n = dedupe();
+  if (n) toast(`Merged ${n} duplicate material${n === 1 ? '' : 's'}.`);
+}
+function normalizeRecipe(raw) {
+  const r = Object.assign({ id: uid(), title: '', makes: '', date: '', ingredients: [], method: '', notes: '', photos: [] }, raw, { kind: 'recipe' });
+  r.ingredients = (r.ingredients || []).map(x => Object.assign({ id: uid(), part: '', name: '', amount: '', materialId: '' }, x));
+  return r;
+}
+async function load() {
+  let list = null, recs = null;
+  try {
+    await DB.open();
+    const v = await DB.get('items');
+    if (v) list = v;
+    recs = await DB.get('recipes');
+  } catch (e) { DB.db = null; }
+  if (!list) try { const raw = localStorage.getItem(LS_KEY); if (raw) list = JSON.parse(raw); } catch (e) {}
+  if (!recs) try { recs = JSON.parse(localStorage.getItem(LS_KEY + '.recipes') || 'null'); } catch (e) {}
+  const seed = () => JSON.parse($('seed').textContent).map(normalize);
+  try { meta = DB.db ? await DB.get('meta') : JSON.parse(localStorage.getItem(LS_KEY + '.meta') || 'null'); } catch (e) { meta = null; }
+  items = list ? flatten(list.map(normalize)) : flatten(seed());
+  recipes = (recs || []).map(normalizeRecipe);
+  ensureMeta();
+  applyImports();
+  dedupeAndTell();
+  saveLocal();
+  return items;
+}
+function saveLocal() {
+  if (DB.db) return Promise.all([DB.set('items', items), DB.set('meta', meta), DB.set('recipes', recipes)]).catch(() => toast('Couldn’t save — export a backup now.'));
+  try { localStorage.setItem(LS_KEY, JSON.stringify(items)); localStorage.setItem(LS_KEY + '.meta', JSON.stringify(meta)); localStorage.setItem(LS_KEY + '.recipes', JSON.stringify(recipes)); }
+  catch (e) { toast('Storage full — remove some photos or export a backup.'); }
+}
+/* One-time imports (the notes from "Itchyhandsvan Recipes.pdf"). Each is applied once per library: its id is kept in
+   meta.imports, which syncs, so another browser or a later reload won't add it again even if you've since deleted bits.
+   Notes are only appended where they aren't already there, so running it twice by accident changes nothing. */
+/* One-time imports (recipe notes, Amazon orders, …), each added once per library: meta.imports remembers which ran. */
+function applyImports() {
+  let list;
+  try { list = [].concat(JSON.parse($('notesImport').textContent) || []); } catch (e) { return false; }
+  return list.map(applyImport).some(Boolean);
+}
+function applyImport(imp) {
+  if (!imp || (meta.imports || []).includes(imp.id)) return false;
+  const have = new Set(items.map(m => m.id));
+  const add = imp.materials.filter(m => !have.has(m.id)).map(normalize);
+  items = items.map(m => {
+    const u = imp.updates.find(x => x.id === m.id);
+    if (!u) return m;
+    const n = structuredClone(m);
+    if (u.practical && !(n.practical || '').includes(u.practical)) n.practical = [n.practical, u.practical].filter(Boolean).join('\n');
+    Object.entries(u.specs || {}).forEach(([k, v]) => { if (!n.specs[k]) n.specs[k] = v; });
+    return n;
+  });
+  items = [...items, ...add];
+  const haveR = new Set(recipes.map(r => r.id));
+  recipes = [...recipes, ...imp.recipes.filter(r => !haveR.has(r.id)).map(normalizeRecipe)];
+  meta = { ...meta, imports: [...(meta.imports || []), imp.id], pumpMl: meta.pumpMl || imp.pumpMl };
+  ensureMeta();
+  return true;
+}
+/* Every change lands in this browser first (works offline), then goes to the database a moment later. */
+function save() { ensureMeta(); saveLocal(); schedulePush(); }
+
+/* ---------- database (Supabase) ----------
+   Table "materials": one row per material, the whole material as JSON in "data".
+   Row Level Security means only the signed-in owner can read or write their rows (see supabase-setup.sql). */
+const SB_CFG = 'itchyhandsvan.supabase';
+const cloud = { client: null, user: null, synced: new Map(), timer: null, busy: false, again: false, state: 'off', lastPull: 0 };
+const SYNC_LABEL = { off: 'Connect database', signin: 'Sign in to database', loading: 'Loading…', saving: 'Saving…', saved: 'Saved', offline: 'Offline · not saved yet', error: 'Sync problem' };
+// phones: shorter words so the button fits beside the title
+const SYNC_SHORT = { off: 'Connect', signin: 'Sign in', offline: 'Offline', error: 'Error' };
+const narrow = matchMedia('(max-width: 560px)');
+function sbConfig() { try { return JSON.parse(localStorage.getItem(SB_CFG) || 'null'); } catch (e) { return null; } }
+function setCloudState(s, detail = '') {
+  cloud.state = s;
+  const b = $('syncBtn');
+  b.dataset.state = s;
+  b.textContent = (narrow.matches && SYNC_SHORT[s]) || SYNC_LABEL[s];
+  b.title = detail || (s === 'saved' && cloud.user ? `Saved to the database as ${cloud.user.email}` : '');
+}
+narrow.addEventListener('change', () => { setCloudState(cloud.state, $('syncBtn').title); setView(view); });   // labels and the search hint follow the screen width
+const isNetErr = e => navigator.onLine === false || /fetch|network|load failed|timed? ?out/i.test((e && (e.message || e)) + '');
+/* What the database holds, per material id, as of the last successful sync; kept so offline edits survive a reload. */
+async function keepSynced() { if (DB.db) await DB.set('synced', [...cloud.synced]).catch(() => {}); }
+async function loadSynced() { try { const v = DB.db && await DB.get('synced'); cloud.synced = new Map(v || []); } catch (e) { cloud.synced = new Map(); } }
+const syncRows = () => new Map([...items.map(m => [m.id, JSON.stringify(m)]), ...recipes.map(r => [r.id, JSON.stringify(r)]), ...(meta ? [[meta.id, JSON.stringify(meta)]] : [])]);
+const pendingCount = () => {
+  const now = syncRows();
+  return [...now].filter(([id, j]) => cloud.synced.get(id) !== j).length + [...cloud.synced.keys()].filter(id => !now.has(id)).length;
+};
+
+async function cloudInit() {
+  const cfg = sbConfig();
+  if (!cfg) { setCloudState('off'); return; }
+  if (!window.supabase) { setCloudState('offline', 'The database library couldn’t load. Check the internet connection.'); return; }
+  cloud.client = window.supabase.createClient(cfg.url, cfg.key, { auth: { persistSession: true, autoRefreshToken: true, storageKey: 'itchyhandsvan-auth' } });
+  const { data } = await cloud.client.auth.getSession();
+  cloud.user = data.session ? data.session.user : null;
+  if (!cloud.user) { setCloudState('signin'); return; }
+  await afterSignIn();
+}
+async function afterSignIn() {
+  await loadSynced();
+  if (cloud.synced.size && pendingCount()) await push();   // edits made offline go up before anything comes down
+  await pull();
+}
+async function pull() {
+  setCloudState('loading');
+  const { data, error } = await cloud.client.from('materials').select('id, data');
+  if (error) { setCloudState(isNetErr(error) ? 'offline' : 'error', error.message); return; }
+  cloud.lastPull = Date.now();
+  if (!data.length) {
+    cloud.synced = new Map(); keepSynced();
+    setCloudState('saved', 'The database is empty.');
+    if (items.length) openCloud();   // offers to upload this browser's library
+    return;
+  }
+  const before = items.length;
+  if (!cloud.synced.size && DB.db) await DB.set('items-before-database', items).catch(() => {});   // first sync on this browser: keep its copy
+  const kind = r => (r.data && r.data.kind) || 'material';
+  const metaRow = data.find(r => kind(r) === 'meta');
+  const remote = data.filter(r => kind(r) === 'material').map(r => normalize(r.data));
+  const remoteRecs = data.filter(r => kind(r) === 'recipe').map(r => normalizeRecipe(r.data));
+  if (metaRow) meta = metaRow.data;   // otherwise keep this browser's folders; they go up with the next save
+  items = flatten(remote).sort((a, b) => a.name.localeCompare(b.name));
+  recipes = remoteRecs;
+  ensureMeta();
+  cloud.synced = new Map([...remote.map(m => [m.id, JSON.stringify(m)]), ...remoteRecs.map(r => [r.id, JSON.stringify(r)]), ...(metaRow ? [[metaRow.id, JSON.stringify(metaRow.data)]] : [])]);
+  applyImports();   // a library that hasn't had the recipe notes yet gets them now; they go up with the push below
+  dedupeAndTell();
+  keepSynced(); saveLocal(); render();
+  setCloudState('saved');
+  if (pendingCount()) schedulePush();   // anything tidied up on the way in (e.g. split materials) goes back up
+  if (before !== items.length) toast(`Loaded ${items.length} materials from the database.`);
+}
+function schedulePush() {
+  if (!cloud.user) return;
+  clearTimeout(cloud.timer);
+  setCloudState('saving');
+  cloud.timer = setTimeout(push, 700);
+}
+async function push() {
+  if (!cloud.user) return;
+  if (cloud.busy) { cloud.again = true; return; }
+  cloud.busy = true;
+  try {
+    const now = syncRows();
+    const up = [...now].filter(([id, j]) => cloud.synced.get(id) !== j);
+    const del = [...cloud.synced.keys()].filter(id => !now.has(id));
+    if (up.length || del.length) setCloudState('saving');
+    for (let i = 0; i < up.length; i += 15) {   // small batches keep each request well under the size limit
+      const chunk = up.slice(i, i + 15);
+      const { error } = await cloud.client.from('materials').upsert(chunk.map(([id, j]) => ({ id, data: JSON.parse(j), updated_at: new Date().toISOString() })));
+      if (error) throw error;
+      chunk.forEach(([id, j]) => cloud.synced.set(id, j));
+    }
+    if (del.length) {
+      const { error } = await cloud.client.from('materials').delete().in('id', del);
+      if (error) throw error;
+      del.forEach(id => cloud.synced.delete(id));
+    }
+    keepSynced();
+    setCloudState('saved');
+  } catch (e) {
+    setCloudState(isNetErr(e) ? 'offline' : 'error', e.message || String(e));
+  } finally {
+    cloud.busy = false;
+    if (cloud.again) { cloud.again = false; push(); }
+  }
+}
+window.addEventListener('online', () => { if (cloud.user) push(); });
+// coming back to the tab picks up changes made on another device (unless this one still has unsaved edits)
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible' || !cloud.user || cloud.busy || Date.now() - cloud.lastPull < 30000) return;
+  if (document.querySelector('dialog[open]')) return;
+  pendingCount() ? push() : pull();
+});
+
+/* ---------- database dialog ---------- */
+function openCloud() {
+  const cfg = sbConfig();
+  const connected = !!cloud.client, signedIn = !!cloud.user;
+  $('cloudErr').hidden = true;
+  $('cloudConnect').hidden = connected;
+  $('cloudLogin').hidden = !connected || signedIn;
+  if (!connected) { $('sbUrl').value = cfg ? cfg.url : ''; $('sbKey').value = cfg ? cfg.key : ''; }
+  $('sbPass').value = '';
+  $('cloudGo').hidden = signedIn;
+  $('cloudGo').textContent = connected ? 'Sign in' : 'Connect';
+  $('cloudSignOut').hidden = !signedIn;
+  $('cloudDisconnect').hidden = !cfg;
+  const empty = signedIn && cloud.synced.size === 0 && cloud.state !== 'loading';
+  $('cloudUpload').hidden = !(empty && items.length);
+  $('cloudIntro').textContent = !connected
+    ? 'Connect your Supabase project so the library is saved online and the same on every device. Find both values in Supabase → Project Settings → API.'
+    : !signedIn ? `Connected to ${cfg.url.replace(/^https:\/\//, '')}. Sign in with the account you created in Supabase.`
+    : empty && items.length ? `Signed in as ${cloud.user.email}. Your database is empty — upload the ${items.length} materials in this browser to start.`
+    : `Signed in as ${cloud.user.email}. Every change saves to the database automatically (${SYNC_LABEL[cloud.state].toLowerCase()}).`;
+  if (!$('cloudDlg').open) $('cloudDlg').showModal();
+}
+function cloudError(msg) { $('cloudErr').textContent = msg; $('cloudErr').hidden = false; }
+$('syncBtn').onclick = openCloud;
+$('cloudClose').onclick = () => $('cloudDlg').close();
+$('cloudForm').onsubmit = async e => {
+  e.preventDefault();
+  if (!cloud.client) {
+    const url = $('sbUrl').value.trim().replace(/\/+$/, ''), key = $('sbKey').value.trim();
+    if (!/^https:\/\/[^\s/]+$/.test(url)) return cloudError('The project URL should look like https://abcdefgh.supabase.co');
+    if (key.length < 20) return cloudError('Paste the publishable (anon public) key from Project Settings → API.');
+    if (!window.supabase) return cloudError('The database library couldn’t load. Check the internet connection and reload the page.');
+    localStorage.setItem(SB_CFG, JSON.stringify({ url, key }));
+    await cloudInit();
+    return openCloud();
+  }
+  $('cloudGo').disabled = true;
+  const { data, error } = await cloud.client.auth.signInWithPassword({ email: $('sbEmail').value.trim(), password: $('sbPass').value });
+  $('cloudGo').disabled = false;
+  $('sbPass').value = '';
+  if (error) return cloudError(error.message === 'Invalid login credentials' ? 'That email and password don’t match an account in this Supabase project.' : error.message);
+  cloud.user = data.user;
+  await afterSignIn();
+  openCloud();
+};
+$('cloudUpload').onclick = async () => {
+  cloud.synced = new Map();
+  await push();
+  if (cloud.state === 'saved') toast(`Uploaded ${items.length} materials to the database.`);
+  openCloud();
+};
+$('cloudSignOut').onclick = async () => {
+  if (pendingCount() && !confirm('Some changes haven’t reached the database yet. Sign out anyway? They stay in this browser.')) return;
+  await cloud.client.auth.signOut();
+  cloud.user = null; setCloudState('signin'); openCloud();
+};
+$('cloudDisconnect').onclick = async () => {
+  if (!confirm('Disconnect this browser from the database? Your library stays here and in the database.')) return;
+  if (cloud.client && cloud.user) await cloud.client.auth.signOut().catch(() => {});
+  localStorage.removeItem(SB_CFG);
+  cloud.client = null; cloud.user = null; cloud.synced = new Map(); keepSynced();
+  setCloudState('off'); openCloud();
+};
+
+/* ---------- helpers ---------- */
+function toast(msg, action, fn) {
+  const t = $('toast');
+  t.replaceChildren(el('span', null, msg));
+  if (action) {
+    const b = el('button', null, action); b.type = 'button';
+    b.onclick = () => { t.classList.remove('show'); fn(); };
+    t.appendChild(b);
+  }
+  t.classList.toggle('act', !!action);
+  t.classList.add('show');
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('show'), action ? 6000 : 2600);
+}
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+const num = v => (v === '' || v == null || isNaN(+v)) ? null : +v;
+/* ---------- currency: prices are typed as paid (CNY for China marketplaces, SGD for the rest) and always shown in SGD ---------- */
+const SYM = { CNY: '¥', SGD: 'S$' };
+const SOURCES = ['Taobao', 'Amazon', 'Shopee', 'Lazada'];
+function currencyFor(source) { return !source || /taobao|tmall|1688|pinduoduo|jd/i.test(source) ? 'CNY' : 'SGD'; }
+const RATE_KEY = 'itchyhandsvan.rate.CNY-SGD';
+let rate = { v: 0.19167, at: '2026-11-07' };   // ¥1 = S$v; refreshed daily from open.er-api.com
+try { const r = JSON.parse(localStorage.getItem(RATE_KEY) || 'null'); if (r && r.v > 0) rate = { v: r.v, at: r.manual ? '' : r.at }; } catch (e) {}
+async function refreshRate() {
+  const today = new Date().toISOString().slice(0, 10);
+  if (rate.at === today) return;
+  try {
+    const d = await (await fetch('https://open.er-api.com/v6/latest/CNY')).json();
+    const v = d && d.rates && d.rates.SGD;
+    if (!(v > 0)) throw 0;
+    rate = { v, at: today };
+    localStorage.setItem(RATE_KEY, JSON.stringify(rate));
+    render();
+  } catch (e) {}   // offline: the last saved rate stays in use
+}
+const toSGD = (v, cur) => cur === 'SGD' ? v : v * rate.v;
+const fmt = (v, cur) => SYM[cur] + (+v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const money = (v, cur = 'CNY') => fmt(toSGD(v, cur), 'SGD');
+const coverOf = m => m.photo || (m.variants.find(v => v.photo) || {}).photo || '';
+const needsReview = m => (m.tags || []).some(t => t.startsWith('review'));
+/* Photo first, details later: a material saved without a name gets a placeholder name and this tag until it's named. */
+const TODO_TAG = 'review: add details';
+const AUTO_NAME = /^New material · /;
+const isTodo = m => (m.tags || []).includes(TODO_TAG);
+function expVariant(m, e) { return m.variants.find(v => v.id === e.variantId) || m.variants[0]; }
+const OUTCOME = { success: '✅ Worked', partial: '⚠️ Partly', fail: '❌ Failed' };
+
+function uniq(key) {
+  return [...new Set(items.map(i => (i[key] || '').trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+}
+function catsInOrder() {
+  const names = meta ? meta.categories.map(c => c.name) : [];
+  const extra = [...new Set(items.map(i => i.category || 'Uncategorised'))].filter(c => !names.includes(c));
+  const all = [...names, ...extra];
+  return [...all.filter(c => c !== PER), ...(all.includes(PER) ? [PER] : [])];
+}
+function fillSelect(sel, values, allLabel) {
+  const cur = sel.value;
+  sel.replaceChildren(new Option(allLabel, ''));
+  values.forEach(v => sel.appendChild(new Option(v, v)));
+  sel.value = values.includes(cur) ? cur : '';
+}
+function fillDatalist(dl, values) {
+  dl.replaceChildren(...values.map(v => { const o = document.createElement('option'); o.value = v; return o; }));
+}
+const expHay = e => [e.title, e.subject, e.setup, e.result, e.lessons].join(' ').toLowerCase();
+function haystack(m) {
+  return [m.name, m.brand, m.category, m.chemistry, m.supplier, m.notes, m.practical, (m.tags || []).join(' '),
+    m.source, m.variants.map(v => v.label + ' ' + v.notes).join(' '),
+    Object.entries(m.specs || {}).map(e => e.join(' ')).join(' '),
+    (folderOf(m) || {}).name || '',
+    m.experiments.map(expHay).join(' ')].join(' ').toLowerCase();
+}
+function getCollapsed() { try { return new Set(JSON.parse(localStorage.getItem(COLLAPSE_KEY) || '[]')); } catch (e) { return new Set(); } }
+function setCollapsed(s) { localStorage.setItem(COLLAPSE_KEY, JSON.stringify([...s])); }
+
+/* ---------- undo (toast button or ⌘Z / Ctrl+Z) for deletes, merges, moves ---------- */
+const undoStack = [];
+function checkpoint(label) { undoStack.push({ label, items: items.slice(), meta, recipes: recipes.slice() }); }   // operations replace objects, never mutate them
+function undo() {
+  const u = undoStack.pop();
+  if (!u) return;
+  items = u.items; meta = u.meta; recipes = u.recipes;
+  if (filter.cat && !catsInOrder().includes(filter.cat)) filter = { cat: '', folder: '' };
+  save(); render();
+  toast(`Undid: ${u.label}`);
+}
+document.addEventListener('keydown', e => {
+  if (!(e.metaKey || e.ctrlKey) || e.shiftKey || e.key.toLowerCase() !== 'z') return;
+  if (document.querySelector('dialog[open]') || /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) return;
+  e.preventDefault(); undo();
+});
+
+/* ---------- drag & drop: product cards onto folders, sidebar categories, or the folder's back bar ---------- */
+let dragIds = null;
+function makeDraggable(card, m) {
+  card.draggable = true;
+  card.addEventListener('dragstart', e => {
+    dragIds = [m.id];
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', dragIds.join(','));
+    if (dragIds.length > 1) {
+      const g = el('div', 'dragghost', `${dragIds.length} materials`);
+      document.body.appendChild(g); e.dataTransfer.setDragImage(g, 12, 12); setTimeout(() => g.remove());
+    }
+    document.body.classList.add('dragging');
+  });
+  card.addEventListener('dragend', endDrag);
+}
+function endDrag() {
+  dragIds = null;
+  document.body.classList.remove('dragging');
+  document.querySelectorAll('.drop-over').forEach(x => x.classList.remove('drop-over'));
+}
+function dropTarget(node, dest) {
+  node.addEventListener('dragover', e => { if (!dragIds) return; e.preventDefault(); e.dataTransfer.dropEffect = 'move'; node.classList.add('drop-over'); });
+  node.addEventListener('dragleave', e => { if (!node.contains(e.relatedTarget)) node.classList.remove('drop-over'); });
+  node.addEventListener('drop', e => { e.preventDefault(); const ids = dragIds; endDrag(); if (ids) moveItems(ids, dest); });
+}
+/* dest is { category } (out of any folder) or { folder: id } */
+function moveItems(ids, dest) {
+  const f = dest.folder ? folderById(dest.folder) : null;
+  const category = f ? f.category : dest.category, folderId = f ? f.id : '';
+  const want = new Set(ids);
+  const moving = items.filter(m => want.has(m.id) && ((m.category || 'Uncategorised') !== category || (m.folderId || '') !== folderId));
+  if (!moving.length) return;
+  const where = f ? f.name : category;
+  const what = moving.length === 1 ? `“${moving[0].name}”` : `${moving.length} materials`;
+  checkpoint(`move ${what} to ${where}`);
+  const set = new Set(moving.map(m => m.id));
+  items = items.map(m => set.has(m.id) ? { ...m, category: category === 'Uncategorised' ? '' : category, folderId } : m);
+  save(); render();
+  toast(`Moved ${what} to ${where}`, 'Undo', undo);
+}
+
+/* ---------- rearranging categories: drag the grip in the sidebar, or ↑ / ↓ in the category dialog ---------- */
+let catDrag = null;
+const sortableCats = () => catsInOrder().filter(c => c !== 'Uncategorised');
+function setCategoryOrder(order, name) {
+  if (order.join('\n') === sortableCats().join('\n')) return;
+  checkpoint(`move “${name}”`);
+  meta = { ...meta, categories: [...order.map(catInfo), ...meta.categories.filter(c => !order.includes(c.name))] };
+  save(); render();
+  toast(`Moved “${name}”`, 'Undo', undo);
+}
+function moveCategoryBy(name, delta) {
+  const order = sortableCats(), i = order.indexOf(name), j = i + delta;
+  if (i < 0 || j < 0 || j >= order.length) return;
+  [order[i], order[j]] = [order[j], order[i]];
+  setCategoryOrder(order, name);
+}
+function clearCatMarks() { document.querySelectorAll('.srow.ins-before, .srow.ins-after, .srow.dragsrc').forEach(r => r.classList.remove('ins-before', 'ins-after', 'dragsrc')); }
+function makeCatSortable(row, c) {
+  const grip = el('span', 'grip'); grip.title = 'Drag to rearrange'; grip.draggable = true;
+  grip.innerHTML = '<svg viewBox="0 0 10 16" aria-hidden="true"><circle cx="3" cy="3" r="1.3"/><circle cx="7" cy="3" r="1.3"/><circle cx="3" cy="8" r="1.3"/><circle cx="7" cy="8" r="1.3"/><circle cx="3" cy="13" r="1.3"/><circle cx="7" cy="13" r="1.3"/></svg>';
+  grip.addEventListener('dragstart', e => {
+    catDrag = c;
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', c);
+    e.dataTransfer.setDragImage(row, 16, 16);
+    row.classList.add('dragsrc');
+  });
+  grip.addEventListener('dragend', () => { catDrag = null; clearCatMarks(); });
+  row.prepend(grip);
+  // where it lands: above or below this row, depending on which half the pointer is over
+  row.addEventListener('dragover', e => {
+    if (!catDrag) return;
+    e.preventDefault();
+    const after = e.clientY > row.getBoundingClientRect().top + row.offsetHeight / 2;
+    document.querySelectorAll('.srow.ins-before, .srow.ins-after').forEach(r => r !== row && r.classList.remove('ins-before', 'ins-after'));
+    row.classList.toggle('ins-after', after); row.classList.toggle('ins-before', !after);
+  });
+  row.addEventListener('dragleave', e => { if (!row.contains(e.relatedTarget)) row.classList.remove('ins-before', 'ins-after'); });
+  row.addEventListener('drop', e => {
+    if (!catDrag) return;
+    e.preventDefault();
+    const name = catDrag, after = row.classList.contains('ins-after');
+    catDrag = null; clearCatMarks();
+    if (name === c) return;
+    const order = sortableCats().filter(x => x !== name);
+    order.splice(order.indexOf(c) + (after ? 1 : 0), 0, name);
+    setCategoryOrder(order, name);
+  });
+}
+
+/* ---------- sidebar ---------- */
+function renderSide() {
+  const side = $('side');
+  const btn = (label, count, on, onclick) => {
+    const b = el('button', on ? 'on' : null);
+    const l = el('span', null, label);
+    b.append(l, el('span', 'n', String(count)));
+    b.onclick = onclick;
+    return b;
+  };
+  const pick = (cat, folder = '') => () => { filter = { cat, folder }; render(); window.scrollTo({ top: 0 }); };
+  const parts = [];
+  parts.push(btn('All materials', items.length, !filter.cat && !filter.todo, pick('')));
+  const todo = items.filter(isTodo).length;
+  if (todo) parts.push(btn('📷 To fill in', todo, !!filter.todo, () => { filter = { cat: '', folder: '', todo: true }; render(); window.scrollTo({ top: 0 }); }));
+  parts.push(el('div', 'sdiv'));
+  catsInOrder().forEach(c => {
+    const inCat = items.filter(i => (i.category || 'Uncategorised') === c);
+    const row = el('div', 'srow'); row.dataset.cat = c;
+    if (c !== 'Uncategorised') makeCatSortable(row, c);
+    const b = btn(c === PER ? 'Personal' : c, inCat.length, filter.cat === c && !filter.folder, pick(c));
+    const info = catInfo(c);
+    if (info.icon) b.firstChild.prepend(iconEl(info.icon, 'ico sm'));
+    dropTarget(b, { category: c });
+    row.appendChild(b);
+    if (c !== 'Uncategorised') {
+      const ed = el('button', 'sedit'); ed.type = 'button'; ed.title = `Rename “${c}”`;
+      ed.appendChild(iconEl('pencil', 'ico sm'));
+      ed.onclick = () => openNameDlg({ kind: 'category', name: c });
+      row.appendChild(ed);
+    }
+    parts.push(row);
+    // the open category lists its folders underneath, so they're one click (or one drop) away
+    if (filter.cat === c) meta.folders.filter(f => f.category === c).forEach(f => {
+      const fb = btn(f.name, inCat.filter(m => m.folderId === f.id).length, filter.folder === f.id, pick(c, f.id));
+      fb.classList.add('sfolder');
+      fb.firstChild.prepend(iconEl(f.icon || 'folder', 'ico sm'));
+      dropTarget(fb, { folder: f.id });
+      parts.push(fb);
+    });
+  });
+  const add = el('button', 'sadd', '+ New category'); add.type = 'button';
+  add.onclick = () => openNameDlg({ kind: 'category' });
+  parts.push(add);
+  side.replaceChildren(...parts);
+}
+
+/* ---------- main views ---------- */
+function setView(v) {
+  view = v;
+  $('tabMat').classList.toggle('on', v === 'materials');
+  $('tabExp').classList.toggle('on', v === 'experiments');
+  $('tabRec').classList.toggle('on', v === 'recipes');
+  document.body.classList.toggle('recipes', v === 'recipes');
+  document.querySelectorAll('.matOnly').forEach(e => e.hidden = v !== 'materials');
+  document.querySelectorAll('.expOnly').forEach(e => e.hidden = v !== 'experiments');
+  document.querySelectorAll('.recOnly').forEach(e => e.hidden = v !== 'recipes');
+  $('search').placeholder = matchMedia('(max-width: 560px)').matches ? 'Search…' : v === 'recipes' ? 'Search recipes, ingredients, notes…' : 'Search names, colours, brands, notes…';
+  render();
+}
+$('tabMat').onclick = () => setView('materials');
+$('tabExp').onclick = () => setView('experiments');
+$('tabRec').onclick = () => setView('recipes');
+
+function render() {
+  fillDatalist($('catList'), catsInOrder().filter(c => c !== 'Uncategorised'));
+  fillDatalist($('supList'), uniq('supplier'));
+
+  const expTotal = items.reduce((s, i) => s + i.experiments.length, 0);
+  const tab = (id, label, n) => $(id).replaceChildren(document.createTextNode(label), el('span', 'n', String(n)));
+  tab('tabMat', 'Materials', items.length);
+  tab('tabExp', 'Experiments', expTotal);
+  tab('tabRec', 'Recipes', recipes.length);
+  const srcs = [...new Set([...SOURCES, ...uniq('source')])];
+  const fs = $('fSource'), fsv = fs.value;
+  fs.replaceChildren(new Option('Anywhere', ''), ...srcs.map(s => new Option(s, s)));
+  fs.value = srcs.includes(fsv) ? fsv : '';
+  fillDatalist($('srcList'), srcs);
+  const changed = [fs.value !== '', $('sort').value !== 'name'].filter(Boolean).length;
+  $('filterBtn').textContent = changed ? `Filter · ${changed} ▾` : 'Filter ▾';
+  $('filterBtn').classList.toggle('on', !!changed);
+
+  renderSide();
+  if (view === 'materials') renderMaterials(); else if (view === 'recipes') renderRecipes(); else renderExperiments();
+}
+
+function passesFilter(m) {
+  if (filter.todo && !isTodo(m)) return false;
+  if (filter.cat && (m.category || 'Uncategorised') !== filter.cat) return false;
+  return !filter.folder || folderOf(m) && m.folderId === filter.folder;
+}
+
+function renderMaterials() {
+  if (filter.folder && !folderById(filter.folder)) filter = { cat: filter.cat, folder: '' };
+  const q = $('search').value.trim().toLowerCase();
+  const src = $('fSource').value;
+  const list = items.filter(m => passesFilter(m) && (!src || m.source === src) && (!q || haystack(m).includes(q)));
+  const sort = $('sort').value;
+  list.sort((a, b) => {
+    if (sort === 'exps') return b.experiments.length - a.experiments.length;
+    return a.name.localeCompare(b.name);
+  });
+  shown = list;
+
+  // inside a folder: a back bar (also a drop target to take things out) and the folder's materials
+  if (filter.folder) {
+    const f = folderById(filter.folder);
+    const bar = el('div', 'crumbs');
+    const back = el('button', 'crumb-back', `‹ ${f.category}`); back.type = 'button';
+    back.title = `Back to ${f.category}. Drop materials here to take them out of the folder.`;
+    back.onclick = () => { filter = { cat: f.category, folder: '' }; render(); };
+    dropTarget(back, { category: f.category });
+    const title = el('div', 'crumb-title');
+    title.append(iconEl(f.icon || 'folder'), el('span', 't', f.name));
+    if (f.subtitle) title.appendChild(el('span', 'n', f.subtitle));
+    const ed = el('button', null, 'Rename / edit'); ed.type = 'button';
+    ed.onclick = () => openNameDlg({ kind: 'folder', id: f.id });
+    bar.append(back, title, ed);
+    const g = el('div', 'grid'); g.append(...list.map(materialCard));
+    $('main').replaceChildren(bar, g);
+    showEmpty(list.length, q ? 'Nothing in this folder matches.' : 'This folder is empty. Go back and drag materials onto it, or pick this folder in a material’s Folder field.');
+    return;
+  }
+
+  // one section per category; a single category picked in the sidebar shows just that section
+  const by = 'category';
+  const showFolders = !q && !filter.todo;   // searching and the to-fill-in list show everything flat
+  const keyOf = m => m.category || 'Uncategorised';
+  const groups = new Map(catsInOrder().map(c => [c, []]));
+  list.forEach(m => { const k = keyOf(m); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(m); });
+  let keys = [...groups.keys()].filter(k => groups.get(k).length || (showFolders && (k === filter.cat || (!filter.cat && !src && meta.folders.some(f => f.category === k)))));
+  if (showFolders && filter.cat && !keys.includes(filter.cat)) keys = [filter.cat];
+  const collapsed = getCollapsed();
+  const single = keys.length === 1;
+  $('main').replaceChildren(...keys.map(k => {
+    const ms = groups.get(k);
+    const sec = el('div', 'section' + (!single && collapsed.has(by + ':' + k) ? ' closed' : ''));
+    sec.dataset.key = by + ':' + k;
+    {
+      const h = el('button', 'shead'); h.type = 'button';
+      const chev = el('span', 'chev'); chev.innerHTML = CHEV_SVG;
+      h.append(chev, el('span', 't', k === PER ? 'Personal (not itchyhandsvan)' : k));
+      const toggle = () => {
+        const c = getCollapsed(), id = by + ':' + k;
+        c.has(id) ? c.delete(id) : c.add(id); setCollapsed(c);
+        sec.classList.toggle('closed');
+      };
+      h.onclick = toggle;
+      // heading row: ▾ Name (+). The + makes a folder in this category; anywhere else on the row folds it.
+      const row = el('div', 'shrow'); row.appendChild(h);
+      row.onclick = e => { if (!e.target.closest('button')) toggle(); };
+      if (showFolders) {
+        const nf = el('button', 'addfolder'); nf.type = 'button'; nf.innerHTML = PLUS_SVG;
+        nf.title = `New folder in ${k}`; nf.setAttribute('aria-label', nf.title);
+        nf.onclick = () => openNameDlg({ kind: 'folder', category: k });
+        row.appendChild(nf);
+      }
+      const sub = catInfo(k).subtitle;
+      if (sub) row.appendChild(el('span', 'n', sub));
+      sec.appendChild(row);
+    }
+    const fs = showFolders ? meta.folders.filter(f => f.category === k) : [];
+    if (fs.length) {
+      const fg = el('div', 'grid folders');
+      fg.append(...fs.map(f => folderCard(f, ms.filter(m => m.folderId === f.id && folderOf(m)).length)));
+      sec.appendChild(fg);
+    }
+    const loose = showFolders ? ms.filter(m => !folderOf(m)) : ms;
+    const g = el('div', 'grid'); g.append(...loose.map(materialCard));
+    sec.appendChild(g);
+    return sec;
+  }));
+  showEmpty(list.length, items.length ? 'Nothing matches.' : cloud.user ? 'No materials yet. Add one to start.' : 'Your library is in the database. Tap Connect (top right) and sign in to load it.');
+}
+
+function folderCard(f, n) {
+  const c = el('div', 'fcard'); c.tabIndex = 0;
+  c.onclick = () => { filter = { cat: f.category, folder: f.id }; render(); window.scrollTo({ top: 0 }); };
+  c.onkeydown = e => { if (e.key === 'Enter') c.onclick(); };
+  const top = el('div', 'ftop');
+  top.append(iconEl(f.icon || 'folder'), el('span', 'fcount', String(n)));
+  c.append(top, el('div', 'fname', f.name), el('div', 'fsub', f.subtitle || `${n} material${n === 1 ? '' : 's'}`));
+  const ed = el('button', 'fedit'); ed.type = 'button'; ed.title = 'Rename or edit folder';
+  ed.appendChild(iconEl('pencil', 'ico sm'));
+  ed.onclick = e => { e.stopPropagation(); openNameDlg({ kind: 'folder', id: f.id }); };
+  c.appendChild(ed);
+  dropTarget(c, { folder: f.id });
+  return c;
+}
+
+function materialCard(m) {
+  const c = el('div', 'card');
+  c.onclick = () => openProfile(m.id);
+  makeDraggable(c, m);
+  const th = el('div', 'thumb');
+  const cover = coverOf(m);
+  if (cover) { const img = new Image(); img.src = cover; img.alt = m.name; img.loading = 'lazy'; th.appendChild(img); }
+  else th.textContent = (m.name || '?').trim().charAt(0).toUpperCase();
+  c.appendChild(th);
+  const del = el('button', 'del'); del.type = 'button'; del.title = 'Delete';
+  del.setAttribute('aria-label', 'Delete ' + m.name);
+  del.innerHTML = TRASH_SVG;
+  del.onclick = e => { e.stopPropagation(); quickDelete(m); };
+  c.appendChild(del);
+
+  const b = el('div', 'body');
+  b.appendChild(el('div', 'name', m.name));
+  const top = el('div', 'tags');
+  const inF = folderOf(m);
+  if (inF && !filter.folder && $('search').value.trim()) {
+    const fp = el('span', 'pill fpill'); fp.append(iconEl(inF.icon || 'folder', 'ico xs'), document.createTextNode(inF.name)); top.appendChild(fp);
+  }
+  if (needsReview(m)) top.appendChild(el('span', 'pill partial', isTodo(m) ? 'to fill in' : 'review'));
+  if (top.childNodes.length) b.appendChild(top);
+  const who = [m.source, m.brand || m.supplier].filter(Boolean);
+  if (who.length) b.appendChild(el('div', 'meta', who.join(' · ')));
+  if (m.practical) b.appendChild(el('div', 'know', m.practical));
+
+  const r = el('div', 'row');
+  const n = m.experiments.length;
+  r.appendChild(el('span', 'tested' + (n ? '' : ' none'), n ? `🧪 ${n} experiment${n === 1 ? '' : 's'}` : 'Not tested yet'));
+  const paid = num(m.variants[0].price);
+  if (paid != null) r.appendChild(el('span', 'price', money(paid, m.currency)));
+  b.appendChild(r);
+  c.appendChild(b);
+  return c;
+}
+
+function renderExperiments() {
+  const q = $('search').value.trim().toLowerCase();
+  const oc = $('fOutcome').value;
+  const list = [];
+  items.forEach(m => {
+    if (!passesFilter(m)) return;
+    m.experiments.forEach(e => {
+      if (oc === 'inhib' ? !e.inhibition : oc && e.outcome !== oc) return;
+      if (q && !(expHay(e) + ' ' + m.name.toLowerCase()).includes(q)) return;
+      list.push([m, e]);
+    });
+  });
+  list.sort((a, b) => (b[1].date || '').localeCompare(a[1].date || ''));
+  const g = el('div', 'grid exps'); g.append(...list.map(([m, e]) => experimentCard(m, e)));
+  $('main').replaceChildren(g);
+  showEmpty(list.length, items.some(i => i.experiments.length)
+    ? 'No experiments match.'
+    : 'No experiments yet. Open a material and click “+ Log experiment” to record what you made and what you learned.');
+}
+
+function experimentCard(m, e) {
+  const c = el('div', 'card');
+  c.onclick = () => { openProfile(m.id); openExperiment(e.id); };
+  if (e.photos.length) { const th = el('div', 'thumb'); const img = new Image(); img.src = e.photos[0]; th.appendChild(img); c.appendChild(th); }
+  const b = el('div', 'body');
+  b.appendChild(el('div', 'name', e.title || 'Untitled experiment'));
+  const v = expVariant(m, e);
+  b.appendChild(el('div', 'meta', [e.date, m.name + (m.variants.length > 1 && v.label ? ` (${v.label})` : '')].filter(Boolean).join(' · ')));
+  const t = el('div', 'tags');
+  if (e.outcome) t.appendChild(el('span', 'pill ' + e.outcome, OUTCOME[e.outcome]));
+  if (e.inhibition) t.appendChild(el('span', 'pill inhib', 'cure inhibition'));
+  b.appendChild(t);
+  if (e.subject) b.appendChild(el('div', 'meta', 'Made: ' + e.subject));
+  if (e.lessons) b.appendChild(el('div', 'lesson', e.lessons));
+  c.appendChild(b);
+  return c;
+}
+
+function showEmpty(n, msg) { $('empty').hidden = n > 0; $('empty').textContent = msg; }
+
+/* ---------- recipes ---------- */
+const pumpMl = () => (meta && +meta.pumpMl) || 6.25;
+// "6 pumps" → "≈ 37.5 ml" (left alone when the amount already says ml)
+function mlHint(amount) {
+  if (!amount || /\d\s*ml\b/i.test(amount)) return '';
+  const m = amount.match(/(\d+(?:\.\d+)?)\s*pumps?\b/i);
+  return m ? `≈ ${+(m[1] * pumpMl()).toFixed(1)} ml` : '';
+}
+const matById = id => id ? items.find(m => m.id === id) : null;
+const recipeHay = r => [r.title, r.makes, r.method, r.notes, ...r.ingredients.map(x => [x.part, x.name, x.amount, (matById(x.materialId) || {}).name].join(' '))].join(' ').toLowerCase();
+const recipesUsing = id => recipes.filter(r => r.ingredients.some(x => x.materialId === id));
+// ingredients in the order written, grouped under their part (Jam, Biscuit…)
+function byPart(ings) {
+  const groups = [];
+  ings.forEach(x => {
+    const g = groups.find(g => g.part === (x.part || '').trim());
+    g ? g.list.push(x) : groups.push({ part: (x.part || '').trim(), list: [x] });
+  });
+  return groups;
+}
+
+function renderRecipes() {
+  const q = $('search').value.trim().toLowerCase();
+  const list = recipes.filter(r => !q || recipeHay(r).includes(q)).sort((a, b) => a.title.localeCompare(b.title));
+  const bar = el('div', 'recbar meta');
+  bar.append(el('span', null, `1 pump = ${pumpMl()} ml`));
+  const ch = el('button', null, 'Change'); ch.type = 'button';
+  ch.onclick = () => {
+    const ans = prompt('How many ml is one pump?', String(pumpMl()));
+    const v = parseFloat(ans);
+    if (ans === null || !(v > 0)) return;
+    meta = { ...meta, pumpMl: v };
+    save(); render(); toast(`1 pump = ${v} ml`);
+  };
+  bar.appendChild(ch);
+  const g = el('div', 'grid recs'); g.append(...list.map(recipeCard));
+  $('main').replaceChildren(bar, g);
+  showEmpty(list.length, recipes.length ? 'No recipes match.' : 'No recipes yet. Click “+ Add recipe” to write down how you made something.');
+}
+
+function recipeCard(r) {
+  const c = el('div', 'card');
+  c.onclick = () => openRecipe(r.id);
+  if (r.photos.length) { const th = el('div', 'thumb'); const img = new Image(); img.src = r.photos[0]; img.loading = 'lazy'; th.appendChild(img); c.appendChild(th); }
+  const del = el('button', 'del'); del.type = 'button'; del.title = 'Delete';
+  del.setAttribute('aria-label', 'Delete ' + r.title);
+  del.innerHTML = TRASH_SVG;
+  del.onclick = e => { e.stopPropagation(); deleteRecipe(r); };
+  c.appendChild(del);
+  const b = el('div', 'body');
+  b.appendChild(el('div', 'name', r.title || 'Untitled recipe'));
+  const sub = [r.makes && 'Makes ' + r.makes, r.date].filter(Boolean).join(' · ');
+  if (sub) b.appendChild(el('div', 'meta', sub));
+  byPart(r.ingredients).forEach(gr => {
+    if (gr.part) b.appendChild(el('div', 'ingpart', gr.part));
+    const ul = el('ul', 'inglist');
+    gr.list.forEach(x => {
+      const li = el('li');
+      li.appendChild(el('span', null, x.name || (matById(x.materialId) || {}).name || '—'));
+      const a = el('span', 'amt', x.amount);
+      const ml = mlHint(x.amount);
+      if (ml) { a.appendChild(document.createElement('br')); a.appendChild(el('span', 'ml', ml)); }
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    b.appendChild(ul);
+  });
+  const used = [...new Set(r.ingredients.map(x => x.materialId).filter(Boolean))].map(matById).filter(Boolean);
+  if (used.length) {
+    const t = el('div', 'tags');
+    used.forEach(m => {
+      const p = el('span', 'pill link', m.name); p.title = 'Open this material';
+      p.onclick = e => { e.stopPropagation(); openProfile(m.id); };
+      t.appendChild(p);
+    });
+    b.appendChild(t);
+  }
+  if (r.notes) b.appendChild(el('div', 'lesson', r.notes));
+  c.appendChild(b);
+  return c;
+}
+
+function deleteRecipe(r) {
+  checkpoint(`delete “${r.title}”`);
+  recipes = recipes.filter(x => x.id !== r.id);
+  save(); render();
+  toast(`Deleted “${r.title}”`, 'Undo', undo);
+}
+
+const RF = name => $('recForm').elements.namedItem(name);
+const REC_FIELDS = ['title', 'makes', 'date', 'method', 'notes'];
+let recEditing = null, recIngs = [], recPhotos = [];
+function openRecipe(id) {
+  const r = id ? recipes.find(x => x.id === id) : null;
+  recEditing = r ? r.id : null;
+  REC_FIELDS.forEach(k => RF(k).value = r ? r[k] ?? '' : '');
+  recIngs = r ? structuredClone(r.ingredients) : [];
+  if (!recIngs.length) recIngs.push(normalizeRecipe({ ingredients: [{}] }).ingredients[0]);
+  recPhotos = r ? [...r.photos] : [];
+  $('recHead').textContent = r ? 'Recipe' : 'New recipe';
+  $('recDel').hidden = !r;
+  fillDatalist($('partList'), [...new Set(recipes.flatMap(x => x.ingredients.map(i => (i.part || '').trim())).filter(Boolean))].sort());
+  renderIngs(); renderRecPhotos();
+  $('recDlg').showModal();
+  $('recDlg').scrollTop = 0;
+}
+function materialSelect(selectedId) {
+  const s = el('select');
+  s.setAttribute('aria-label', 'Library material');
+  s.appendChild(new Option('Not linked to a library material', ''));
+  catsInOrder().filter(c => c !== PER).forEach(c => {
+    const ms = items.filter(m => (m.category || 'Uncategorised') === c).sort((a, b) => a.name.localeCompare(b.name));
+    if (!ms.length) return;
+    const og = document.createElement('optgroup'); og.label = c;
+    og.append(...ms.map(m => new Option(m.name, m.id)));
+    s.appendChild(og);
+  });
+  s.value = matById(selectedId) ? selectedId : '';
+  return s;
+}
+function renderIngs() {
+  $('recIngs').replaceChildren(...recIngs.map((x, i) => {
+    const row = el('div', 'ingrow');
+    const inp = (k, ph, cls) => {
+      const e = el('input', cls); e.value = x[k] || ''; e.placeholder = ph; e.setAttribute('aria-label', ph);
+      e.oninput = () => { x[k] = e.value; if (k === 'amount') ml.textContent = mlHint(e.value); };
+      return e;
+    };
+    const part = inp('part', 'Part', 'part'); part.setAttribute('list', 'partList');
+    const name = inp('name', 'Ingredient');
+    const ml = el('div', 'ml', mlHint(x.amount));
+    const amount = inp('amount', 'Amount (6 pumps, 10 drops…)');
+    const rm = el('button', 'x', '×'); rm.type = 'button'; rm.title = 'Remove this line';
+    rm.onclick = () => { recIngs.splice(i, 1); renderIngs(); };
+    const link = materialSelect(x.materialId);
+    link.onchange = () => {
+      x.materialId = link.value;
+      const m = matById(link.value);
+      if (m && !name.value.trim()) { name.value = x.name = m.name; }
+    };
+    row.append(part, name, amount, rm, link, ml);
+    return row;
+  }));
+}
+function renderRecPhotos() {
+  const figs = recPhotos.map((src, i) => {
+    const f = el('figure'); const img = new Image(); img.src = src; f.appendChild(img);
+    const x = el('button', null, '×'); x.type = 'button'; x.onclick = () => { recPhotos.splice(i, 1); renderRecPhotos(); };
+    f.appendChild(x); return f;
+  });
+  const add = el('label', 'btn', '+ Add photos');
+  const inp = el('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.multiple = true; inp.hidden = true;
+  inp.onchange = async () => { for (const f of inp.files) recPhotos.push(await shrink(f, 900)); renderRecPhotos(); };
+  add.appendChild(inp);
+  $('recPhotos').replaceChildren(...figs, add);
+}
+$('recAddIng').onclick = () => {
+  const last = recIngs[recIngs.length - 1];
+  recIngs.push(normalizeRecipe({ ingredients: [{ part: last ? last.part : '' }] }).ingredients[0]);   // same part as the line above
+  renderIngs();
+  $('recIngs').lastElementChild.querySelectorAll('input')[1].focus();
+};
+$('recAdd').onclick = () => openRecipe();
+$('recCancel').onclick = () => $('recDlg').close();
+$('recForm').onsubmit = () => {
+  const r = normalizeRecipe({ id: recEditing || uid(), photos: recPhotos,
+    ingredients: recIngs.map(x => ({ ...x, part: (x.part || '').trim(), name: (x.name || '').trim() || (matById(x.materialId) || {}).name || '', amount: (x.amount || '').trim() }))
+      .filter(x => x.name || x.amount || x.materialId) });
+  REC_FIELDS.forEach(k => r[k] = RF(k).value.trim());
+  recipes = recEditing ? recipes.map(x => x.id === r.id ? r : x) : [...recipes, r];
+  undoStack.length = 0;   // as with materials, undo covers deletes and moves since the last edit
+  save(); render();
+  if ($('dlg').open) renderUsedIn();
+  toast('Recipe saved.');
+};
+$('recDel').onclick = () => {
+  const r = recipes.find(x => x.id === recEditing);
+  if (!r || !confirm(`Delete the recipe “${r.title}”?`)) return;
+  $('recDlg').close();
+  deleteRecipe(r);
+  if ($('dlg').open) renderUsedIn();
+};
+
+['search', 'fOutcome', 'sort', 'fSource'].forEach(id => $(id).addEventListener('input', render));
+
+/* ---------- Filter panel ---------- */
+function setFilter(open) {
+  $('filterMenu').hidden = !open;
+  $('filterBtn').setAttribute('aria-expanded', String(open));
+}
+$('filterBtn').onclick = e => { e.stopPropagation(); setFilter($('filterMenu').hidden); };
+$('filterReset').onclick = () => { $('fSource').value = ''; $('sort').value = 'name'; render(); };
+document.addEventListener('click', e => { if (!e.target.closest('#filterWrap')) setFilter(false); });   // the panel stays open while you change its settings
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setFilter(false); });
+
+/* ---------- create / rename / delete folders and categories ---------- */
+let nmTarget = null, nmIcon = 'folder';
+function openNameDlg(t) {
+  nmTarget = t;
+  const isCat = t.kind === 'category';
+  const f = t.kind === 'folder' && t.id ? folderById(t.id) : null;
+  const c = isCat && t.name ? catInfo(t.name) : null;
+  const cur = f || c;
+  $('nmHead').textContent = isCat ? (c ? 'Rename category' : 'New category') : (f ? 'Rename folder' : `New folder in ${t.category}`);
+  $('nmName').value = cur ? cur.name : '';
+  $('nmSub').value = cur ? cur.subtitle || '' : '';
+  nmIcon = (cur && cur.icon) || (isCat ? '' : 'folder');
+  renderIconPick(isCat);
+  $('nmTplRow').hidden = !isCat;
+  if (isCat) {
+    $('nmTpl').replaceChildren(new Option('Basic (one key spec)', ''), ...Object.keys(TPL).map(k => new Option(k, k)));
+    $('nmTpl').value = c ? c.tpl || '' : '';
+  }
+  const inUse = isCat && c ? items.filter(m => (m.category || 'Uncategorised') === c.name).length : 0;
+  $('nmDel').hidden = !cur;
+  const pos = c ? sortableCats().indexOf(c.name) : -1;
+  $('nmUp').hidden = $('nmDown').hidden = !c;
+  $('nmUp').disabled = pos <= 0;
+  $('nmDown').disabled = pos < 0 || pos >= sortableCats().length - 1;
+  $('nmDel').disabled = inUse > 0;
+  $('nmDel').title = inUse ? `Move its ${inUse} materials to another category first` : '';
+  $('nmErr').hidden = true;
+  $('nameDlg').showModal();
+  $('nmName').focus();
+}
+function renderIconPick(allowNone) {
+  const opts = [...(allowNone ? [''] : []), ...PICKABLE];
+  $('nmIcons').replaceChildren(...opts.map(k => {
+    const b = el('button', k === nmIcon ? 'on' : null); b.type = 'button'; b.title = k || 'No icon';
+    if (k) b.appendChild(iconEl(k)); else b.textContent = '—';
+    b.onclick = () => { nmIcon = k; renderIconPick(allowNone); };
+    return b;
+  }));
+}
+$('nmCancel').onclick = () => $('nameDlg').close();
+['nmUp', 'nmDown'].forEach((id, k) => $(id).onclick = () => {
+  const name = nmTarget.name;
+  moveCategoryBy(name, k ? 1 : -1);
+  const pos = sortableCats().indexOf(name);
+  $('nmUp').disabled = pos <= 0;
+  $('nmDown').disabled = pos >= sortableCats().length - 1;
+});
+$('nameForm').onsubmit = e => {
+  e.preventDefault();
+  const t = nmTarget, name = $('nmName').value.trim(), subtitle = $('nmSub').value.trim();
+  if (!name) return;
+  const err = msg => { $('nmErr').textContent = msg; $('nmErr').hidden = false; };
+  if (t.kind === 'folder') {
+    if (t.id) {
+      checkpoint(`edit folder “${name}”`);
+      meta = { ...meta, folders: meta.folders.map(f => f.id === t.id ? { ...f, name, subtitle, icon: nmIcon } : f) };
+    } else {
+      checkpoint(`new folder “${name}”`);
+      meta = { ...meta, folders: [...meta.folders, { id: uid(), name, subtitle, icon: nmIcon, category: t.category }] };
+    }
+  } else {
+    const old = t.name, tpl = $('nmTpl').value;
+    if (name !== old && catsInOrder().includes(name)) return err(`There's already a category called “${name}”.`);
+    checkpoint(old ? `rename “${old}” to “${name}”` : `new category “${name}”`);
+    if (old) {
+      const rest = meta.categories.some(c => c.name === old) ? meta.categories : [...meta.categories, catInfo(old)];
+      meta = { ...meta,
+        categories: rest.map(c => c.name === old ? { ...c, name, subtitle, icon: nmIcon, tpl } : c),
+        folders: meta.folders.map(f => f.category === old ? { ...f, category: name } : f) };
+      if (name !== old) items = items.map(m => m.category === old ? { ...m, category: name } : m);
+      if (filter.cat === old) filter = { ...filter, cat: name };
+    } else {
+      meta = { ...meta, categories: [...meta.categories, { name, subtitle, icon: nmIcon, tpl }] };
+      filter = { cat: name, folder: '' };
+    }
+  }
+  save(); render();
+  $('nameDlg').close();
+  if (t.id || t.name) toast('Saved', 'Undo', undo);
+};
+$('nmDel').onclick = () => {
+  const t = nmTarget;
+  if (t.kind === 'folder') {
+    const f = folderById(t.id), n = items.filter(m => m.folderId === f.id).length;
+    if (!confirm(n ? `Delete the folder “${f.name}”? Its ${n} materials stay in ${f.category}, just not in a folder.` : `Delete the empty folder “${f.name}”?`)) return;
+    checkpoint(`delete folder “${f.name}”`);
+    meta = { ...meta, folders: meta.folders.filter(x => x.id !== f.id) };
+    items = items.map(m => m.folderId === f.id ? { ...m, folderId: '' } : m);
+    if (filter.folder === f.id) filter = { cat: f.category, folder: '' };
+    toast(`Deleted folder “${f.name}”`, 'Undo', undo);
+  } else {
+    if (!confirm(`Delete the empty category “${t.name}”?`)) return;
+    checkpoint(`delete category “${t.name}”`);
+    meta = { ...meta, categories: meta.categories.filter(c => c.name !== t.name), folders: meta.folders.filter(f => f.category !== t.name) };
+    if (filter.cat === t.name) filter = { cat: '', folder: '' };
+    toast(`Deleted category “${t.name}”`, 'Undo', undo);
+  }
+  save(); render();
+  $('nameDlg').close();
+};
+
+/* ---------- deleting ---------- */
+function removeItems(ids, label) {
+  checkpoint(label);
+  items = items.filter(m => !ids.has(m.id));
+  save(); render();
+}
+function quickDelete(m) {
+  if (m.experiments.length && !confirm(`“${m.name}” has ${m.experiments.length} experiment(s). Delete it anyway?`)) return;
+  removeItems(new Set([m.id]), `delete “${m.name}”`);
+  toast(`Deleted “${m.name}”`, 'Undo', undo);
+}
+
+/* ---------- material profile ---------- */
+const F = name => $('form').elements.namedItem(name);
+const SIMPLE = ['name', 'brand', 'category', 'folderId', 'chemistry', 'source', 'supplier', 'link', 'currency', 'practical', 'notes'];
+
+function openProfile(id) {
+  editingId = id || null;
+  const m = id ? items.find(i => i.id === id) : null;
+  draft = structuredClone(m || normalize({}));
+  fillFolders(draft.category);
+  SIMPLE.forEach(k => F(k).value = draft[k] ?? '');
+  if (!folderOf(draft)) F('folderId').value = '';
+  F('tags').value = (draft.tags || []).join(', ');
+  photoData = draft.photo || '';
+  $('photoIn').value = '';
+  setPreview();
+  renderVariants(); renderSpecs(); renderExpList(); renderUsedIn(); updateHead();
+  updateFolds(true);
+  $('delBtn').hidden = !m;
+  $('dlg').showModal();
+  fitName();
+  $('dlg').scrollTop = 0;
+}
+function setPreview() {
+  const p = $('preview');
+  const src = photoData || (draft.variants.find(v => v.photo) || {}).photo;
+  if (src) p.src = src; else p.removeAttribute('src');
+  $('photoLbl').textContent = src ? 'Change' : 'Add photo';
+  $('photoClear').hidden = !src;
+}
+/* The name box grows to fit long names; Enter just finishes typing. */
+function fitName() { const t = F('name'); t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px'; }
+F('name').addEventListener('input', fitName);
+F('name').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); e.target.blur(); } });
+
+/* Price paid, what it was for and when are kept in the material's one purchase record (variants[0] in the saved data). */
+const VF = ['unit', 'price', 'date'];
+function grabVariants() { const v = draft.variants[0]; VF.forEach(k => v[k] = F('v_' + k).value.trim()); }
+function renderVariants() { const v = draft.variants[0]; VF.forEach(k => F('v_' + k).value = v[k] ?? ''); }
+// picking where it was bought sets the usual currency (Taobao → CNY, Amazon → SGD); it can still be changed after
+F('source').addEventListener('change', () => { F('currency').value = currencyFor(F('source').value.trim()); updateHead(); });
+
+function grabSpecs() {
+  document.querySelectorAll('#specFields input').forEach(i => draft.specs[i.dataset.key] = i.value.trim());
+  document.querySelectorAll('#ratingFields select').forEach(s => draft.ratings[s.dataset.key] = s.value);
+}
+function renderSpecs() {
+  const tpl = tplFor(F('category').value.trim());
+  const hints = Object.fromEntries(tpl.specs);
+  const keys = [...new Set([...tpl.specs.map(s => s[0]), ...Object.keys(draft.specs).filter(k => draft.specs[k] !== '')])];
+  $('specFields').replaceChildren(...keys.map(k => {
+    const l = el('label', null, k);
+    const i = el('input'); i.dataset.key = k; i.value = (draft.specs[k] || '').trim(); i.placeholder = hints[k] || '';
+    l.appendChild(i); return l;
+  }));
+  const rkeys = [...new Set([...tpl.ratings, ...Object.keys(draft.ratings).filter(k => draft.ratings[k])])];
+  $('ratingFields').replaceChildren(...rkeys.map(k => {
+    const l = el('label', null, k);
+    const s = el('select'); s.dataset.key = k;
+    ['', '1', '2', '3', '4', '5'].forEach(v => s.appendChild(new Option(v ? '★'.repeat(+v) + '☆'.repeat(5 - v) : '— not rated', v)));
+    s.value = draft.ratings[k] || '';
+    l.appendChild(s); return l;
+  }));
+}
+F('category').addEventListener('change', () => { grabSpecs(); renderSpecs(); updateFolds(false); fillFolders(F('category').value.trim()); });
+/* The Folder menu lists the folders of the chosen category. */
+function fillFolders(cat) {
+  const s = F('folderId'), cur = s.value;
+  const fs = meta.folders.filter(f => f.category === (cat || 'Uncategorised'));
+  s.replaceChildren(new Option(fs.length ? '— not in a folder —' : '— no folders in this category —', ''), ...fs.map(f => new Option(f.name, f.id)));
+  s.value = fs.some(f => f.id === cur) ? cur : '';
+}
+$('addSpec').onclick = () => {
+  const k = (prompt('Name of the spec (e.g. "Heat resistance")') || '').trim();
+  if (!k) return;
+  $('foldSpecs').classList.remove('closed');
+  grabSpecs(); if (!draft.specs[k]) draft.specs[k] = ' '; renderSpecs();
+  const inp = [...document.querySelectorAll('#specFields input')].find(i => i.dataset.key === k);
+  if (inp) inp.focus();
+};
+
+function updateHead() {
+  $('headLine').textContent = [F('category').value, F('source').value, F('brand').value, F('supplier').value].filter(Boolean).join(' · ');
+}
+['category', 'brand', 'supplier', 'source'].forEach(k => F(k).addEventListener('input', updateHead));
+
+function renderExpList() {
+  const list = [...draft.experiments].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  $('expCount').textContent = list.length ? `(${list.length})` : '';
+  $('addExp').disabled = !editingId;
+  if (!editingId) { $('expList').replaceChildren(el('div', 'meta', 'Save this material first, then log experiments with it.')); return; }
+  if (!list.length) { $('expList').replaceChildren(el('div', 'meta', 'No experiments yet. Log what you made, the conditions, the result and what you learned.')); return; }
+  $('expList').replaceChildren(...list.map(e => {
+    const r = el('div', 'exprow');
+    r.onclick = () => openExperiment(e.id);
+    if (e.photos[0]) { const img = new Image(); img.src = e.photos[0]; r.appendChild(img); }
+    const g = el('div', 'grow');
+    g.appendChild(el('div', 'name', e.title || 'Untitled'));
+    const t = el('div', 'tags');
+    if (e.date) t.appendChild(el('span', 'meta', e.date));
+    const v = expVariant(draft, e);
+    if (draft.variants.length > 1 && v && v.label) t.appendChild(el('span', 'pill', v.label));
+    if (e.outcome) t.appendChild(el('span', 'pill ' + e.outcome, OUTCOME[e.outcome]));
+    if (e.inhibition) t.appendChild(el('span', 'pill inhib', 'cure inhibition'));
+    g.appendChild(t);
+    if (e.lessons) g.appendChild(el('div', 'lesson', e.lessons));
+    r.appendChild(g);
+    return r;
+  }));
+}
+
+// recipes that list this material as an ingredient
+function renderUsedIn() {
+  const list = editingId ? recipesUsing(editingId) : [];
+  $('usedInSec').hidden = !list.length;
+  $('usedInCount').textContent = list.length ? `(${list.length})` : '';
+  $('usedInList').replaceChildren(...list.map(r => {
+    const row = el('div', 'exprow');
+    row.onclick = () => openRecipe(r.id);
+    const g = el('div', 'grow');
+    g.appendChild(el('div', 'name', r.title));
+    const lines = r.ingredients.filter(x => x.materialId === editingId).map(x => [x.part, x.amount, mlHint(x.amount)].filter(Boolean).join(' · ')).filter(Boolean);
+    if (lines.length) g.appendChild(el('div', 'meta', lines.join(' | ')));
+    row.appendChild(g);
+    return row;
+  }));
+}
+
+let snapped = false;   // the open profile started from the camera button
+function newMaterial(photo = '') {
+  openProfile();
+  if (filter.cat && filter.cat !== 'Uncategorised') { F('category').value = filter.cat; renderSpecs(); updateHead(); fillFolders(filter.cat); }
+  if (filter.folder) F('folderId').value = filter.folder;
+  snapped = !!photo;
+  if (photo) { photoData = photo; setPreview(); }
+}
+// on a phone, Add opens the camera first: snap, then fill in as much (or as little) as you like and Save.
+// Closing the camera without a photo opens a blank material instead. On a computer it opens the blank form.
+const hasCamera = matchMedia('(pointer: coarse)').matches;
+$('addBtn').onclick = () => hasCamera ? $('snapIn').click() : newMaterial();
+$('snapIn').addEventListener('cancel', () => newMaterial());
+$('snapIn').onchange = async e => {
+  const f = e.target.files[0]; e.target.value = '';
+  if (!f) return;
+  const photo = await shrink(f, 1000);   // big enough to read the label later
+  if (!photo) { toast('Couldn’t read that photo.'); return; }
+  newMaterial(photo);
+  F('name').focus();
+};
+$('preview').onclick = () => {
+  const src = $('preview').getAttribute('src');
+  if (!src) return;
+  $('photoBig').src = src;
+  $('photoDlg').showModal();
+};
+$('photoDlg').onclick = () => $('photoDlg').close();
+$('cancelBtn').onclick = $('closeBtn').onclick = () => $('dlg').close();
+$('photoClear').onclick = () => { photoData = ''; $('photoIn').value = ''; setPreview(); };
+$('photoIn').onchange = async e => { const f = e.target.files[0]; if (f) { photoData = await shrink(f, 1000); setPreview(); } };
+
+function readProfile() {
+  grabSpecs(); grabVariants();
+  SIMPLE.forEach(k => draft[k] = F(k).value.trim());
+  draft.name = draft.name.replace(/\s*\n\s*/g, ' ');   // a pasted line break stays out of the name
+  draft.tags = F('tags').value.split(/[,，]/).map(s => s.trim()).filter(Boolean);
+  if (!draft.name) {   // saved before it has a name: keep it, and list it under “To fill in”
+    draft.name = `New material · ${new Date().toLocaleString(undefined, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}`;
+    F('name').value = draft.name;
+  }
+  if (AUTO_NAME.test(draft.name)) { if (!draft.tags.includes(TODO_TAG)) draft.tags.push(TODO_TAG); }
+  else draft.tags = draft.tags.filter(t => t !== TODO_TAG);
+  F('tags').value = draft.tags.join(', ');
+  draft.photo = photoData;
+  Object.keys(draft.specs).forEach(k => { if (!draft.specs[k]) delete draft.specs[k]; });
+  Object.keys(draft.ratings).forEach(k => { if (!draft.ratings[k]) delete draft.ratings[k]; });
+}
+function commitDraft() {
+  readProfile();
+  const i = items.findIndex(x => x.id === draft.id);
+  const copy = structuredClone(draft);
+  items = i >= 0 ? items.map(x => x.id === draft.id ? copy : x) : [...items, copy];
+  editingId = draft.id;
+  undoStack.length = 0;   // undo covers deletes/merges/moves since the last edit, never across an edit
+  save(); render();
+}
+$('form').onsubmit = e => {
+  if (!F('name').value.trim() && !photoData) { e.preventDefault(); toast('Add a name or a photo first.'); F('name').focus(); return; }
+  const wasSnap = snapped && !editingId;
+  commitDraft();
+  snapped = false;
+  if (filter.todo && !items.some(isTodo)) filter = { cat: '', folder: '' };
+  if (wasSnap) toast(isTodo(draft) ? 'Saved. It’s under “To fill in” for later.' : 'Saved.', '📷 Next', () => $('snapIn').click());
+};
+$('delBtn').onclick = () => {
+  const n = draft.experiments.length;
+  if (!confirm(n ? `Delete this material and its ${n} experiment(s)?` : 'Delete this material?')) return;
+  $('dlg').close();
+  removeItems(new Set([editingId]), `delete “${draft.name}”`);
+  toast(`Deleted “${draft.name}”`, 'Undo', undo);
+};
+
+/* Specs, practical notes and other notes fold away when empty, so the profile opens on what matters. */
+function foldCounts() {
+  grabSpecs();
+  const specs = Object.values(draft.specs).filter(v => (v || '').trim()).length;
+  const bought = ['source', 'supplier', 'link', 'v_price', 'v_unit', 'v_date'].filter(k => F(k).value.trim()).length;
+  const notes = F('notes').value.trim() ? 1 : 0;
+  return { foldSpecs: specs, foldBought: bought, foldNotes: notes };
+}
+function updateFolds(reset) {
+  const n = foldCounts();
+  $('specCount').textContent = n.foldSpecs ? `· ${n.foldSpecs} filled` : '';
+  $('boughtCount').textContent = n.foldBought ? `· ${n.foldBought} filled` : '';
+  $('notesCount').textContent = n.foldNotes ? '· has notes' : '';
+  if (reset) Object.entries(n).forEach(([id, k]) => $(id).classList.toggle('closed', !k));
+}
+document.querySelectorAll('section.fold > h3').forEach(h => h.addEventListener('click', e => {
+  if (e.target.closest('button')) return;
+  h.parentElement.classList.toggle('closed');
+}));
+['notes', 'source', 'supplier', 'link', 'v_price', 'v_unit', 'v_date'].forEach(k => F(k).addEventListener('input', () => updateFolds(false)));
+$('specFields').addEventListener('input', () => updateFolds(false));
+$('ratingFields').addEventListener('input', () => updateFolds(false));
+
+/* ---------- experiments ---------- */
+const EF = name => $('expForm').elements.namedItem(name);
+const EXP_FIELDS = ['title', 'date', 'subject', 'setup', 'result', 'outcome', 'lessons'];
+
+function openExperiment(id) {
+  grabVariants();
+  expEditing = id || null;
+  const e = id ? draft.experiments.find(x => x.id === id) : null;
+  EXP_FIELDS.forEach(k => EF(k).value = e ? e[k] ?? '' : '');
+  if (!e) EF('date').value = new Date().toISOString().slice(0, 10);
+  EF('inhibition').checked = !!(e && e.inhibition);
+  expPhotos = e ? [...e.photos] : [];
+  $('expHead').textContent = (e ? 'Experiment · ' : 'Log experiment · ') + (F('name').value || draft.name);
+  $('expDel').hidden = !e;
+  renderExpPhotos();
+  $('expDlg').showModal();
+}
+function renderExpPhotos() {
+  const figs = expPhotos.map((src, i) => {
+    const f = el('figure'); const img = new Image(); img.src = src; f.appendChild(img);
+    const x = el('button', null, '×'); x.type = 'button'; x.onclick = () => { expPhotos.splice(i, 1); renderExpPhotos(); };
+    f.appendChild(x); return f;
+  });
+  const add = el('label', 'btn', '+ Add photos');
+  const inp = el('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.multiple = true; inp.hidden = true;
+  inp.onchange = async () => { for (const f of inp.files) expPhotos.push(await shrink(f, 900)); renderExpPhotos(); };
+  add.appendChild(inp);
+  $('expPhotos').replaceChildren(...figs, add);
+}
+$('addExp').onclick = () => openExperiment();
+$('expCancel').onclick = () => $('expDlg').close();
+$('expForm').onsubmit = () => {
+  const rec = { id: expEditing || uid(), photos: expPhotos, inhibition: EF('inhibition').checked, variantId: draft.variants[0].id };
+  EXP_FIELDS.forEach(k => rec[k] = EF(k).value.trim());
+  const i = draft.experiments.findIndex(x => x.id === rec.id);
+  if (i >= 0) draft.experiments[i] = rec; else draft.experiments.push(rec);
+  commitDraft();   // an experiment saves straight away, together with the rest of the profile
+  renderExpList(); updateHead();
+  toast('Experiment saved.');
+};
+$('expDel').onclick = () => {
+  if (!confirm('Delete this experiment?')) return;
+  draft.experiments = draft.experiments.filter(x => x.id !== expEditing);
+  commitDraft(); renderExpList(); updateHead();
+  $('expDlg').close();
+};
+
+function shrink(file, max = 480) {
+  return new Promise(res => {
+    const img = new Image();
+    img.onload = () => {
+      const s = Math.min(1, max / Math.max(img.width, img.height));
+      const cv = document.createElement('canvas');
+      cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s);
+      cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+      URL.revokeObjectURL(img.src);
+      res(cv.toDataURL('image/jpeg', 0.75));
+    };
+    img.onerror = () => res('');
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+/* ---------- import / export ---------- */
+const MAT_CSV = ['name', 'brand', 'category', 'folder', 'chemistry', 'source', 'supplier', 'link', 'tags', 'currency', 'notes', 'practical'];
+const VAR_CSV = ['unit', 'price', 'date'];
+const ALIASES = {
+  name: ['name','item','material','title','商品名称','商品','名称','材料','宝贝'],
+  brand: ['brand','品牌'],
+  source: ['source','boughtfrom','platform','marketplace','来源'],
+  currency: ['currency','币种'],
+  category: ['category','type','分类','类别','类型'],
+  chemistry: ['chemistry'],
+  supplier: ['supplier','shop','store','vendor','seller','交易对方','店铺','商家','供应商'],
+  link: ['link','url','链接'],
+  tags: ['tags','tag','标签'],
+  notes: ['notes','note','remark','备注'],
+  practical: ['practical'],
+  label: ['variant','label','颜色分类','规格'],
+  unit: ['unit','单位'],
+  price: ['price','cost','amount','金额','金额（元）','金额(元)','价格','实付款'],
+  date: ['date','bought','purchased','交易时间','付款时间','创建时间','日期','下单时间']
+};
+function parseCSV(text) {
+  const rows = []; let row = [], cur = '', q = false;
+  text = text.replace(/^﻿/, '');
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (q) {
+      if (ch === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; }
+      else cur += ch;
+    } else if (ch === '"') q = true;
+    else if (ch === ',') { row.push(cur); cur = ''; }
+    else if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && text[i + 1] === '\n') i++;
+      row.push(cur); cur = ''; rows.push(row); row = [];
+    } else cur += ch;
+  }
+  if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+  return rows.filter(r => r.some(c => c.trim() !== ''));
+}
+function importRows(rows) {
+  const norm = s => s.trim().toLowerCase().replace(/\s+/g, '');
+  const hi = rows.findIndex(r => r.some(c => ALIASES.name.includes(norm(c))));
+  if (hi < 0) { toast('Couldn’t find a name/商品名称 column.'); return; }
+  const header = rows[hi].map(norm);
+  const col = {};
+  for (const k of [...MAT_CSV, ...VAR_CSV]) {
+    const idx = header.findIndex(h => ALIASES[k].includes(h));
+    if (idx >= 0) col[k] = idx;
+  }
+  const digits = s => s.replace(/[^\d.]/g, '');
+  const added = [];
+  rows.slice(hi + 1).forEach(r => {
+    const g = k => col[k] != null ? (r[col[k]] || '').trim() : '';
+    const name = g('name'); if (!name) return;
+    let date = g('date'); const m = date.match(/(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})/);
+    date = m ? `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}` : '';
+    const v = { unit: g('unit'), price: digits(g('price')), date };
+    added.push(normalize({
+      name, brand: g('brand'), category: g('category'), chemistry: g('chemistry'), source: g('source'), currency: g('currency').toUpperCase(), supplier: g('supplier'),
+      link: g('link'), notes: g('notes'), practical: g('practical'),
+      tags: g('tags').split(/[,，;；]/).map(s => s.trim()).filter(Boolean), variants: [v]
+    }));
+  });
+  checkpoint(`import ${added.length} materials`);
+  items = [...items, ...added];
+  save(); render(); toast(`Imported ${added.length} materials.`, 'Undo', undo);
+}
+$('importBtn').onclick = () => { $('cloudDlg').close(); $('fileIn').click(); };
+$('fileIn').onchange = async e => {
+  const file = e.target.files[0]; e.target.value = ''; if (!file) return;
+  const buf = await file.arrayBuffer();
+  let text = new TextDecoder('utf-8').decode(buf);
+  if (text.includes('�')) text = new TextDecoder('gbk').decode(buf); // Alipay CSVs are GBK
+  if (file.name.toLowerCase().endsWith('.json')) {
+    try {
+      const parsed = JSON.parse(text);
+      const data = Array.isArray(parsed) ? parsed : parsed && parsed.items;   // older backups are a plain list
+      if (!Array.isArray(data)) throw 0;
+      if (!confirm(`Replace the library with ${data.length} materials from this backup?`)) return;
+      checkpoint('restore backup');
+      items = flatten(data.map(normalize));
+      if (!Array.isArray(parsed) && parsed.meta) meta = { ...parsed.meta, id: meta ? meta.id : parsed.meta.id };
+      if (!Array.isArray(parsed) && Array.isArray(parsed.recipes)) recipes = parsed.recipes.map(normalizeRecipe);
+      save(); render();
+      toast(`Restored ${items.length} materials.`, 'Undo', undo);
+    } catch (err) { toast('That JSON isn’t a library backup.'); }
+    return;
+  }
+  importRows(parseCSV(text));
+};
+function download(name, mime, content) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type: mime }));
+  a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+$('backupBtn').onclick = () => download(`itchyhandsvan-backup-${new Date().toISOString().slice(0, 10)}.json`, 'application/json', JSON.stringify({ version: 3, meta, items, recipes }, null, 1));
+
+load().then(d => { items = d; setView(view); refreshRate(); cloudInit().catch(e => setCloudState('error', e.message)); });
+</script>
+</body>
+</html>
