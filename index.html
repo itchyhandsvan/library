@@ -581,7 +581,16 @@
 <script type="application/json" id="notesImport">[]</script>
 <script>
 const $ = id => document.getElementById(id);
-const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+/* A random id in the format the database's uuid column needs. crypto.randomUUID only exists on https pages,
+   so on plain http (or older phones) the same format is built from crypto.getRandomValues, which works everywhere. */
+const uid = () => {
+  if (crypto.randomUUID) return crypto.randomUUID();
+  const b = crypto.getRandomValues(new Uint8Array(16));
+  b[6] = (b[6] & 0x0f) | 0x40; b[8] = (b[8] & 0x3f) | 0x80;
+  const x = [...b].map(n => n.toString(16).padStart(2, '0')).join('');
+  return `${x.slice(0, 8)}-${x.slice(8, 12)}-${x.slice(12, 16)}-${x.slice(16, 20)}-${x.slice(20)}`;
+};
+const isUuid = s => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(s || '');
 const PER = 'Personal (not itchyhandsvan)';
 /* Line icons for folders and categories (24×24, drawn with the text colour). */
 const ICONS = {
@@ -609,7 +618,7 @@ function iconEl(name, cls = 'ico') {
   return s;
 }
 /* Filled in by build.py from the top entry of CHANGELOG.md. */
-const APP_VERSION = 'v1.4', APP_DATE = '2026-11-15';
+const APP_VERSION = 'v1.5', APP_DATE = '2026-11-15';
 const TRASH_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg>';
 const CHEV_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>';
 const PLUS_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9"/></svg>';
@@ -735,8 +744,9 @@ function flatten(list) {
 }
 /* The same material twice (same name and brand) becomes one: notes, specs, photos and experiments are combined,
    and recipes that used either point at the one that's kept. Colours and sizes have their own names, so they stay apart. */
+const sameKey = m => [m.name, m.brand].map(s => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()).join('|');
 function dedupe() {
-  const key = m => [m.name, m.brand].map(s => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()).join('|');
+  const key = sameKey;
   const keep = new Map(), gone = new Map();
   const joinText = (a, b) => !b || (a || '').includes(b) ? a : [a, b].filter(Boolean).join('\n');
   items.forEach(m => {
@@ -761,6 +771,16 @@ function dedupe() {
   recipes = recipes.map(r => r.ingredients.some(x => gone.has(x.materialId))
     ? { ...r, ingredients: r.ingredients.map(x => gone.has(x.materialId) ? { ...x, materialId: gone.get(x.materialId) } : x) } : r);
   return gone.size;
+}
+function fixIds() {
+  const remap = new Map();
+  items = items.map(m => { if (isUuid(m.id)) return m; const id = uid(); remap.set(m.id, id); return { ...m, id }; });
+  recipes = recipes.map(r => {
+    const id = isUuid(r.id) ? r.id : uid();
+    const ings = r.ingredients.map(x => remap.has(x.materialId) ? { ...x, materialId: remap.get(x.materialId) } : x);
+    return id === r.id && ings.every((x, i) => x === r.ingredients[i]) ? r : { ...r, id, ingredients: ings };
+  });
+  if (meta && !isUuid(meta.id)) meta = { ...meta, id: uid() };
 }
 function dedupeAndTell() {
   const n = dedupe();
@@ -787,6 +807,7 @@ async function load() {
   recipes = (recs || []).map(normalizeRecipe);
   ensureMeta();
   applyImports();
+  fixIds();
   dedupeAndTell();
   saveLocal();
   return items;
@@ -867,7 +888,8 @@ async function cloudInit() {
 }
 async function afterSignIn() {
   await loadSynced();
-  if (cloud.synced.size && pendingCount()) await push();   // edits made offline go up before anything comes down
+  // edits made offline go up before anything comes down; if they can't go up, keep them and don't load over them
+  if (cloud.synced.size && pendingCount() && !(await push())) return;
   await pull();
 }
 async function pull() {
@@ -888,16 +910,30 @@ async function pull() {
   const remote = data.filter(r => kind(r) === 'material').map(r => normalize(r.data));
   const remoteRecs = data.filter(r => kind(r) === 'recipe').map(r => normalizeRecipe(r.data));
   if (metaRow) meta = metaRow.data;   // otherwise keep this browser's folders; they go up with the next save
-  items = flatten(remote).sort((a, b) => a.name.localeCompare(b.name));
-  recipes = remoteRecs;
+  // Made on this device and never saved to the database (e.g. a save failed): keep them, they go up below.
+  // Built-in starting materials don't count, and anything the database had before but not now was deleted elsewhere.
+  const inDb = new Set(data.map(r => r.id)), builtIn = builtInIds(), dbKeys = new Set(remote.map(sameKey));
+  const localOnly = x => !inDb.has(x.id) && !cloud.synced.has(x.id) && !builtIn.has(x.id);
+  const keepItems = items.filter(m => localOnly(m) && !dbKeys.has(sameKey(m))), keepRecs = recipes.filter(localOnly);   // same name and brand = already there
+  items = [...flatten(remote), ...keepItems].sort((a, b) => a.name.localeCompare(b.name));
+  recipes = [...remoteRecs, ...keepRecs];
   ensureMeta();
   cloud.synced = new Map([...remote.map(m => [m.id, JSON.stringify(m)]), ...remoteRecs.map(r => [r.id, JSON.stringify(r)]), ...(metaRow ? [[metaRow.id, JSON.stringify(metaRow.data)]] : [])]);
   applyImports();   // a library that hasn't had the recipe notes yet gets them now; they go up with the push below
+  fixIds();
   dedupeAndTell();
   keepSynced(); saveLocal(); render();
   setCloudState('saved');
   if (pendingCount()) schedulePush();   // anything tidied up on the way in (e.g. split materials) goes back up
-  if (before !== items.length) toast(`Loaded ${items.length} materials from the database.`);
+  if (keepItems.length || keepRecs.length) toast(`Saving ${keepItems.length + keepRecs.length} new entr${keepItems.length + keepRecs.length === 1 ? 'y' : 'ies'} from this device to the database.`);
+  else if (before !== items.length) toast(`Loaded ${items.length} materials from the database.`);
+}
+/* Ids of the starting library and one-time imports built into this file (they're already in the database). */
+function builtInIds() {
+  const ids = new Set();
+  try { JSON.parse($('seed').textContent).forEach(m => ids.add(m.id)); } catch (e) {}
+  try { [].concat(JSON.parse($('notesImport').textContent) || []).forEach(imp => [...(imp.materials || []), ...(imp.recipes || [])].forEach(x => ids.add(x.id))); } catch (e) {}
+  return ids;
 }
 function schedulePush() {
   if (!cloud.user) return;
@@ -905,10 +941,11 @@ function schedulePush() {
   setCloudState('saving');
   cloud.timer = setTimeout(push, 700);
 }
-async function push() {
-  if (!cloud.user) return;
-  if (cloud.busy) { cloud.again = true; return; }
+async function push() {   // true once everything is in the database
+  if (!cloud.user) return false;
+  if (cloud.busy) { cloud.again = true; return false; }
   cloud.busy = true;
+  let ok = false;
   try {
     const now = syncRows();
     const up = [...now].filter(([id, j]) => cloud.synced.get(id) !== j);
@@ -927,12 +964,14 @@ async function push() {
     }
     keepSynced();
     setCloudState('saved');
+    ok = true;
   } catch (e) {
     setCloudState(isNetErr(e) ? 'offline' : 'error', e.message || String(e));
   } finally {
     cloud.busy = false;
     if (cloud.again) { cloud.again = false; push(); }
   }
+  return ok;
 }
 window.addEventListener('online', () => { if (cloud.user) push(); });
 // coming back to the tab picks up changes made on another device (unless this one still has unsaved edits)
@@ -947,6 +986,7 @@ function openCloud() {
   const cfg = sbConfig();
   const connected = !!cloud.client, signedIn = !!cloud.user;
   $('cloudErr').hidden = true;
+  if (cloud.state === 'error' && $('syncBtn').title) cloudError(`Last save didn’t go through: ${$('syncBtn').title}`);
   $('cloudConnect').hidden = connected;
   $('cloudLogin').hidden = !connected || signedIn;
   if (!connected) { $('sbUrl').value = cfg ? cfg.url : ''; $('sbKey').value = cfg ? cfg.key : ''; }
