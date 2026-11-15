@@ -108,6 +108,7 @@
   .backups { border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 8px; }
   .backups h3 { margin: 0; font-size: 15px; }
   .backups .bbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .backups .version { font-size: 12px; margin-top: 4px; }
   .price { font-size: 13px; color: var(--muted); white-space: nowrap; }
   .muted { color: var(--muted); }
   .ico { display: inline-flex; width: 20px; height: 20px; flex: none; }
@@ -400,7 +401,7 @@
       <h3>About</h3>
       <div class="fields">
         <label>Brand<input name="brand"></label>
-        <label>Category<input name="category" list="catList" placeholder="e.g. Silicone & mold making"></label>
+        <label>Category<select name="category"></select></label>
         <label>Folder<select name="folderId"></select></label>
         <label>Chemistry / type<input name="chemistry" placeholder="e.g. platinum-cure, tin-cure, epoxy AB"></label>
         <label class="w2">Tags (comma separated)<input name="tags"></label>
@@ -431,7 +432,7 @@
     <section class="ps fold" id="foldBought">
       <h3><span class="ft"><span class="chev">▾</span>Where I bought it <span class="fn" id="boughtCount"></span></span></h3>
       <div class="fields">
-        <label>Bought from<input name="source" list="srcList" placeholder="Taobao, Shopee, Lazada…"></label>
+        <label>Bought from<select name="source"></select></label>
         <label>Shop<input name="supplier" list="supList"></label>
         <label>Price paid<span class="inline"><input name="v_price" type="number" step="any" min="0"><select name="currency"><option value="CNY">CNY ¥</option><option value="SGD">SGD S$</option></select></span></label>
         <label>For<input name="v_unit" placeholder="4kg set, 100g bag, bottle…"></label>
@@ -451,9 +452,7 @@
       <button type="submit" class="primary">Save</button>
     </div>
   </form>
-  <datalist id="catList"></datalist>
   <datalist id="supList"></datalist>
-  <datalist id="srcList"></datalist>
 </dialog>
 
 <!-- Experiment -->
@@ -552,6 +551,7 @@
         <button type="button" id="backupBtn">Download a backup</button>
         <button type="button" id="importBtn">Restore from a backup…</button>
       </div>
+      <p class="hint version" id="appVersion"></p>
     </div>
     <div class="actions">
       <button type="button" class="danger spacer" id="cloudDisconnect">Disconnect</button>
@@ -598,6 +598,8 @@ function iconEl(name, cls = 'ico') {
   s.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.folder}</svg>`;
   return s;
 }
+/* Filled in by build.py from the top entry of CHANGELOG.md. */
+const APP_VERSION = 'v1.1', APP_DATE = '2026-11-15';
 const TRASH_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg>';
 const CHEV_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>';
 const PLUS_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9"/></svg>';
@@ -1248,7 +1250,6 @@ $('tabExp').onclick = () => setView('experiments');
 $('tabRec').onclick = () => setView('recipes');
 
 function render() {
-  fillDatalist($('catList'), catsInOrder().filter(c => c !== 'Uncategorised'));
   fillDatalist($('supList'), uniq('supplier'));
 
   const expTotal = items.reduce((s, i) => s + i.experiments.length, 0);
@@ -1260,7 +1261,6 @@ function render() {
   const fs = $('fSource'), fsv = fs.value;
   fs.replaceChildren(new Option('Anywhere', ''), ...srcs.map(s => new Option(s, s)));
   fs.value = srcs.includes(fsv) ? fsv : '';
-  fillDatalist($('srcList'), srcs);
   const changed = [fs.value !== '', $('sort').value !== 'name'].filter(Boolean).length;
   $('filterBtn').textContent = changed ? `Filter · ${changed} ▾` : 'Filter ▾';
   $('filterBtn').classList.toggle('on', !!changed);
@@ -1762,12 +1762,36 @@ function quickDelete(m) {
 /* ---------- material profile ---------- */
 const F = name => $('form').elements.namedItem(name);
 const SIMPLE = ['name', 'brand', 'category', 'folderId', 'chemistry', 'source', 'supplier', 'link', 'currency', 'practical', 'notes'];
+/* Category and "Bought from" are real dropdowns (phones don't show typed-in suggestion lists as a menu).
+   The last option adds a new one by name. */
+const NEW_OPT = '__new';
+function fillPick(sel, values, current, emptyLabel, newLabel) {
+  const vals = current && !values.includes(current) ? [...values, current] : values;
+  sel.replaceChildren(new Option(emptyLabel, ''), ...vals.map(v => new Option(v, v)), new Option(newLabel, NEW_OPT));
+  sel.value = current || '';
+  sel.dataset.prev = sel.value;
+}
+[['category', 'Name of the new category'], ['source', 'Where did you buy it? (e.g. Carousell, a shop in Bugis)']].forEach(([k, ask]) => {
+  const sel = F(k);
+  sel.addEventListener('change', e => {
+    if (sel.value === NEW_OPT) {
+      const v = (prompt(ask) || '').trim();
+      if (!v) { sel.value = sel.dataset.prev || ''; e.stopImmediatePropagation(); return; }
+      if (![...sel.options].some(o => o.value === v)) sel.insertBefore(new Option(v, v), sel.lastChild);
+      sel.value = v;
+    }
+    sel.dataset.prev = sel.value;
+    updateHead();
+  });
+});
 
 function openProfile(id) {
   editingId = id || null;
   const m = id ? items.find(i => i.id === id) : null;
   draft = structuredClone(m || normalize({}));
   fillFolders(draft.category);
+  fillPick(F('category'), catsInOrder().filter(c => c !== 'Uncategorised'), draft.category, '— no category —', '+ New category…');
+  fillPick(F('source'), [...new Set([...SOURCES, ...uniq('source')])], draft.source, '— not recorded —', '+ Somewhere else…');
   SIMPLE.forEach(k => F(k).value = draft[k] ?? '');
   if (!folderOf(draft)) F('folderId').value = '';
   F('tags').value = (draft.tags || []).join(', ');
@@ -1889,7 +1913,7 @@ function renderUsedIn() {
 let snapped = false;   // the open profile started from the camera button
 function newMaterial(photo = '') {
   openProfile();
-  if (filter.cat && filter.cat !== 'Uncategorised') { F('category').value = filter.cat; renderSpecs(); updateHead(); fillFolders(filter.cat); }
+  if (filter.cat && filter.cat !== 'Uncategorised') { F('category').value = filter.cat; F('category').dataset.prev = filter.cat; renderSpecs(); updateHead(); fillFolders(filter.cat); }
   if (filter.folder) F('folderId').value = filter.folder;
   snapped = !!photo;
   if (photo) { photoData = photo; setPreview(); }
@@ -2139,8 +2163,9 @@ function download(name, mime, content) {
   a.href = URL.createObjectURL(new Blob([content], { type: mime }));
   a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
-$('backupBtn').onclick = () => download(`itchyhandsvan-backup-${new Date().toISOString().slice(0, 10)}.json`, 'application/json', JSON.stringify({ version: 3, meta, items, recipes }, null, 1));
+$('backupBtn').onclick = () => download(`itchyhandsvan-backup-${new Date().toISOString().slice(0, 10)}.json`, 'application/json', JSON.stringify({ version: 3, appVersion: APP_VERSION, meta, items, recipes }, null, 1));
 
+$('appVersion').textContent = `Library ${APP_VERSION} · ${new Date(APP_DATE + 'T12:00').toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}`;
 load().then(d => { items = d; setView(view); refreshRate(); cloudInit().catch(e => setCloudState('error', e.message)); });
 </script>
 </body>
