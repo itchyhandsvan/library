@@ -235,8 +235,52 @@
   dialog.lightbox::backdrop { background: rgb(0 0 0 / 0.8); }
   dialog.lightbox img { display: block; max-width: 96vw; max-height: 92vh; border-radius: var(--r-sm); }
   /* recipes */
-  body.recipes .layout { grid-template-columns: 1fr; }
-  body.recipes aside { display: none; }
+  body.recipes .layout, body.brand .layout { grid-template-columns: 1fr; }
+  body.recipes aside, body.brand aside { display: none; }
+  /* brand */
+  .bhead { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 26px 0 10px; display: flex; align-items: baseline; gap: 8px; }
+  .bhead:first-child { margin-top: 6px; }
+  .bhead .n { text-transform: none; letter-spacing: 0; font-weight: 500; }
+  .core { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .corecard { background: var(--accent); color: #fff; border-radius: var(--radius); padding: 18px 18px 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 130px; cursor: pointer; }
+  .corecard .ct { font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+  .corecard .cl { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; opacity: .65; display: flex; justify-content: space-between; align-items: center; }
+  .corecard .copybtn { color: #fff; border-color: rgb(255 255 255 / .35); }
+  .brief { display: grid; gap: 10px; }
+  .bsec { background: #fff; border-radius: var(--radius); border: 1px solid var(--line); }
+  .bsec > .bt { display: flex; align-items: center; gap: 8px; width: 100%; padding: 14px 16px; border: 0; background: none; text-align: left; font-size: 16px; font-weight: 700; border-radius: var(--radius); }
+  .bsec > .bt:hover { background: none; }
+  .bsec > .bt .chev { display: inline-flex; width: 18px; height: 18px; color: var(--muted); transition: transform .15s; }
+  .bsec > .bt .chev svg { width: 14px; height: 14px; margin: auto; }
+  .bsec.closed > .bt .chev { transform: rotate(-90deg); }
+  .bsec > .bt .n { color: var(--muted); font-size: 13px; font-weight: 500; }
+  .bsec > .bt .edit { margin-left: auto; font-size: 13px; font-weight: 500; padding: 4px 10px; border-color: var(--line); color: var(--muted); }
+  .bsec.closed > .bbody { display: none; }
+  .bbody { margin: 0; padding: 0 16px 16px 42px; display: grid; gap: 7px; font-size: 14px; line-height: 1.45; }
+  .bbody li::marker { color: var(--muted); }
+  .bbody code { font: inherit; background: var(--bg); padding: 0 4px; border-radius: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .chips button { border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 500; }
+  .chips button .n { color: var(--muted); margin-left: 5px; font-size: 12px; }
+  .chips button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .chips button.on .n { color: rgb(255 255 255 / .7); }
+  .lgroup { margin-bottom: 18px; }
+  .lgroup h3 { font-size: 15px; margin: 0 0 8px; display: flex; gap: 8px; align-items: baseline; }
+  .lgroup h3 .n { color: var(--muted); font-size: 13px; font-weight: 500; }
+  .lines { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .line { display: flex; align-items: center; gap: 12px; padding: 12px 14px; cursor: pointer; }
+  .line + .line { border-top: 1px solid var(--line); }
+  .line:hover { background: #fbfaf8; }
+  .line .lt { flex: 1; min-width: 0; }
+  .line .lx { font-weight: 600; font-size: 15px; }
+  .line .lu { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .line .ln { color: var(--muted); font-size: 13px; margin-top: 4px; white-space: pre-wrap; }
+  .pill.fav { color: #8a5a00; background: #fdf3e2; border-color: transparent; }
+  .copybtn { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; padding: 0; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); }
+  .copybtn:hover { color: var(--ink); border-color: var(--ink); background: transparent; }
+  .copybtn svg { width: 14px; height: 14px; }
+  .copybtn.delline:hover { color: var(--bad); border-color: var(--bad); }
+  .line .pill.under { display: none; margin-top: 6px; }
   .grid.recs { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
   .recbar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
   .recbar button { padding: 4px 12px; font-size: 13px; }
@@ -289,15 +333,25 @@
     .stats { flex: none; }   /* the Saved / Sync button stays on the title row, top right */
     .syncbtn { padding: 4px 9px 4px 19px; } .syncbtn::before { left: 7px; }
     .tabs { padding-top: 10px; }
-    .tabwrap { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; }
-    .tabs button { padding: 9px 4px; font-size: 14px; }
-    .tabs button .n { margin-left: 3px; font-size: 12px; }
+    .tabwrap { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }
+    .core { grid-template-columns: 1fr; gap: 8px; }
+    .corecard { min-height: 0; gap: 12px; padding: 16px; }
+    .corecard .ct { font-size: 19px; }
+    .chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px 12px; padding: 0 16px; scrollbar-width: none; }
+    .chips::-webkit-scrollbar { display: none; }
+    .chips button { flex: none; }
+    .bbody { padding-left: 34px; }
+    .line { padding: 12px; gap: 8px; }
+    .line .pill.beside { display: none; }
+    .line .pill.under { display: inline-block; }
+    .tabs button { padding: 9px 2px; font-size: 13px; letter-spacing: -0.01em; }   /* four tabs share the width */
+    .tabs button .n { margin-left: 3px; font-size: 11px; }
     /* toolbar: one row of Filter, search and More */
-    .toolbar { padding: 10px 0; gap: 6px; }
+    .toolbar { padding: 10px 16px; margin: 0 -16px; gap: 6px; }   /* its background covers the full width, so nothing peeks out beside it */
     #search { flex: 1 1 0; min-width: 0; }   /* Filter, search and More share one row */
     .tspacer { display: none; }
     /* + Add floats bottom right, where a thumb reaches it */
-    #addBtn, #recAdd { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 9; border-radius: 999px; padding: 14px 20px; font-size: 15px; box-shadow: 0 6px 18px rgb(0 0 0 / 0.25); }
+    #addBtn, #recAdd, #brandAdd { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 9; border-radius: 999px; padding: 14px 20px; font-size: 15px; box-shadow: 0 6px 18px rgb(0 0 0 / 0.25); }
     .toolbar > button, .toolbar .menu-wrap > button { padding: 8px 12px; }
     .long { display: none; }
     .menu { max-width: calc(100vw - 32px); }
@@ -357,6 +411,7 @@
     <button id="tabExp">Experiments</button>
     <button id="tabRec">Recipes</button>
     <button id="tabMat" class="on">Materials</button>
+    <button id="tabBrand">Brand</button>
   </div>
 </nav>
 
@@ -383,6 +438,7 @@
       <span class="tspacer"></span>
       <button class="primary matOnly" id="addBtn" title="Add a material. On a phone this opens the camera first">+ Add<span class="long"> material</span></button>
       <button class="primary recOnly" id="recAdd" hidden>+ Add<span class="long"> recipe</span></button>
+      <button class="primary brandOnly" id="brandAdd" hidden>+ Add<span class="long"> line</span></button>
       <input type="file" id="fileIn" accept=".csv,.json,text/csv,application/json" hidden>
     </div>
     <main id="main"></main>
@@ -541,6 +597,36 @@
   </form>
 </dialog>
 
+<!-- Brand: one line of copy -->
+<dialog id="lineDlg" class="exp">
+  <form id="lineForm" class="edit" method="dialog" autocomplete="off">
+    <h2 id="lnHead">Line</h2>
+    <label class="wide">Copy *<textarea name="text" rows="2" required placeholder="e.g. Unnecessarily Well Made."></textarea></label>
+    <label>Category<select name="category"></select></label>
+    <label>Status<select name="status"></select></label>
+    <label class="wide">Use / context<input name="use" placeholder="e.g. Merch, Key tag, Technical annotation"></label>
+    <label class="wide">Notes<textarea name="notes" rows="2" placeholder="Where it was used, what people said, variations…"></textarea></label>
+    <div class="actions">
+      <button type="button" class="danger spacer" id="lnDel">Delete</button>
+      <button type="button" id="lnCancel">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Brand: a section of the brief -->
+<dialog id="briefDlg" class="exp">
+  <form id="briefForm" class="edit" method="dialog" autocomplete="off">
+    <h2>Edit brief</h2>
+    <label class="wide">Title<input name="title" required maxlength="60"></label>
+    <label class="wide">Points (one per line; **bold** for emphasis)<textarea name="body" rows="12"></textarea></label>
+    <div class="actions">
+      <button type="button" id="bfCancel">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
 <!-- Database (Supabase) -->
 <dialog id="cloudDlg" class="exp">
   <form id="cloudForm" class="edit" method="dialog" autocomplete="off">
@@ -557,7 +643,7 @@
     <p class="wide error" id="cloudErr" hidden></p>
     <div class="wide backups">
       <h3>Backups</h3>
-      <p class="hint">One file with everything: materials, photos, experiments, recipes and categories. Worth downloading before big changes, or once a month.</p>
+      <p class="hint">One file with everything: materials, photos, experiments, recipes, brand copy and categories. Worth downloading before big changes, or once a month.</p>
       <div class="bbtns">
         <button type="button" id="backupBtn">Download a backup</button>
         <button type="button" id="importBtn">Restore from a backup…</button>
@@ -619,7 +705,7 @@ function iconEl(name, cls = 'ico') {
   return s;
 }
 /* Filled in by build.py from the top entry of CHANGELOG.md. */
-const APP_VERSION = 'v1.6', APP_DATE = '2026-11-15';
+const APP_VERSION = 'v1.10', APP_DATE = '2026-11-17';
 const TRASH_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg>';
 const CHEV_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>';
 const PLUS_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9"/></svg>';
@@ -648,6 +734,7 @@ let items = [];
 /* Recipes save and sync like materials, one row each:
    { id, kind: 'recipe', title, makes, date, ingredients: [{ id, part, name, amount, materialId }], method, notes, photos } */
 let recipes = [];
+let brand = null;   // the Brand tab: { id, kind: 'brand', brief: [{ id, title, body }], lines: [{ id, text, category, use, status, notes }] }
 let view = 'materials';
 let filter = { cat: '', folder: '' };   // sidebar / folder selection
 /* Categories and folders, kept together in one "meta" record that saves and syncs like a material:
@@ -787,19 +874,48 @@ function dedupeAndTell() {
   const n = dedupe();
   if (n) toast(`Merged ${n} duplicate material${n === 1 ? '' : 's'}.`);
 }
+const STATUSES = ['Approved', 'Preferred', 'Favourite', 'Liked', 'Exploratory'];
+function normalizeBrand(raw) {
+  if (!raw) return null;
+  return {
+    id: raw.id || uid(), kind: 'brand',
+    brief: (raw.brief || []).map(s => Object.assign({ id: uid(), title: '', body: '' }, s)),
+    lines: (raw.lines || []).map(l => Object.assign({ id: uid(), text: '', category: '', use: '', status: 'Exploratory', notes: '' }, l)),
+  };
+}
+/* One-time tidy-ups of the Brand page (v1.8): removes lines and brief sections by id, and moves lines.
+   Applied once per library, like the imports (meta.imports remembers it), on whichever device sees the page first. */
+const BRAND_TIDY = [{ id: 'brand-tidy-2026-11-17', lines: ["01470801-4afb-5487-9ac2-4cd41916824a", "d01a824f-2926-560d-9962-726ad74bf231", "e025d546-335a-5095-b12b-63a084fb6244", "febc4536-268f-5767-bffc-7363fa477e1e", "1f1bde95-c0d9-54bd-803d-73618508277f", "c1435efa-85fd-5dce-8dfa-d0bb8a926968", "8117c7a9-d051-5008-a271-6e4f23c39721", "99ede472-4136-50e1-9849-f83259983b11", "ae5caa78-68da-5a9c-8ac5-d57bdde8989f", "b4920080-09c8-51a3-a70f-00aadbce86cd", "3d2757b5-e43d-51db-b22b-f2d828b1ae48", "3e20a536-1f55-5637-8528-172815aa9376", "ed32246e-028f-5c3e-a971-7bdffd9234b9", "2988b2a6-e96f-5eea-9597-46452cea4b0b", "72be532e-5b86-5a35-b381-f940f5c15b9c", "bdc2cc19-1676-507e-9b98-d5f09f75e21d", "3e8169db-0e3e-579f-8cfb-b1cc7c8cacb1", "4627534f-e6d4-5591-834a-dc1ae26c80ad", "1207a858-7dcf-5317-afd8-5be248944a84", "82a615b2-6aa9-500c-80c6-26e22b20bc35", "537c63c2-eda9-5c04-b87d-531f23204f9d", "8eebfda0-264e-5b2f-aa32-1b7d3c75c3ce", "66d8c843-ecfb-5589-82a0-bbf00a840e63", "42f546d2-79f8-5a27-a0a2-78ce28ddc17b", "97b55cb5-eb09-55ff-b2cb-faa6aced3778", "29cc3036-3014-5663-9e8c-53ce2ef515e4", "85182f87-b0e2-5d21-b854-3d9669c3ce1c", "f11ad9ad-aa9f-5ca0-8726-6fcae8e00b03", "489300fd-89f1-521c-aba9-3bef7509c62c", "54099d26-d5d9-5477-965c-3ec03ef3b3d1", "01efafe7-eb28-5128-9106-c35167f07fc5", "0e00204d-70c8-5bf5-ae84-887f2245abb9", "2db3018b-9397-55a9-b0c8-623b67004610", "4587f37b-0abd-5fae-bfef-20d78fdd4b14", "ab9945b6-94c4-5a35-9ef4-f3d3b292a884"], brief: ["ed0369d6-bfd2-54e6-91ba-9af75f76d088", "b78a9fdb-6c07-5eb3-b31a-38ab27609a06"], move: {"044f4a22-1acf-55d6-8644-275e2076960d": {"category": "Department concepts", "use": "Department line"}} }];
+function tidyBrand() {
+  if (!brand || !meta) return false;
+  let changed = false;
+  BRAND_TIDY.forEach(t => {
+    if ((meta.imports || []).includes(t.id)) return;
+    const dropL = new Set(t.lines), dropB = new Set(t.brief);
+    brand = { ...brand,
+      lines: brand.lines.filter(l => !dropL.has(l.id)).map(l => t.move[l.id] ? { ...l, ...t.move[l.id] } : l),
+      brief: brand.brief.filter(s => !dropB.has(s.id)) };
+    meta = { ...meta, imports: [...(meta.imports || []), t.id] };
+    changed = true;
+  });
+  return changed;
+}
 function normalizeRecipe(raw) {
   const r = Object.assign({ id: uid(), title: '', makes: '', date: '', ingredients: [], method: '', notes: '', photos: [] }, raw, { kind: 'recipe' });
   r.ingredients = (r.ingredients || []).map(x => Object.assign({ id: uid(), part: '', name: '', amount: '', materialId: '' }, x));
   return r;
 }
 async function load() {
-  let list = null, recs = null;
+  let list = null, recs = null, brandRaw = null;
   try {
     await DB.open();
     const v = await DB.get('items');
     if (v) list = v;
     recs = await DB.get('recipes');
+    brandRaw = await DB.get('brand');
   } catch (e) { DB.db = null; }
+  if (!brandRaw) try { brandRaw = JSON.parse(localStorage.getItem(LS_KEY + '.brand') || 'null'); } catch (e) {}
+  brand = normalizeBrand(brandRaw);
   if (!list) try { const raw = localStorage.getItem(LS_KEY); if (raw) list = JSON.parse(raw); } catch (e) {}
   if (!recs) try { recs = JSON.parse(localStorage.getItem(LS_KEY + '.recipes') || 'null'); } catch (e) {}
   const seed = () => JSON.parse($('seed').textContent).map(normalize);
@@ -808,14 +924,15 @@ async function load() {
   recipes = (recs || []).map(normalizeRecipe);
   ensureMeta();
   applyImports();
+  tidyBrand();
   fixIds();
   dedupeAndTell();
   saveLocal();
   return items;
 }
 function saveLocal() {
-  if (DB.db) return Promise.all([DB.set('items', items), DB.set('meta', meta), DB.set('recipes', recipes)]).catch(() => toast('Couldn’t save — export a backup now.'));
-  try { localStorage.setItem(LS_KEY, JSON.stringify(items)); localStorage.setItem(LS_KEY + '.meta', JSON.stringify(meta)); localStorage.setItem(LS_KEY + '.recipes', JSON.stringify(recipes)); }
+  if (DB.db) return Promise.all([DB.set('items', items), DB.set('meta', meta), DB.set('recipes', recipes), DB.set('brand', brand)]).catch(() => toast('Couldn’t save — export a backup now.'));
+  try { localStorage.setItem(LS_KEY, JSON.stringify(items)); localStorage.setItem(LS_KEY + '.meta', JSON.stringify(meta)); localStorage.setItem(LS_KEY + '.recipes', JSON.stringify(recipes)); localStorage.setItem(LS_KEY + '.brand', JSON.stringify(brand)); }
   catch (e) { toast('Storage full — remove some photos or export a backup.'); }
 }
 /* One-time imports (the notes from "Itchyhandsvan Recipes.pdf"). Each is applied once per library: its id is kept in
@@ -841,7 +958,15 @@ function applyImport(imp) {
   });
   items = [...items, ...add];
   const haveR = new Set(recipes.map(r => r.id));
-  recipes = [...recipes, ...imp.recipes.filter(r => !haveR.has(r.id)).map(normalizeRecipe)];
+  recipes = [...recipes, ...(imp.recipes || []).filter(r => !haveR.has(r.id)).map(normalizeRecipe)];
+  if (imp.brand) {
+    const b = normalizeBrand(imp.brand);
+    if (!brand) brand = b;
+    else {
+      const haveL = new Set(brand.lines.map(l => l.id)), haveS = new Set(brand.brief.map(s => s.id));
+      brand = { ...brand, lines: [...brand.lines, ...b.lines.filter(l => !haveL.has(l.id))], brief: [...brand.brief, ...b.brief.filter(s => !haveS.has(s.id))] };
+    }
+  }
   meta = { ...meta, imports: [...(meta.imports || []), imp.id], pumpMl: meta.pumpMl || imp.pumpMl };
   ensureMeta();
   return true;
@@ -871,7 +996,7 @@ const isNetErr = e => navigator.onLine === false || /fetch|network|load failed|t
 /* What the database holds, per material id, as of the last successful sync; kept so offline edits survive a reload. */
 async function keepSynced() { if (DB.db) await DB.set('synced', [...cloud.synced]).catch(() => {}); }
 async function loadSynced() { try { const v = DB.db && await DB.get('synced'); cloud.synced = new Map(v || []); } catch (e) { cloud.synced = new Map(); } }
-const syncRows = () => new Map([...items.map(m => [m.id, JSON.stringify(m)]), ...recipes.map(r => [r.id, JSON.stringify(r)]), ...(meta ? [[meta.id, JSON.stringify(meta)]] : [])]);
+const syncRows = () => new Map([...items.map(m => [m.id, JSON.stringify(m)]), ...recipes.map(r => [r.id, JSON.stringify(r)]), ...(meta ? [[meta.id, JSON.stringify(meta)]] : []), ...(brand ? [[brand.id, JSON.stringify(brand)]] : [])]);
 const pendingCount = () => {
   const now = syncRows();
   return [...now].filter(([id, j]) => cloud.synced.get(id) !== j).length + [...cloud.synced.keys()].filter(id => !now.has(id)).length;
@@ -910,6 +1035,8 @@ async function pull() {
   const metaRow = data.find(r => kind(r) === 'meta');
   const remote = data.filter(r => kind(r) === 'material').map(r => normalize(r.data));
   const remoteRecs = data.filter(r => kind(r) === 'recipe').map(r => normalizeRecipe(r.data));
+  const brandRow = data.find(r => kind(r) === 'brand');
+  if (brandRow) brand = normalizeBrand(brandRow.data);   // otherwise keep this device's brand page; it goes up with the next save
   if (metaRow) meta = metaRow.data;   // otherwise keep this browser's folders; they go up with the next save
   // Made on this device and never saved to the database (e.g. a save failed): keep them, they go up below.
   // Built-in starting materials don't count, and anything the database had before but not now was deleted elsewhere.
@@ -919,8 +1046,9 @@ async function pull() {
   items = [...flatten(remote), ...keepItems].sort((a, b) => a.name.localeCompare(b.name));
   recipes = [...remoteRecs, ...keepRecs];
   ensureMeta();
-  cloud.synced = new Map([...remote.map(m => [m.id, JSON.stringify(m)]), ...remoteRecs.map(r => [r.id, JSON.stringify(r)]), ...(metaRow ? [[metaRow.id, JSON.stringify(metaRow.data)]] : [])]);
+  cloud.synced = new Map([...remote.map(m => [m.id, JSON.stringify(m)]), ...remoteRecs.map(r => [r.id, JSON.stringify(r)]), ...(metaRow ? [[metaRow.id, JSON.stringify(metaRow.data)]] : []), ...(brandRow ? [[brandRow.id, JSON.stringify(brandRow.data)]] : [])]);
   applyImports();   // a library that hasn't had the recipe notes yet gets them now; they go up with the push below
+  tidyBrand();
   fixIds();
   dedupeAndTell();
   keepSynced(); saveLocal(); render();
@@ -1129,11 +1257,11 @@ function setCollapsed(s) { localStorage.setItem(COLLAPSE_KEY, JSON.stringify([..
 
 /* ---------- undo (toast button or ⌘Z / Ctrl+Z) for deletes, merges, moves ---------- */
 const undoStack = [];
-function checkpoint(label) { undoStack.push({ label, items: items.slice(), meta, recipes: recipes.slice() }); }   // operations replace objects, never mutate them
+function checkpoint(label) { undoStack.push({ label, items: items.slice(), meta, recipes: recipes.slice(), brand }); }   // operations replace objects, never mutate them
 function undo() {
   const u = undoStack.pop();
   if (!u) return;
-  items = u.items; meta = u.meta; recipes = u.recipes;
+  items = u.items; meta = u.meta; recipes = u.recipes; brand = u.brand;
   if (filter.cat && !catsInOrder().includes(filter.cat)) filter = { cat: '', folder: '' };
   save(); render();
   toast(`Undid: ${u.label}`);
@@ -1289,11 +1417,14 @@ function setView(v) {
   $('tabMat').classList.toggle('on', v === 'materials');
   $('tabExp').classList.toggle('on', v === 'experiments');
   $('tabRec').classList.toggle('on', v === 'recipes');
+  $('tabBrand').classList.toggle('on', v === 'brand');
   document.body.classList.toggle('recipes', v === 'recipes');
+  document.body.classList.toggle('brand', v === 'brand');
+  document.querySelectorAll('.brandOnly').forEach(e => e.hidden = v !== 'brand');
   document.querySelectorAll('.matOnly').forEach(e => e.hidden = v !== 'materials');
   document.querySelectorAll('.expOnly').forEach(e => e.hidden = v !== 'experiments');
   document.querySelectorAll('.recOnly').forEach(e => e.hidden = v !== 'recipes');
-  $('search').placeholder = matchMedia('(max-width: 560px)').matches ? 'Search…' : v === 'recipes' ? 'Search recipes, ingredients, notes…' : 'Search names, colours, brands, notes…';
+  $('search').placeholder = matchMedia('(max-width: 560px)').matches ? 'Search…' : v === 'recipes' ? 'Search recipes, ingredients, notes…' : v === 'brand' ? 'Search copy, uses, notes…' : 'Search names, colours, brands, notes…';
   render();
 }
 $('tabMat').onclick = () => setView('materials');
@@ -1307,6 +1438,7 @@ $('home').onclick = goHome; $('homeLogo').onclick = goHome;
 $('home').onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); } };
 $('tabExp').onclick = () => setView('experiments');
 $('tabRec').onclick = () => setView('recipes');
+$('tabBrand').onclick = () => setView('brand');
 
 function render() {
   fillDatalist($('supList'), uniq('supplier'));
@@ -1316,6 +1448,7 @@ function render() {
   tab('tabMat', 'Materials', items.length);
   tab('tabExp', 'Experiments', expTotal);
   tab('tabRec', 'Recipes', recipes.length);
+  tab('tabBrand', 'Brand', brand ? brand.lines.length : 0);
   const srcs = [...new Set([...SOURCES, ...uniq('source')])];
   const fs = $('fSource'), fsv = fs.value;
   fs.replaceChildren(new Option('Anywhere', ''), ...srcs.map(s => new Option(s, s)));
@@ -1325,7 +1458,7 @@ function render() {
   $('filterBtn').classList.toggle('on', !!changed);
 
   renderSide();
-  if (view === 'materials') renderMaterials(); else if (view === 'recipes') renderRecipes(); else renderExperiments();
+  if (view === 'materials') renderMaterials(); else if (view === 'recipes') renderRecipes(); else if (view === 'brand') renderBrand(); else renderExperiments();
 }
 
 function passesFilter(m) {
@@ -1516,6 +1649,174 @@ function experimentCard(m, e) {
 }
 
 function showEmpty(n, msg) { $('empty').hidden = n > 0; $('empty').textContent = msg; }
+
+/* ---------- brand ---------- */
+const COPY_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-.5a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h.5"/></svg>';
+const SHORTLIST = new Set(['Approved', 'Preferred', 'Favourite', 'Liked']);
+const statusRank = s => { const i = STATUSES.indexOf(s); return i < 0 ? STATUSES.length : i; };
+const statusPill = s => el('span', 'pill' + (s === 'Approved' ? ' success' : SHORTLIST.has(s) ? ' fav' : ''), s || 'Exploratory');
+let brandFilter = { cat: '', short: false };
+const BRIEF_OPEN = 'itchyhandsvan.brief-open';
+function briefOpen() { try { return new Set(JSON.parse(localStorage.getItem(BRIEF_OPEN) || 'null') || (brand && brand.brief[0] ? [brand.brief[0].id] : [])); } catch (e) { return new Set(); } }
+async function copyText(t) {
+  try { await navigator.clipboard.writeText(t); }
+  catch (e) { const a = el('textarea'); a.value = t; document.body.appendChild(a); a.select(); document.execCommand('copy'); a.remove(); }
+  toast(`Copied “${t.length > 40 ? t.slice(0, 40) + '…' : t}”`);
+}
+function copyBtn(t) {
+  const b = el('button', 'copybtn'); b.type = 'button'; b.title = 'Copy this line'; b.setAttribute('aria-label', 'Copy ' + t);
+  b.innerHTML = COPY_SVG; b.onclick = e => { e.stopPropagation(); copyText(t); };
+  return b;
+}
+// "**bold**" and "`code`" in brief points, everything else as plain text
+function richText(s) {
+  const f = document.createDocumentFragment();
+  s.split(/(\*\*[^*]+\*\*|`[^`]+`)/).forEach(p => {
+    if (/^\*\*.+\*\*$/.test(p)) f.appendChild(el('b', null, p.slice(2, -2)));
+    else if (/^`.+`$/.test(p)) f.appendChild(el('code', null, p.slice(1, -1)));
+    else if (p) f.appendChild(document.createTextNode(p));
+  });
+  return f;
+}
+const brandCats = () => [...new Set((brand ? brand.lines : []).map(l => l.category || 'Uncategorised'))];
+const lineHay = l => [l.text, l.category, l.use, l.status, l.notes].join(' ').toLowerCase();
+
+function renderBrand() {
+  const q = $('search').value.trim().toLowerCase();
+  const lines = brand ? brand.lines : [];
+  const parts = [];
+  if (!q && !brandFilter.cat && !brandFilter.short) {
+    // the three approved essentials, big
+    const core = lines.filter(l => l.category === 'Core').sort((a, b) => statusRank(a.status) - statusRank(b.status));
+    if (core.length) {
+      parts.push(el('div', 'bhead', 'Core'));
+      const g = el('div', 'core');
+      g.append(...core.map(l => {
+        const c = el('div', 'corecard'); c.onclick = () => openLine(l.id);
+        const lab = el('div', 'cl', l.use || l.status); lab.appendChild(copyBtn(l.text));
+        c.append(el('div', 'ct', l.text), lab);
+        return c;
+      }));
+      parts.push(g);
+    }
+    // the brief, in folding sections
+    if (brand && brand.brief.length) {
+      parts.push(el('div', 'bhead', 'The brief'));
+      const open = briefOpen(), wrap = el('div', 'brief');
+      wrap.append(...brand.brief.map(s => {
+        const pts = s.body.split('\n').map(x => x.trim()).filter(Boolean);
+        const sec = el('div', 'bsec' + (open.has(s.id) ? '' : ' closed'));
+        const bt = el('button', 'bt'); bt.type = 'button';
+        const chev = el('span', 'chev'); chev.innerHTML = CHEV_SVG;
+        const ed = el('button', 'edit', 'Edit'); ed.type = 'button';
+        ed.onclick = e => { e.stopPropagation(); openBrief(s.id); };
+        bt.append(chev, el('span', null, s.title), el('span', 'n', `${pts.length} point${pts.length === 1 ? '' : 's'}`), ed);
+        bt.onclick = () => {
+          const o = briefOpen(); o.has(s.id) ? o.delete(s.id) : o.add(s.id);
+          localStorage.setItem(BRIEF_OPEN, JSON.stringify([...o])); sec.classList.toggle('closed');
+        };
+        const ul = el('ul', 'bbody'); ul.append(...pts.map(x => { const li = el('li'); li.appendChild(richText(x)); return li; }));
+        sec.append(bt, ul);
+        return sec;
+      }));
+      parts.push(wrap);
+    }
+  }
+  // copy bank: chips to narrow it down, then one list per category
+  const plain = !q && !brandFilter.cat && !brandFilter.short;
+  const shown = lines.filter(l => !(plain && l.category === 'Core') && (!brandFilter.cat || (l.category || 'Uncategorised') === brandFilter.cat) && (!brandFilter.short || SHORTLIST.has(l.status)) && (!q || lineHay(l).includes(q)));
+  if (lines.length) {
+    const bank = lines.filter(l => l.category !== 'Core');
+    const head = el('div', 'bhead', 'Copy bank'); head.appendChild(el('span', 'n', plain ? `${bank.length} lines` : `${shown.length} of ${lines.length}`)); parts.push(head);
+    const chips = el('div', 'chips');
+    const chip = (label, n, on, fn) => { const b = el('button', on ? 'on' : null, label); b.type = 'button'; b.appendChild(el('span', 'n', String(n))); b.onclick = fn; return b; };
+    chips.append(
+      chip('All', bank.length, !brandFilter.cat && !brandFilter.short, () => { brandFilter = { cat: '', short: false }; renderBrand(); }),
+      chip('★ Shortlist', lines.filter(l => SHORTLIST.has(l.status)).length, brandFilter.short, () => { brandFilter = { ...brandFilter, short: !brandFilter.short }; renderBrand(); }),
+      ...brandCats().filter(c => c !== 'Core').map(c => chip(c, lines.filter(l => (l.category || 'Uncategorised') === c).length, brandFilter.cat === c, () => { brandFilter = { ...brandFilter, cat: brandFilter.cat === c ? '' : c }; renderBrand(); })));
+    parts.push(chips);
+    brandCats().forEach(c => {
+      const ls = shown.filter(l => (l.category || 'Uncategorised') === c).sort((a, b) => statusRank(a.status) - statusRank(b.status));
+      if (!ls.length) return;
+      const g = el('div', 'lgroup'), h3 = el('h3', null, c);
+      h3.appendChild(el('span', 'n', String(ls.length)));
+      const box = el('div', 'lines');
+      box.append(...ls.map(l => {
+        const r = el('div', 'line'); r.onclick = () => openLine(l.id);
+        const t = el('div', 'lt'); t.appendChild(el('div', 'lx', l.text));
+        if (l.use) t.appendChild(el('div', 'lu', l.use));
+        if (l.notes) t.appendChild(el('div', 'ln', l.notes));
+        const sp = statusPill(l.status); sp.classList.add('under'); t.appendChild(sp);   // phones: the status sits under the text
+        const del = el('button', 'copybtn delline'); del.type = 'button'; del.title = 'Delete this line';
+        del.setAttribute('aria-label', 'Delete ' + l.text); del.innerHTML = TRASH_SVG;
+        del.onclick = e => { e.stopPropagation(); deleteLine(l.id); };
+        const side = statusPill(l.status); side.classList.add('beside');
+        r.append(t, side, copyBtn(l.text), del);
+        return r;
+      }));
+      g.append(h3, box); parts.push(g);
+    });
+  }
+  $('main').replaceChildren(...parts);
+  showEmpty(lines.length ? shown.length : 0, lines.length ? 'No lines match.'
+    : 'No brand copy yet. Tap + Add to write the first line. (Open the Library file on your Mac once to bring in the copy library.)');
+}
+
+let lineEditing = null;
+const LF = name => $('lineForm').elements.namedItem(name);
+function openLine(id) {
+  const l = id ? brand.lines.find(x => x.id === id) : null;
+  lineEditing = l ? l.id : null;
+  $('lnHead').textContent = l ? 'Edit line' : 'New line';
+  fillPick(LF('category'), brandCats().filter(c => c !== 'Uncategorised'), l ? l.category : brandFilter.cat, '— no category —', '+ New category…');
+  LF('status').replaceChildren(...STATUSES.map(s => new Option(s, s)));
+  LF('status').value = l ? l.status : 'Exploratory';
+  ['text', 'use', 'notes'].forEach(k => LF(k).value = l ? l[k] || '' : '');
+  $('lnDel').hidden = !l;
+  $('lineDlg').showModal();
+}
+LF('category').addEventListener('change', () => {
+  const sel = LF('category');
+  if (sel.value !== NEW_OPT) { sel.dataset.prev = sel.value; return; }
+  const v = (prompt('Name of the new category') || '').trim();
+  if (!v) { sel.value = sel.dataset.prev || ''; return; }
+  if (![...sel.options].some(o => o.value === v)) sel.insertBefore(new Option(v, v), sel.lastChild);
+  sel.value = sel.dataset.prev = v;
+});
+$('lineForm').onsubmit = () => {
+  const rec = { id: lineEditing || uid(), text: LF('text').value.trim(), category: LF('category').value, use: LF('use').value.trim(), status: LF('status').value, notes: LF('notes').value.trim() };
+  if (!rec.text) return;
+  if (!brand) brand = normalizeBrand({ brief: [], lines: [] });
+  brand = { ...brand, lines: lineEditing ? brand.lines.map(x => x.id === rec.id ? rec : x) : [...brand.lines, rec] };
+  undoStack.length = 0;
+  save(); render(); toast(lineEditing ? 'Line saved.' : 'Line added.');
+};
+$('lnCancel').onclick = () => $('lineDlg').close();
+// no "are you sure?": the message that follows has Undo
+function deleteLine(id) {
+  const l = brand.lines.find(x => x.id === id);
+  if (!l) return;
+  checkpoint(`delete “${l.text}”`);
+  brand = { ...brand, lines: brand.lines.filter(x => x.id !== id) };
+  save(); render();
+  toast(`Deleted “${l.text.length > 30 ? l.text.slice(0, 30) + '…' : l.text}”`, 'Undo', undo);
+}
+$('lnDel').onclick = () => { $('lineDlg').close(); deleteLine(lineEditing); };
+$('brandAdd').onclick = () => openLine();
+
+let briefEditing = null;
+const BF = name => $('briefForm').elements.namedItem(name);
+function openBrief(id) {
+  const s = brand.brief.find(x => x.id === id);
+  briefEditing = id; BF('title').value = s.title; BF('body').value = s.body;
+  $('briefDlg').showModal();
+}
+$('briefForm').onsubmit = () => {
+  brand = { ...brand, brief: brand.brief.map(s => s.id === briefEditing ? { ...s, title: BF('title').value.trim() || s.title, body: BF('body').value.trim() } : s) };
+  undoStack.length = 0;
+  save(); render(); toast('Brief saved.');
+};
+$('bfCancel').onclick = () => $('briefDlg').close();
 
 /* ---------- recipes ---------- */
 const pumpMl = () => (meta && +meta.pumpMl) || 6.25;
@@ -2217,6 +2518,7 @@ $('fileIn').onchange = async e => {
       items = flatten(data.map(normalize));
       if (!Array.isArray(parsed) && parsed.meta) meta = { ...parsed.meta, id: meta ? meta.id : parsed.meta.id };
       if (!Array.isArray(parsed) && Array.isArray(parsed.recipes)) recipes = parsed.recipes.map(normalizeRecipe);
+      if (!Array.isArray(parsed) && parsed.brand) brand = normalizeBrand({ ...parsed.brand, id: brand ? brand.id : parsed.brand.id });
       save(); render();
       toast(`Restored ${items.length} materials.`, 'Undo', undo);
     } catch (err) { toast('That JSON isn’t a library backup.'); }
@@ -2229,7 +2531,7 @@ function download(name, mime, content) {
   a.href = URL.createObjectURL(new Blob([content], { type: mime }));
   a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
-$('backupBtn').onclick = () => download(`itchyhandsvan-backup-${new Date().toISOString().slice(0, 10)}.json`, 'application/json', JSON.stringify({ version: 3, appVersion: APP_VERSION, meta, items, recipes }, null, 1));
+$('backupBtn').onclick = () => download(`itchyhandsvan-backup-${new Date().toISOString().slice(0, 10)}.json`, 'application/json', JSON.stringify({ version: 3, appVersion: APP_VERSION, meta, items, recipes, brand }, null, 1));
 
 {
   const updated = new Date(APP_DATE + 'T12:00').toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
