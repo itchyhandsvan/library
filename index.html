@@ -235,8 +235,51 @@
   dialog.lightbox::backdrop { background: rgb(0 0 0 / 0.8); }
   dialog.lightbox img { display: block; max-width: 96vw; max-height: 92vh; border-radius: var(--r-sm); }
   /* recipes */
-  body.recipes .layout, body.brand .layout { grid-template-columns: 1fr; }
-  body.recipes aside, body.brand aside { display: none; }
+  body.recipes .layout, body.brand .layout, body.merch .layout { grid-template-columns: 1fr; }
+  body.recipes aside, body.brand aside, body.merch aside { display: none; }
+  /* merchandise */
+  .mgroup { margin-bottom: 24px; }
+  .mgroup h3 { font-size: 15px; margin: 0 0 10px; display: flex; gap: 8px; align-items: baseline; }
+  .mgroup h3 .n { color: var(--muted); font-size: 13px; font-weight: 500; }
+  .mcard .tags .pill { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }   /* long material names end in "…" */
+  .madd { display: flex; flex-direction: column; gap: 8px; }
+  #mcPick select { width: 100%; }   /* long material names would push the window wider than the phone */
+  .madd .tags .pill { display: inline-flex; align-items: center; gap: 4px; max-width: 100%; color: var(--ink); padding-right: 4px; }
+  .madd .tags .pill span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .vars { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+  .varrow { display: grid; grid-template-columns: minmax(0, 1fr) auto 34px; gap: 6px; align-items: center; }
+  .stepper { display: flex; gap: 4px; }
+  .stepper input { width: 64px; text-align: center; }
+  .stepper button { flex: none; width: 38px; padding: 0; font-size: 18px; font-weight: 500; border-color: var(--line); }
+  .varrow .x { width: 34px; height: 34px; }
+  .thumb.fit { background: #6f6f6f; position: relative; }   /* the grey of the mockups */
+  .thumb.fit img { position: absolute; inset: 0; object-fit: contain; }   /* the whole design inside the 4:3 box */
+  .photos.designs img { width: 110px; height: 110px; object-fit: contain; background: #fff; border: 1px solid var(--line); cursor: zoom-in; }
+  form.edit label.dlink { margin-top: 10px; }
+  .ords { display: flex; flex-direction: column; gap: 8px; margin: 8px 0; }
+  .ordrow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)) 34px; gap: 8px 6px; align-items: end; padding: 10px; border: 1px solid var(--line); border-radius: var(--r-sm); }
+  .ordrow > * { min-width: 0; }
+  form.edit .ordrow label { font-size: 12px; gap: 3px; }
+  .ordrow .o-sup { grid-column: 1 / 4; } .ordrow .o-date { grid-column: 4 / 7; } .ordrow .x { grid-column: 7; width: 34px; height: 34px; align-self: end; }
+  .ordrow .o-qty { grid-column: 1 / 3; } .ordrow .o-paid { grid-column: 3 / 5; } .ordrow .o-each { grid-column: 5 / 8; font-size: 13px; color: var(--muted); padding-bottom: 10px; }
+  .ordrow .o-m { grid-column: 1 / 4; } .ordrow .o-q { grid-column: 4 / 8; } .ordrow .o-qn { grid-column: 1 / -1; }
+  @media (max-width: 560px) {
+    .ordrow .o-sup { grid-column: 1 / 7; } .ordrow .x { grid-row: 1; }   /* supplier gets the whole first line */
+    .ordrow .o-date { grid-column: 1 / 4; } .ordrow .o-qty { grid-column: 4 / 8; }
+    .ordrow .o-paid { grid-column: 1 / 4; } .ordrow .o-each { grid-column: 4 / 8; }
+    .ordrow .o-m, .ordrow .o-q { grid-column: 1 / -1; } .photos.designs img { width: 96px; height: 96px; } }
+  .mline { font-size: 13px; color: var(--ink); overflow-wrap: anywhere; }
+  .stars { color: #b7791f; letter-spacing: 1px; white-space: nowrap; }
+  .vlist { display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--line); padding-top: 8px; margin-top: 2px; }
+  .vrow { display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 13px; }
+  .vrow .vn { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); }
+  .mstock { display: inline-flex; align-items: center; gap: 2px; flex: none; }
+  .mstock button { width: 26px; height: 26px; padding: 0; border-radius: 999px; border-color: var(--line); font-size: 15px; font-weight: 500; line-height: 1; color: var(--muted); }
+  .mstock button:hover { border-color: var(--ink); color: var(--ink); background: #fff; }
+  .mstock .sn { min-width: 30px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .mstock .sn.out { color: var(--bad); }
+  .madd .tags .pill button { border: 0; background: none; padding: 0 4px; font-size: 15px; line-height: 1; color: var(--muted); }
+  .madd .tags .pill button:hover { color: var(--bad); background: none; }
   /* brand */
   .bhead { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 26px 0 10px; display: flex; align-items: baseline; gap: 8px; }
   .bhead:first-child { margin-top: 6px; }
@@ -333,7 +376,7 @@
     .stats { flex: none; }   /* the Saved / Sync button stays on the title row, top right */
     .syncbtn { padding: 4px 9px 4px 19px; } .syncbtn::before { left: 7px; }
     .tabs { padding-top: 10px; }
-    .tabwrap { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }
+    .tabwrap { display: grid; grid-template-columns: repeat(5, auto); justify-content: space-between; width: 100%; }
     .core { grid-template-columns: 1fr; gap: 8px; }
     .corecard { min-height: 0; gap: 12px; padding: 16px; }
     .corecard .ct { font-size: 19px; }
@@ -344,14 +387,15 @@
     .line { padding: 12px; gap: 8px; }
     .line .pill.beside { display: none; }
     .line .pill.under { display: inline-block; }
-    .tabs button { padding: 9px 2px; font-size: 13px; letter-spacing: -0.01em; }   /* four tabs share the width */
-    .tabs button .n { margin-left: 3px; font-size: 11px; }
+    .tabs button { padding: 9px 2px; font-size: 13px; letter-spacing: -0.01em; }   /* five tabs share the width */
+    .tabs button .n { display: none; }   /* no room for the counts beside five tabs */
+    .tabs button { padding-left: 6px; padding-right: 6px; }
     /* toolbar: one row of Filter, search and More */
     .toolbar { padding: 10px 16px; margin: 0 -16px; gap: 6px; }   /* its background covers the full width, so nothing peeks out beside it */
     #search { flex: 1 1 0; min-width: 0; }   /* Filter, search and More share one row */
     .tspacer { display: none; }
     /* + Add floats bottom right, where a thumb reaches it */
-    #addBtn, #recAdd, #brandAdd { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 9; border-radius: 999px; padding: 14px 20px; font-size: 15px; box-shadow: 0 6px 18px rgb(0 0 0 / 0.25); }
+    #addBtn, #recAdd, #brandAdd, #merchAdd { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 9; border-radius: 999px; padding: 14px 20px; font-size: 15px; box-shadow: 0 6px 18px rgb(0 0 0 / 0.25); }
     .toolbar > button, .toolbar .menu-wrap > button { padding: 8px 12px; }
     .long { display: none; }
     .menu { max-width: calc(100vw - 32px); }
@@ -411,6 +455,7 @@
     <button id="tabExp">Experiments</button>
     <button id="tabRec">Recipes</button>
     <button id="tabMat" class="on">Materials</button>
+    <button id="tabMerch">Merchandise</button>
     <button id="tabBrand">Brand</button>
   </div>
 </nav>
@@ -439,6 +484,7 @@
       <button class="primary matOnly" id="addBtn" title="Add a material. On a phone this opens the camera first">+ Add<span class="long"> material</span></button>
       <button class="primary recOnly" id="recAdd" hidden>+ Add<span class="long"> recipe</span></button>
       <button class="primary brandOnly" id="brandAdd" hidden>+ Add<span class="long"> line</span></button>
+      <button class="primary merchOnly" id="merchAdd" hidden>+ Add<span class="long"> product</span></button>
       <input type="file" id="fileIn" accept=".csv,.json,text/csv,application/json" hidden>
     </div>
     <main id="main"></main>
@@ -578,6 +624,53 @@
   <datalist id="partList"></datalist>
 </dialog>
 
+<!-- Merchandise: one product -->
+<dialog id="merchDlg" class="exp">
+  <form id="merchForm" class="edit" method="dialog" autocomplete="off">
+    <h2 id="mcHead">New product</h2>
+    <label class="wide">Name *<input name="name" required placeholder="e.g. Egg tart keychain"></label>
+    <label>Type<input name="type" list="merchTypes" placeholder="e.g. Keychain, Magnet, Pin"></label>
+    <label>Status<select name="status"></select></label>
+    <label>Selling price (S$)<input name="price" type="number" step="any" min="0" inputmode="decimal"></label>
+    <div class="wide">
+      <div class="flabel">Stock <span class="meta" id="mcTotal"></span></div>
+      <div class="meta ihint">One line per colour or version, with how many you have now.</div>
+      <div class="vars" id="mcVars"></div>
+      <button type="button" id="mcAddVar">+ Add colour / version</button>
+    </div>
+    <div class="wide">
+      <div class="flabel">Design</div>
+      <div class="meta ihint">The artwork you sent to the printer, one image per colour or side.</div>
+      <div class="photos designs" id="mcDesigns"></div>
+      <label class="dlink">Link to the design file<input name="designLink" type="url" placeholder="Dropbox, Canva or Drive link" spellcheck="false"></label>
+    </div>
+    <div class="wide">
+      <div class="flabel">Orders</div>
+      <div class="meta ihint">Each print run: who made it, how many, what you paid in all, and how the print came out.</div>
+      <div class="ords" id="mcOrders"></div>
+      <button type="button" id="mcAddOrder">+ Add order</button>
+    </div>
+    <div class="wide madd">
+      <div class="flabel">Made with</div>
+      <div class="tags" id="mcMats"></div>
+      <div id="mcPick"></div>
+    </div>
+    <label class="wide">Notes<textarea name="notes" rows="3" placeholder="sizes, packaging, where it sold, what people said…"></textarea></label>
+    <div class="wide">
+      <div class="meta" style="margin-bottom:6px">Photos</div>
+      <div class="photos" id="mcPhotos"></div>
+    </div>
+    <div class="actions">
+      <button type="button" class="danger spacer" id="mcDel">Delete</button>
+      <button type="button" id="mcCancel">Cancel</button>
+      <button type="submit" class="primary">Save product</button>
+    </div>
+  </form>
+  <datalist id="merchTypes"></datalist>
+  <datalist id="merchSups"></datalist>
+  <datalist id="merchMethods"></datalist>
+</dialog>
+
 <!-- Folder / category: name, description, icon -->
 <dialog id="nameDlg" class="exp">
   <form id="nameForm" class="edit" method="dialog" autocomplete="off">
@@ -643,7 +736,7 @@
     <p class="wide error" id="cloudErr" hidden></p>
     <div class="wide backups">
       <h3>Backups</h3>
-      <p class="hint">One file with everything: materials, photos, experiments, recipes, brand copy and categories. Worth downloading before big changes, or once a month.</p>
+      <p class="hint">One file with everything: materials, photos, experiments, recipes, merchandise, brand copy and categories. Worth downloading before big changes, or once a month.</p>
       <div class="bbtns">
         <button type="button" id="backupBtn">Download a backup</button>
         <button type="button" id="importBtn">Restore from a backup…</button>
@@ -705,7 +798,7 @@ function iconEl(name, cls = 'ico') {
   return s;
 }
 /* Filled in by build.py from the top entry of CHANGELOG.md. */
-const APP_VERSION = 'v1.10', APP_DATE = '2026-11-17';
+const APP_VERSION = 'v1.13', APP_DATE = '2026-11-18';
 const TRASH_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg>';
 const CHEV_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>';
 const PLUS_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9"/></svg>';
@@ -735,6 +828,11 @@ let items = [];
    { id, kind: 'recipe', title, makes, date, ingredients: [{ id, part, name, amount, materialId }], method, notes, photos } */
 let recipes = [];
 let brand = null;   // the Brand tab: { id, kind: 'brand', brief: [{ id, title, body }], lines: [{ id, text, category, use, status, notes }] }
+/* Merchandise saves and syncs like recipes, one row each:
+   { id, kind: 'merch', name, type, status, price, designs: [images], designLink, variants: [{ id, name, stock }], materialIds: [],
+     orders: [{ id, supplier, date, qty, paid, method, quality, qualityNotes }], notes, photos }
+   Money is SGD and "paid" is for the whole order. Stock is counted per variant (a colour or version). */
+let merch = [];
 let view = 'materials';
 let filter = { cat: '', folder: '' };   // sidebar / folder selection
 /* Categories and folders, kept together in one "meta" record that saves and syncs like a material:
@@ -858,6 +956,7 @@ function dedupe() {
   items = items.filter(m => !gone.has(m.id)).map(m => kept.get(m.id) || m);
   recipes = recipes.map(r => r.ingredients.some(x => gone.has(x.materialId))
     ? { ...r, ingredients: r.ingredients.map(x => gone.has(x.materialId) ? { ...x, materialId: gone.get(x.materialId) } : x) } : r);
+  merch = merch.map(p => p.materialIds.some(id => gone.has(id)) ? { ...p, materialIds: [...new Set(p.materialIds.map(id => gone.get(id) || id))] } : p);
   return gone.size;
 }
 function fixIds() {
@@ -867,6 +966,10 @@ function fixIds() {
     const id = isUuid(r.id) ? r.id : uid();
     const ings = r.ingredients.map(x => remap.has(x.materialId) ? { ...x, materialId: remap.get(x.materialId) } : x);
     return id === r.id && ings.every((x, i) => x === r.ingredients[i]) ? r : { ...r, id, ingredients: ings };
+  });
+  merch = merch.map(p => {
+    const id = isUuid(p.id) ? p.id : uid();
+    return id === p.id && !p.materialIds.some(m => remap.has(m)) ? p : { ...p, id, materialIds: p.materialIds.map(m => remap.get(m) || m) };
   });
   if (meta && !isUuid(meta.id)) meta = { ...meta, id: uid() };
 }
@@ -905,16 +1008,31 @@ function normalizeRecipe(raw) {
   r.ingredients = (r.ingredients || []).map(x => Object.assign({ id: uid(), part: '', name: '', amount: '', materialId: '' }, x));
   return r;
 }
+const MERCH_STATUSES = ['Idea', 'Prototype', 'Ready', 'Selling', 'Retired'];
+function normalizeMerch(raw) {
+  const p = Object.assign({ id: uid(), name: '', type: '', status: 'Idea', price: '', designs: [], designLink: '', variants: [], materialIds: [], orders: [], notes: '', photos: [] }, raw, { kind: 'merch' });
+  p.materialIds = [...new Set(p.materialIds || [])];
+  if (p.design && !p.designs.length) p.designs = [p.design];   // a single design before v1.13
+  delete p.design;
+  if (p.cost && !p.orders.length) p.orders = [{ qty: '1', paid: p.cost }];   // v1.11 had one "cost to make" per product
+  delete p.cost;
+  p.orders = p.orders.map(o => Object.assign({ id: uid(), supplier: '', date: '', qty: '', paid: '', method: '', quality: '', qualityNotes: '' }, o));
+  p.variants = p.variants.map(v => Object.assign({ id: uid(), name: '', stock: '' }, v));
+  return p;
+}
 async function load() {
-  let list = null, recs = null, brandRaw = null;
+  let list = null, recs = null, brandRaw = null, merchRaw = null;
   try {
     await DB.open();
     const v = await DB.get('items');
     if (v) list = v;
     recs = await DB.get('recipes');
     brandRaw = await DB.get('brand');
+    merchRaw = await DB.get('merch');
   } catch (e) { DB.db = null; }
   if (!brandRaw) try { brandRaw = JSON.parse(localStorage.getItem(LS_KEY + '.brand') || 'null'); } catch (e) {}
+  if (!merchRaw) try { merchRaw = JSON.parse(localStorage.getItem(LS_KEY + '.merch') || 'null'); } catch (e) {}
+  merch = (merchRaw || []).map(normalizeMerch);
   brand = normalizeBrand(brandRaw);
   if (!list) try { const raw = localStorage.getItem(LS_KEY); if (raw) list = JSON.parse(raw); } catch (e) {}
   if (!recs) try { recs = JSON.parse(localStorage.getItem(LS_KEY + '.recipes') || 'null'); } catch (e) {}
@@ -931,8 +1049,8 @@ async function load() {
   return items;
 }
 function saveLocal() {
-  if (DB.db) return Promise.all([DB.set('items', items), DB.set('meta', meta), DB.set('recipes', recipes), DB.set('brand', brand)]).catch(() => toast('Couldn’t save — export a backup now.'));
-  try { localStorage.setItem(LS_KEY, JSON.stringify(items)); localStorage.setItem(LS_KEY + '.meta', JSON.stringify(meta)); localStorage.setItem(LS_KEY + '.recipes', JSON.stringify(recipes)); localStorage.setItem(LS_KEY + '.brand', JSON.stringify(brand)); }
+  if (DB.db) return Promise.all([DB.set('items', items), DB.set('meta', meta), DB.set('recipes', recipes), DB.set('brand', brand), DB.set('merch', merch)]).catch(() => toast('Couldn’t save — export a backup now.'));
+  try { localStorage.setItem(LS_KEY, JSON.stringify(items)); localStorage.setItem(LS_KEY + '.meta', JSON.stringify(meta)); localStorage.setItem(LS_KEY + '.recipes', JSON.stringify(recipes)); localStorage.setItem(LS_KEY + '.brand', JSON.stringify(brand)); localStorage.setItem(LS_KEY + '.merch', JSON.stringify(merch)); }
   catch (e) { toast('Storage full — remove some photos or export a backup.'); }
 }
 /* One-time imports (the notes from "Itchyhandsvan Recipes.pdf"). Each is applied once per library: its id is kept in
@@ -959,6 +1077,14 @@ function applyImport(imp) {
   items = [...items, ...add];
   const haveR = new Set(recipes.map(r => r.id));
   recipes = [...recipes, ...(imp.recipes || []).filter(r => !haveR.has(r.id)).map(normalizeRecipe)];
+  const haveP = new Set(merch.map(p => p.id));
+  merch = [...merch, ...(imp.merch || []).filter(p => !haveP.has(p.id)).map(normalizeMerch)];
+  // designs and notes for a product added earlier: designs only where it has none yet, notes only if not already there
+  merch = merch.map(p => {
+    const u = (imp.merchUpdates || []).find(x => x.id === p.id);
+    if (!u) return p;
+    return { ...p, designs: p.designs.length ? p.designs : u.designs || [], notes: !u.notes || p.notes.includes(u.notes) ? p.notes : [p.notes, u.notes].filter(Boolean).join('\n') };
+  });
   if (imp.brand) {
     const b = normalizeBrand(imp.brand);
     if (!brand) brand = b;
@@ -996,7 +1122,7 @@ const isNetErr = e => navigator.onLine === false || /fetch|network|load failed|t
 /* What the database holds, per material id, as of the last successful sync; kept so offline edits survive a reload. */
 async function keepSynced() { if (DB.db) await DB.set('synced', [...cloud.synced]).catch(() => {}); }
 async function loadSynced() { try { const v = DB.db && await DB.get('synced'); cloud.synced = new Map(v || []); } catch (e) { cloud.synced = new Map(); } }
-const syncRows = () => new Map([...items.map(m => [m.id, JSON.stringify(m)]), ...recipes.map(r => [r.id, JSON.stringify(r)]), ...(meta ? [[meta.id, JSON.stringify(meta)]] : []), ...(brand ? [[brand.id, JSON.stringify(brand)]] : [])]);
+const syncRows = () => new Map([...items.map(m => [m.id, JSON.stringify(m)]), ...recipes.map(r => [r.id, JSON.stringify(r)]), ...merch.map(p => [p.id, JSON.stringify(p)]), ...(meta ? [[meta.id, JSON.stringify(meta)]] : []), ...(brand ? [[brand.id, JSON.stringify(brand)]] : [])]);
 const pendingCount = () => {
   const now = syncRows();
   return [...now].filter(([id, j]) => cloud.synced.get(id) !== j).length + [...cloud.synced.keys()].filter(id => !now.has(id)).length;
@@ -1035,6 +1161,7 @@ async function pull() {
   const metaRow = data.find(r => kind(r) === 'meta');
   const remote = data.filter(r => kind(r) === 'material').map(r => normalize(r.data));
   const remoteRecs = data.filter(r => kind(r) === 'recipe').map(r => normalizeRecipe(r.data));
+  const remoteMerch = data.filter(r => kind(r) === 'merch').map(r => normalizeMerch(r.data));
   const brandRow = data.find(r => kind(r) === 'brand');
   if (brandRow) brand = normalizeBrand(brandRow.data);   // otherwise keep this device's brand page; it goes up with the next save
   if (metaRow) meta = metaRow.data;   // otherwise keep this browser's folders; they go up with the next save
@@ -1042,11 +1169,12 @@ async function pull() {
   // Built-in starting materials don't count, and anything the database had before but not now was deleted elsewhere.
   const inDb = new Set(data.map(r => r.id)), builtIn = builtInIds(), dbKeys = new Set(remote.map(sameKey));
   const localOnly = x => !inDb.has(x.id) && !cloud.synced.has(x.id) && !builtIn.has(x.id);
-  const keepItems = items.filter(m => localOnly(m) && !dbKeys.has(sameKey(m))), keepRecs = recipes.filter(localOnly);   // same name and brand = already there
+  const keepItems = items.filter(m => localOnly(m) && !dbKeys.has(sameKey(m))), keepRecs = [...recipes.filter(localOnly), ...merch.filter(localOnly)];   // same name and brand = already there
   items = [...flatten(remote), ...keepItems].sort((a, b) => a.name.localeCompare(b.name));
-  recipes = [...remoteRecs, ...keepRecs];
+  recipes = [...remoteRecs, ...keepRecs.filter(x => x.kind === 'recipe')];
+  merch = [...remoteMerch, ...keepRecs.filter(x => x.kind === 'merch')];
   ensureMeta();
-  cloud.synced = new Map([...remote.map(m => [m.id, JSON.stringify(m)]), ...remoteRecs.map(r => [r.id, JSON.stringify(r)]), ...(metaRow ? [[metaRow.id, JSON.stringify(metaRow.data)]] : []), ...(brandRow ? [[brandRow.id, JSON.stringify(brandRow.data)]] : [])]);
+  cloud.synced = new Map([...remote.map(m => [m.id, JSON.stringify(m)]), ...remoteRecs.map(r => [r.id, JSON.stringify(r)]), ...remoteMerch.map(p => [p.id, JSON.stringify(p)]), ...(metaRow ? [[metaRow.id, JSON.stringify(metaRow.data)]] : []), ...(brandRow ? [[brandRow.id, JSON.stringify(brandRow.data)]] : [])]);
   applyImports();   // a library that hasn't had the recipe notes yet gets them now; they go up with the push below
   tidyBrand();
   fixIds();
@@ -1257,11 +1385,11 @@ function setCollapsed(s) { localStorage.setItem(COLLAPSE_KEY, JSON.stringify([..
 
 /* ---------- undo (toast button or ⌘Z / Ctrl+Z) for deletes, merges, moves ---------- */
 const undoStack = [];
-function checkpoint(label) { undoStack.push({ label, items: items.slice(), meta, recipes: recipes.slice(), brand }); }   // operations replace objects, never mutate them
+function checkpoint(label) { undoStack.push({ label, items: items.slice(), meta, recipes: recipes.slice(), brand, merch: merch.slice() }); }   // operations replace objects, never mutate them
 function undo() {
   const u = undoStack.pop();
   if (!u) return;
-  items = u.items; meta = u.meta; recipes = u.recipes; brand = u.brand;
+  items = u.items; meta = u.meta; recipes = u.recipes; brand = u.brand; merch = u.merch;
   if (filter.cat && !catsInOrder().includes(filter.cat)) filter = { cat: '', folder: '' };
   save(); render();
   toast(`Undid: ${u.label}`);
@@ -1418,13 +1546,16 @@ function setView(v) {
   $('tabExp').classList.toggle('on', v === 'experiments');
   $('tabRec').classList.toggle('on', v === 'recipes');
   $('tabBrand').classList.toggle('on', v === 'brand');
+  $('tabMerch').classList.toggle('on', v === 'merch');
   document.body.classList.toggle('recipes', v === 'recipes');
   document.body.classList.toggle('brand', v === 'brand');
+  document.body.classList.toggle('merch', v === 'merch');
   document.querySelectorAll('.brandOnly').forEach(e => e.hidden = v !== 'brand');
+  document.querySelectorAll('.merchOnly').forEach(e => e.hidden = v !== 'merch');
   document.querySelectorAll('.matOnly').forEach(e => e.hidden = v !== 'materials');
   document.querySelectorAll('.expOnly').forEach(e => e.hidden = v !== 'experiments');
   document.querySelectorAll('.recOnly').forEach(e => e.hidden = v !== 'recipes');
-  $('search').placeholder = matchMedia('(max-width: 560px)').matches ? 'Search…' : v === 'recipes' ? 'Search recipes, ingredients, notes…' : v === 'brand' ? 'Search copy, uses, notes…' : 'Search names, colours, brands, notes…';
+  $('search').placeholder = matchMedia('(max-width: 560px)').matches ? 'Search…' : v === 'recipes' ? 'Search recipes, ingredients, notes…' : v === 'brand' ? 'Search copy, uses, notes…' : v === 'merch' ? 'Search products, types, materials…' : 'Search names, colours, brands, notes…';
   render();
 }
 $('tabMat').onclick = () => setView('materials');
@@ -1439,6 +1570,7 @@ $('home').onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.prevent
 $('tabExp').onclick = () => setView('experiments');
 $('tabRec').onclick = () => setView('recipes');
 $('tabBrand').onclick = () => setView('brand');
+$('tabMerch').onclick = () => setView('merch');
 
 function render() {
   fillDatalist($('supList'), uniq('supplier'));
@@ -1449,6 +1581,7 @@ function render() {
   tab('tabExp', 'Experiments', expTotal);
   tab('tabRec', 'Recipes', recipes.length);
   tab('tabBrand', 'Brand', brand ? brand.lines.length : 0);
+  tab('tabMerch', narrow.matches ? 'Merch' : 'Merchandise', merch.length);   // phones: the short word, so five tabs fit
   const srcs = [...new Set([...SOURCES, ...uniq('source')])];
   const fs = $('fSource'), fsv = fs.value;
   fs.replaceChildren(new Option('Anywhere', ''), ...srcs.map(s => new Option(s, s)));
@@ -1458,7 +1591,7 @@ function render() {
   $('filterBtn').classList.toggle('on', !!changed);
 
   renderSide();
-  if (view === 'materials') renderMaterials(); else if (view === 'recipes') renderRecipes(); else if (view === 'brand') renderBrand(); else renderExperiments();
+  if (view === 'materials') renderMaterials(); else if (view === 'recipes') renderRecipes(); else if (view === 'brand') renderBrand(); else if (view === 'merch') renderMerch(); else renderExperiments();
 }
 
 function passesFilter(m) {
@@ -2001,6 +2134,271 @@ $('recDel').onclick = () => {
   if ($('dlg').open) renderUsedIn();
 };
 
+/* ---------- merchandise ---------- */
+let merchFilter = '';   // a status, 'out' for out of stock, or '' for everything
+const sgd = v => num(v) == null ? '' : 'S$' + (+v).toFixed(2).replace(/\.00$/, '');
+const stars = v => +v ? '★'.repeat(+v) + '☆'.repeat(5 - v) : '';
+const PRINT_METHODS = ['Hot stamping', 'UV print', 'Screen print', 'Laser engraving', 'Embroidery', 'Sublimation'];
+const merchHay = p => [p.name, p.type, p.status, p.notes, ...p.variants.map(v => v.name), ...p.orders.map(o => [o.supplier, o.method, o.qualityNotes].join(' ')),
+  ...p.materialIds.map(id => (matById(id) || {}).name)].join(' ').toLowerCase();
+const merchStatuses = () => [...new Set([...MERCH_STATUSES, ...merch.map(p => p.status).filter(Boolean)])];
+const stockTotal = p => p.variants.reduce((s, v) => s + (num(v.stock) || 0), 0);
+const tracksStock = p => p.variants.some(v => num(v.stock) != null);
+const isOut = p => tracksStock(p) && !stockTotal(p);
+const eachCost = o => num(o.paid) != null && num(o.qty) > 0 ? o.paid / o.qty : null;
+// the latest order: newest date first; undated ones count as the most recently added
+const lastOrder = p => p.orders.map((o, i) => [o, i]).sort((a, b) => (b[0].date || '').localeCompare(a[0].date || '') || b[1] - a[1]).map(x => x[0])[0];
+
+function renderMerch() {
+  const q = $('search').value.trim().toLowerCase();
+  const shown = merch.filter(p => (!merchFilter || (merchFilter === 'out' ? isOut(p) : p.status === merchFilter)) && (!q || merchHay(p).includes(q)));
+  const parts = [];
+  if (merch.length) {
+    const chips = el('div', 'chips');
+    const chip = (label, n, on, fn) => { const b = el('button', on ? 'on' : null, label); b.type = 'button'; b.appendChild(el('span', 'n', String(n))); b.onclick = fn; return b; };
+    const pick = f => () => { merchFilter = merchFilter === f ? '' : f; renderMerch(); };
+    const out = merch.filter(isOut).length;
+    chips.append(chip('All', merch.length, !merchFilter, pick('')),
+      ...merchStatuses().map(s => [s, merch.filter(p => p.status === s).length]).filter(([s, n]) => n || merchFilter === s)
+        .map(([s, n]) => chip(s, n, merchFilter === s, pick(s))),
+      ...(out || merchFilter === 'out' ? [chip('Out of stock', out, merchFilter === 'out', pick('out'))] : []));
+    parts.push(chips);
+  }
+  // one group per status, in the order an idea becomes a product
+  merchStatuses().forEach(s => {
+    const ps = shown.filter(p => p.status === s).sort((a, b) => a.name.localeCompare(b.name));
+    if (!ps.length) return;
+    const g = el('div', 'mgroup'), h3 = el('h3', null, s);
+    h3.appendChild(el('span', 'n', String(ps.length)));
+    const grid = el('div', 'grid'); grid.append(...ps.map(merchCard));
+    g.append(h3, grid); parts.push(g);
+  });
+  $('main').replaceChildren(...parts);
+  showEmpty(shown.length, merch.length ? 'No products match.' : 'No merchandise yet. Tap “+ Add” to add a product, from first idea to selling.');
+}
+
+// − 12 + : change the stock of one colour straight from the card
+function stockStepper(p, v) {
+  const box = el('span', 'mstock');
+  const n = num(v.stock);
+  const step = d => e => {
+    e.stopPropagation();
+    const next = Math.max(0, (num(v.stock) || 0) + d);
+    merch = merch.map(x => x.id === p.id ? { ...x, variants: x.variants.map(y => y.id === v.id ? { ...y, stock: String(next) } : y) } : x);
+    save(); render();
+  };
+  const less = el('button', null, '−'); less.type = 'button'; less.title = 'One fewer'; less.onclick = step(-1);
+  const more = el('button', null, '+'); more.type = 'button'; more.title = 'One more'; more.onclick = step(1);
+  box.append(less, el('span', 'sn' + (n === 0 ? ' out' : ''), n == null ? '—' : String(n)), more);
+  box.onclick = e => e.stopPropagation();
+  return box;
+}
+
+function merchCard(p) {
+  const c = el('div', 'card mcard');
+  c.onclick = () => openMerch(p.id);
+  const th = el('div', 'thumb'), pic = p.photos[0] || p.designs[0];
+  if (pic) { const img = new Image(); img.src = pic; img.loading = 'lazy'; th.appendChild(img); th.classList.toggle('fit', !p.photos.length); }   // a design is shown whole, not cropped
+  else th.textContent = (p.name || '?').trim().charAt(0).toUpperCase();
+  c.appendChild(th);
+  const del = el('button', 'del'); del.type = 'button'; del.title = 'Delete';
+  del.setAttribute('aria-label', 'Delete ' + p.name);
+  del.innerHTML = TRASH_SVG;
+  del.onclick = e => { e.stopPropagation(); deleteMerch(p); };
+  c.appendChild(del);
+  const b = el('div', 'body');
+  b.appendChild(el('div', 'name', p.name || 'Untitled product'));
+  const o = lastOrder(p);
+  const sub = [p.type, o && o.method].filter(Boolean).join(' · ');
+  if (sub) b.appendChild(el('div', 'meta', sub));
+  if (o) {
+    const line = el('div', 'mline', [o.supplier, eachCost(o) != null && sgd(eachCost(o)) + ' each'].filter(Boolean).join(' · '));
+    if (+o.quality) { if (line.textContent) line.append(' · '); line.appendChild(el('span', 'stars', stars(o.quality))); line.title = 'Print quality'; }
+    if (line.textContent) b.appendChild(line);
+  }
+  const used = p.materialIds.map(matById).filter(Boolean);
+  if (used.length) {
+    const t = el('div', 'tags');
+    used.forEach(m => {
+      const pl = el('span', 'pill link', m.name); pl.title = 'Open this material';
+      pl.onclick = e => { e.stopPropagation(); openProfile(m.id); };
+      t.appendChild(pl);
+    });
+    b.appendChild(t);
+  }
+  if (p.variants.length) {
+    const vl = el('div', 'vlist');
+    vl.append(...p.variants.map(v => { const r = el('div', 'vrow'); r.append(el('span', 'vn', v.name || 'In stock'), stockStepper(p, v)); return r; }));
+    if (p.variants.length > 1) { const r = el('div', 'vrow'); r.append(el('span', 'vn', 'Total'), el('strong', null, String(stockTotal(p)))); vl.appendChild(r); }
+    b.appendChild(vl);
+  }
+  if (num(p.price) != null) { const row = el('div', 'row'); row.appendChild(el('span', 'price', 'Sells for ' + sgd(p.price))); b.appendChild(row); }   // the status is the group heading
+  c.appendChild(b);
+  return c;
+}
+
+function deleteMerch(p) {
+  checkpoint(`delete “${p.name}”`);
+  merch = merch.filter(x => x.id !== p.id);
+  save(); render();
+  toast(`Deleted “${p.name}”`, 'Undo', undo);
+}
+
+const MF = name => $('merchForm').elements.namedItem(name);
+const MERCH_FIELDS = ['name', 'type', 'status', 'price', 'designLink', 'notes'];
+let mcEditing = null, mcMats = [], mcPhotos = [], mcDesigns = [], mcVars = [], mcOrders = [];
+function openMerch(id) {
+  const p = id ? merch.find(x => x.id === id) : null;
+  mcEditing = p ? p.id : null;
+  MF('status').replaceChildren(...merchStatuses().map(s => new Option(s, s)));
+  MERCH_FIELDS.forEach(k => MF(k).value = p ? p[k] ?? '' : '');
+  if (!p) MF('status').value = MERCH_STATUSES.includes(merchFilter) ? merchFilter : 'Idea';   // adding while a status is picked: start in that status
+  mcMats = p ? [...p.materialIds] : [];
+  mcPhotos = p ? [...p.photos] : [];
+  mcDesigns = p ? [...p.designs] : [];
+  mcVars = p ? structuredClone(p.variants) : [];
+  if (!mcVars.length) mcVars.push(normalizeMerch({ variants: [{}] }).variants[0]);
+  mcOrders = p ? structuredClone(p.orders) : [];
+  $('mcHead').textContent = p ? 'Product' : 'New product';
+  $('mcDel').hidden = !p;
+  fillDatalist($('merchTypes'), [...new Set(merch.map(x => x.type.trim()).filter(Boolean))].sort());
+  fillDatalist($('merchSups'), [...new Set(merch.flatMap(x => x.orders.map(o => o.supplier.trim())).filter(Boolean))].sort());
+  fillDatalist($('merchMethods'), [...new Set([...PRINT_METHODS, ...merch.flatMap(x => x.orders.map(o => o.method.trim())).filter(Boolean)])]);
+  renderMcVars(); renderMcOrders(); renderMcDesign(); renderMcMats(); renderMcPhotos();
+  $('merchDlg').showModal();
+  $('merchDlg').scrollTop = 0;
+}
+// small text field with a label above it, bound to obj[k]
+function miniField(obj, k, label, cls, attrs = {}, onInput) {
+  const l = el('label', cls, label), i = el('input');
+  Object.assign(i, attrs); i.value = obj[k] || '';
+  i.oninput = () => { obj[k] = i.value; if (onInput) onInput(); };
+  l.appendChild(i);
+  return l;
+}
+function renderMcVars() {
+  $('mcVars').replaceChildren(...mcVars.map((v, i) => {
+    const row = el('div', 'varrow');
+    const name = el('input'); name.value = v.name; name.placeholder = mcVars.length > 1 ? 'Colour or version' : 'Colour or version (optional)';
+    name.setAttribute('aria-label', 'Colour or version');
+    name.oninput = () => v.name = name.value;
+    const st = el('span', 'stepper');
+    const n = el('input'); n.type = 'number'; n.min = '0'; n.step = '1'; n.inputMode = 'numeric'; n.value = v.stock; n.placeholder = '—';
+    n.setAttribute('aria-label', 'How many in stock');
+    n.oninput = () => { v.stock = n.value; mcTotal(); };
+    const bump = d => () => { n.value = v.stock = String(Math.max(0, (num(v.stock) || 0) + d)); mcTotal(); };
+    const less = el('button', null, '−'); less.type = 'button'; less.title = 'One fewer'; less.onclick = bump(-1);
+    const more = el('button', null, '+'); more.type = 'button'; more.title = 'One more'; more.onclick = bump(1);
+    st.append(less, n, more);
+    const rm = el('button', 'x', '×'); rm.type = 'button'; rm.title = 'Remove this line';
+    rm.onclick = () => { mcVars.splice(i, 1); renderMcVars(); };
+    row.append(name, st, rm);
+    return row;
+  }));
+  mcTotal();
+}
+function mcTotal() {
+  const t = mcVars.reduce((s, v) => s + (num(v.stock) || 0), 0);
+  $('mcTotal').textContent = mcVars.some(v => num(v.stock) != null) ? `· ${t} in all` : '';
+}
+function renderMcOrders() {
+  $('mcOrders').replaceChildren(...mcOrders.map((o, i) => {
+    const row = el('div', 'ordrow');
+    const each = el('div', 'o-each');
+    const showEach = () => { const c = eachCost(o); each.textContent = c == null ? '' : `= ${sgd(c)} each`; };
+    const rm = el('button', 'x', '×'); rm.type = 'button'; rm.title = 'Remove this order';
+    rm.onclick = () => { mcOrders.splice(i, 1); renderMcOrders(); };
+    const q = el('label', 'o-q', 'Print quality'), qs = el('select');
+    ['', '1', '2', '3', '4', '5'].forEach(v => qs.appendChild(new Option(v ? stars(v) : '— not rated', v)));
+    qs.value = o.quality || ''; qs.onchange = () => o.quality = qs.value;
+    q.appendChild(qs);
+    row.append(
+      miniField(o, 'supplier', 'Supplier', 'o-sup', { placeholder: 'Shop or factory', autocomplete: 'off' }),
+      miniField(o, 'date', 'Ordered', 'o-date', { type: 'date' }),
+      rm,
+      miniField(o, 'qty', 'Quantity', 'o-qty', { type: 'number', min: '0', step: '1', inputMode: 'numeric' }, showEach),
+      miniField(o, 'paid', 'Paid in all (S$)', 'o-paid', { type: 'number', min: '0', step: 'any', inputMode: 'decimal' }, showEach),
+      each,
+      miniField(o, 'method', 'Print method', 'o-m', { placeholder: 'e.g. Hot stamping', autocomplete: 'off' }),
+      q,
+      miniField(o, 'qualityNotes', 'How the print came out', 'o-qn', { placeholder: 'sharp edges, foil coverage, colour match…' }));
+    row.querySelector('.o-sup input').setAttribute('list', 'merchSups');
+    row.querySelector('.o-m input').setAttribute('list', 'merchMethods');
+    showEach();
+    return row;
+  }));
+}
+function renderMcDesign() {
+  const figs = mcDesigns.map((src, i) => {
+    const f = el('figure'); const img = new Image(); img.src = src; img.alt = 'Design';
+    img.onclick = () => { $('photoBig').src = src; $('photoDlg').showModal(); };   // tap for full size
+    const x = el('button', null, '×'); x.type = 'button'; x.title = 'Remove this design';
+    x.onclick = () => { mcDesigns.splice(i, 1); renderMcDesign(); };
+    f.append(img, x); return f;
+  });
+  const add = el('label', 'btn', mcDesigns.length ? '+ Add another' : '+ Add the design');
+  const inp = el('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.multiple = true; inp.hidden = true;
+  inp.onchange = async () => { for (const f of inp.files) mcDesigns.push(await shrink(f, 1400)); renderMcDesign(); };
+  add.appendChild(inp);
+  $('mcDesigns').replaceChildren(...figs, add);
+}
+$('mcAddVar').onclick = () => {
+  mcVars.push(normalizeMerch({ variants: [{}] }).variants[0]);
+  renderMcVars();
+  $('mcVars').lastElementChild.querySelector('input').focus();
+};
+$('mcAddOrder').onclick = () => {
+  const last = mcOrders[mcOrders.length - 1];
+  mcOrders.push(normalizeMerch({ orders: [{ supplier: last ? last.supplier : '', method: last ? last.method : '' }] }).orders[0]);   // a reorder is usually from the same place
+  renderMcOrders();
+  $('mcOrders').lastElementChild.querySelector('input').focus();
+};
+// the library materials this product is made with: a pill each, and a dropdown to add another
+function renderMcMats() {
+  $('mcMats').replaceChildren(...mcMats.map(matById).filter(Boolean).map(m => {
+    const pl = el('span', 'pill'); pl.appendChild(el('span', null, m.name));
+    const x = el('button', null, '×'); x.type = 'button'; x.title = 'Remove'; x.setAttribute('aria-label', 'Remove ' + m.name);
+    x.onclick = () => { mcMats = mcMats.filter(id => id !== m.id); renderMcMats(); };
+    pl.appendChild(x);
+    return pl;
+  }));
+  const s = materialSelect('');
+  s.options[0].text = '+ Add a material…';
+  s.onchange = () => { if (s.value && !mcMats.includes(s.value)) mcMats.push(s.value); renderMcMats(); };
+  $('mcPick').replaceChildren(s);
+}
+function renderMcPhotos() {
+  const figs = mcPhotos.map((src, i) => {
+    const f = el('figure'); const img = new Image(); img.src = src; f.appendChild(img);
+    const x = el('button', null, '×'); x.type = 'button'; x.onclick = () => { mcPhotos.splice(i, 1); renderMcPhotos(); };
+    f.appendChild(x); return f;
+  });
+  const add = el('label', 'btn', '+ Add photos');
+  const inp = el('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.multiple = true; inp.hidden = true;
+  inp.onchange = async () => { for (const f of inp.files) mcPhotos.push(await shrink(f, 900)); renderMcPhotos(); };
+  add.appendChild(inp);
+  $('mcPhotos').replaceChildren(...figs, add);
+}
+$('merchAdd').onclick = () => openMerch();
+$('mcCancel').onclick = () => $('merchDlg').close();
+$('merchForm').onsubmit = () => {
+  const trim = o => Object.fromEntries(Object.entries(o).map(([k, v]) => [k, typeof v === 'string' ? v.trim() : v]));
+  const p = normalizeMerch({ id: mcEditing || uid(), photos: mcPhotos, designs: mcDesigns, materialIds: mcMats.filter(matById),
+    variants: mcVars.map(trim).filter(v => v.name || v.stock !== ''),
+    orders: mcOrders.map(trim).filter(o => o.supplier || o.date || o.qty || o.paid || o.method || o.quality || o.qualityNotes) });
+  MERCH_FIELDS.forEach(k => p[k] = MF(k).value.trim());
+  merch = mcEditing ? merch.map(x => x.id === p.id ? p : x) : [...merch, p];
+  undoStack.length = 0;   // as with recipes, undo covers deletes since the last edit
+  save(); render();
+  toast('Product saved.');
+};
+$('mcDel').onclick = () => {
+  const p = merch.find(x => x.id === mcEditing);
+  if (!p || !confirm(`Delete “${p.name}”?`)) return;
+  $('merchDlg').close();
+  deleteMerch(p);
+};
+
 ['search', 'fOutcome', 'sort', 'fSource'].forEach(id => $(id).addEventListener('input', render));
 
 /* ---------- Filter panel ---------- */
@@ -2427,7 +2825,9 @@ function shrink(file, max = 480) {
       const s = Math.min(1, max / Math.max(img.width, img.height));
       const cv = document.createElement('canvas');
       cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s);
-      cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+      const cx = cv.getContext('2d');
+      cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);   // see-through artwork (a PNG design) on white, not black
+      cx.drawImage(img, 0, 0, cv.width, cv.height);
       URL.revokeObjectURL(img.src);
       res(cv.toDataURL('image/jpeg', 0.75));
     };
@@ -2519,6 +2919,7 @@ $('fileIn').onchange = async e => {
       if (!Array.isArray(parsed) && parsed.meta) meta = { ...parsed.meta, id: meta ? meta.id : parsed.meta.id };
       if (!Array.isArray(parsed) && Array.isArray(parsed.recipes)) recipes = parsed.recipes.map(normalizeRecipe);
       if (!Array.isArray(parsed) && parsed.brand) brand = normalizeBrand({ ...parsed.brand, id: brand ? brand.id : parsed.brand.id });
+      if (!Array.isArray(parsed) && Array.isArray(parsed.merch)) merch = parsed.merch.map(normalizeMerch);
       save(); render();
       toast(`Restored ${items.length} materials.`, 'Undo', undo);
     } catch (err) { toast('That JSON isn’t a library backup.'); }
@@ -2531,7 +2932,7 @@ function download(name, mime, content) {
   a.href = URL.createObjectURL(new Blob([content], { type: mime }));
   a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
-$('backupBtn').onclick = () => download(`itchyhandsvan-backup-${new Date().toISOString().slice(0, 10)}.json`, 'application/json', JSON.stringify({ version: 3, appVersion: APP_VERSION, meta, items, recipes, brand }, null, 1));
+$('backupBtn').onclick = () => download(`itchyhandsvan-backup-${new Date().toISOString().slice(0, 10)}.json`, 'application/json', JSON.stringify({ version: 3, appVersion: APP_VERSION, meta, items, recipes, brand, merch }, null, 1));
 
 {
   const updated = new Date(APP_DATE + 'T12:00').toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
